@@ -2,653 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/bm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/lib/connect-redis.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/connect-redis/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/benchmark.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/ejs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/ejs.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/examples/client.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/examples/list.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/examples/list.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/lib/ejs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/lib/filters.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/lib/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/support/compile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/test/ejs.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/ejs/test/fixtures/user.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/bin/express" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/express.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/http.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/https.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/request.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/response.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/methods.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/view/partial.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/lib/view/view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/cache.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/http.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/https.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/basicAuth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/bodyParser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/compiler.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/cookieParser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/csrf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/directory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/errorHandler.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/favicon.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/limit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/logger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/methodOverride.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/profiler.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/query.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/responseTime.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session/cookie.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session/memory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session/session.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session/store.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/staticCache.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/vhost.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/patch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/directory.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/error.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_add.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_attach.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_code.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_copy.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_delete.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_edit.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_error.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_excel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_find.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_gear.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_green.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_key.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_lightning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_link.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_paintbrush.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_paste.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_red.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_refresh.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_save.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_acrobat.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_actionscript.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_add.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_c.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_camera.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_cd.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_code.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_code_red.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_coldfusion.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_compressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_copy.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_cplusplus.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_csharp.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_cup.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_database.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_delete.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_dvd.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_edit.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_error.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_excel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_find.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_flash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_freehand.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_gear.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_get.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_h.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_horizontal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_key.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_lightning.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_link.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_magnify.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_medal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_office.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_paint.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_paintbrush.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_paste.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_php.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_picture.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_powerpoint.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_put.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_ruby.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_stack.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_star.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_swoosh.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_text.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_text_width.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_tux.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_vector.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_visualstudio.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_width.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_word.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_world.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_wrench.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_white_zip.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_word.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/icons/page_world.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/public/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/TODO" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/benchmark/bench-multipart-parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/example/post.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/example/upload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/file.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/incoming_form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/multipart_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/querystring_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/util.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/file/funkyfilename.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/file/plain.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/no-filename/generic.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/info.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-chrome-13.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-firefox-3.6.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-safari-5.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-chrome-12.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-7.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-8.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-safari-5.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/js/no-filename.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/js/special-chars-in-filename.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/multipart.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/integration/test-fixtures.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/integration/test-multipart-parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-file.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-incoming-form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-multipart-parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-querystring-parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/system/test-multi-video-upload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/run.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/unit/test-incoming-form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/tool/record.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/mime.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/mime.types" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/node.types" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/.gitignore.orig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/.gitignore.rej" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/README.markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/examples/pow.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/examples/pow.js.orig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/examples/pow.js.rej" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/test/mkdirp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/test/race.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mkdirp/test/rel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/benchmark.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/examples.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/lib/querystring.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/mocha.opts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/parse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/public/stylesheets/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/routes/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/views/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/foo/views/layout.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/public/test.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/views/page.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/views/page.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/views/test.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/views/user/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/testing/views/user/list.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/changelog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/compat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/control" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/copyright" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/dirs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/install" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/rules" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/debian/source/format" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/hashlib.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md5/_hashopenssl.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md5/md5.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md5/md5.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md5/md5module.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/README_Reference.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/inttypes.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6_compress.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6_mode.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6_nist.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6_nist.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/md6sum.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/md6/stdint.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/sha/SHA1.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/sha/SHA1.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/sha/sha256module.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/sha/sha512module.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/lib/sha/shamodule.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/md4.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/md4c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/md5.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/md5c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/ripemd.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/rmd160c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/rmd_locl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/rmdconst.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha0c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha1c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha256.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha256c.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/libhash/sha_locl.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/test.file" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/test/md5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hashlib/wscript" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/.lock-wscript" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/README" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/.wafpickle-7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/c4che/build.config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/c4che/default.cache.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/config.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/default/hiredis.node" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/default/hiredis_1.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/build/default/reader_1.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/COPYING" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/adapters/ae.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/adapters/libev.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/adapters/libevent.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/async.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/async.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/async.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/dict.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/dict.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/example-ae.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/example-libev.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/example-libevent.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/example.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/fmacros.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/hiredis.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/hiredis.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/hiredis.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/libhiredis.a" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/net.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/net.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/net.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/sds.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/sds.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/sds.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/deps/hiredis/test.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/hiredis.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/hiredis.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/parser_bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/reader.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/reader.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/test/reader.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/hiredis/wscript" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/changelog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/auth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/backpressure_drain.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/eval.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/extend.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/file.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/mget.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/monitor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/multi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/multi2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/psubscribe.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/pub_sub.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/simple.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/sort.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/subqueries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/subquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/unix_socket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/examples/web_server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/generate_commands.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/commands.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/parser/hiredis.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/parser/javascript.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/queue.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/to_array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/lib/util.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/multi_bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/buffer_bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/hiredis_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/reconnect_test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/codec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/pubsub/pub.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/pubsub/run" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/pubsub/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/rpushblpop/pub.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/rpushblpop/run" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/rpushblpop/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/speed/00" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/speed/plot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/speed/size-rate.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/stress/speed/speed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/redis/tests/sub_quit_test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/WebSocketMain.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/WebSocketMainInsecure.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/events.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/json.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/namespace.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.io-client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/flashsocket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/htmlfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/jsonp-polling.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/websocket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr-polling.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/util.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/WebSocketMain.swf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/WebSocketMainInsecure.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/IWebSocketLogger.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocket.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocketEvent.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocketMain.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/WebSocketMainInsecure.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/build.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/adobe/net/proxies/RFC2817Socket.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/gsolo/encryption/MD5.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/Crypto.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/cert/MozillaRootCertificates.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/cert/X509Certificate.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/cert/X509CertificateCollection.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/HMAC.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/IHMAC.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/IHash.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/MAC.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/MD2.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/MD5.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/SHA1.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/SHA224.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/SHA256.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/hash/SHABase.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/prng/ARC4.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/prng/IPRNG.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/prng/Random.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/prng/TLSPRF.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/rsa/RSAKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/AESKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/BlowFishKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/CBCMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/CFB8Mode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/CFBMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/CTRMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/DESKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/ECBMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/ICipher.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/IMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/IPad.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/IStreamCipher.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/ISymmetricKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/IVMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/NullPad.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/OFBMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/PKCS5.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/SSLPad.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/SimpleIVMode.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/TLSPad.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/TripleDESKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/XTeaKey.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/aeskey.pl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/symmetric/dump.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/AESKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/ARC4Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/BigIntegerTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/BlowFishKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/CBCModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/CFB8ModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/CFBModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/CTRModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/DESKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/ECBModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/HMACTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/ITestHarness.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/MD2Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/MD5Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/OFBModeTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/RSAKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/SHA1Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/SHA224Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/SHA256Test.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TLSPRFTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TestCase.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/TripleDESKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tests/XTeaKeyTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/BulkCiphers.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/CipherSuites.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/IConnectionState.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/ISecurityParameters.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/KeyExchanges.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/MACs.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/SSLConnectionState.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/SSLEvent.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/SSLSecurityParameters.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSConfig.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSConnectionState.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSEngine.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSError.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSEvent.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSSecurityParameters.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSSocket.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSSocketEvent.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/crypto/tls/TLSTest.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/BarrettReduction.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/BigInteger.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/ClassicReduction.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/IReduction.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/MontgomeryReduction.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/NullReduction.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/bi_internal.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/ArrayUtil.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/Base64.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/Hex.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/Memory.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/ByteString.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/DER.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/IAsn1Type.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/Integer.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/OID.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/ObjectIdentifier.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/PEM.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/PrintableString.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/Sequence.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/Set.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/Type.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/util/der/UTCTime.as" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/sample.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/swfobject.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/web_socket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/should.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/runner.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/events.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/io.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/node/builder.common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/node/builder.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/socket.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/util.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/test/worker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/benchmarks/decode.bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/benchmarks/encode.bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/benchmarks/runner.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/public/stylesheets/mixins.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/public/stylesheets/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/public/stylesheets/style.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/irc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/public/stylesheets/style.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/logger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/manager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/namespace.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/static.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/store.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/stores/memory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/stores/redis.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/flashsocket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/htmlfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http-polling.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/jsonp-polling.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/default.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-07-12.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-16.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-17.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/xhr-polling.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/util.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/examples/client-unix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/examples/client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/examples/server-unix.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/lib/websocket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-basic.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-client-close.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-readonly-attrs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-ready-state.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-server-close.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-unix-send-fd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/support/node-websocket-client/test/test-unix-sockets.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/cert.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/key.key" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/hybi-common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/io.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/leaks/socket.leaktest.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/manager.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/namespace.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/static.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.memory.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.redis.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.flashsocket.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.htmlfile.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.jsonp-polling.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi07-12.parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi16.parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -716,10 +70,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="26" selection-start="256" selection-end="256" vertical-scroll-proportion="0.29013538">
+            <state line="10" column="26" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="17" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.78305787">
               <folding />
             </state>
           </provider>
@@ -749,12 +112,12 @@
         <option value="$PROJECT_DIR$/public/app/typing.js" />
         <option value="$PROJECT_DIR$/views/typing.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/app/test.js" />
         <option value="$PROJECT_DIR$/views/admin/test.ejs" />
         <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/settings.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -795,20 +158,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -981,11 +330,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="39" selection-start="9224" selection-end="9282" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="276" column="2" selection-start="10481" selection-end="10737" vertical-scroll-proportion="0.0" />
@@ -1014,11 +358,6 @@
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="26" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="15" selection-start="901" selection-end="901" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/admin/index.js">
@@ -1066,7 +405,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="26" selection-start="256" selection-end="256" vertical-scroll-proportion="0.29013538">
+        <state line="10" column="26" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="17" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.78305787">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="7" selection-start="298" selection-end="298" vertical-scroll-proportion="0.33199194">
           <folding />
         </state>
       </provider>
