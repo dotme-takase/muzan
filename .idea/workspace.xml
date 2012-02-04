@@ -2,7 +2,182 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.env" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-fdr.0.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-fdr.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-fdr.la" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-fdr.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-sphinx.0.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-sphinx.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-sphinx.la" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/cairo-sphinx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/libcairo-trace.0.dylib" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/libcairo-trace.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/libcairo-trace.dylib" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bundle/cario/libcairo-trace.la" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/TODO" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/benchmark/bench-multipart-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/example/post.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/example/upload.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/file.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/incoming_form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/multipart_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/querystring_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/lib/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/file/funkyfilename.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/file/plain.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/no-filename/generic.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/info.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-chrome-13.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-firefox-3.6.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-safari-5.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-chrome-12.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-7.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-8.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-safari-5.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/js/no-filename.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/js/special-chars-in-filename.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/fixture/multipart.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/integration/test-fixtures.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/integration/test-multipart-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-file.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-incoming-form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-multipart-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/simple/test-querystring-parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/legacy/system/test-multi-video-upload.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/run.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/test/unit/test-incoming-form.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/formidable/tool/record.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/discovery/rgb2gif.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/discovery/rgb2gif_mem.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/discovery/terminal.tar.bz2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/animated_gif.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/animated_gif.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/async_animated_gif.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/async_animated_gif.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/buffer_compat.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/buffer_compat.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/common.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/common.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/dynamic_gif_stack.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/dynamic_gif_stack.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/gif.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/gif.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/gif_encoder.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/gif_encoder.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/loki/RefToValue.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/loki/ScopeGuard.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/module.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/palette.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/palette.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/quantize.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/quantize.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/utils.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/src/utils.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/animated-gif/animated-gif-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/animated-gif/animated-gif-file-writer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/animated-gif/animated-gif.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/animated-gif/frames.tgz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/dynamic-gif-stack-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/dynamic-gif-stack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/gif-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/gif.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/01-rgba-80-389-16-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/02-rgba-96-390-16-5.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/03-rgba-80-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/04-rgba-96-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/05-rgba-96-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/06-rgba-96-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/07-rgba-112-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/08-rgba-112-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/09-rgba-112-389-32-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/10-rgba-112-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/11-rgba-128-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/12-rgba-128-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/13-rgba-144-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/14-rgba-144-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/15-rgba-144-389-16-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/16-rgba-144-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/17-rgba-160-393-16-6.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/18-rgba-176-397-16-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/19-rgba-160-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/tests/push-data/20-rgba-176-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/gif/wscript" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/.lock-wscript" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/.conf_check_0/test.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/.conf_check_0/testbuild/.wafpickle-7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/.conf_check_0/testbuild/default/test_1.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/.wafpickle-7" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/c4che/build.config.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/c4che/default.cache.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/config.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/build/default/src/common_1.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/discovery/jpeg.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/dynamic-jpeg-stack-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/dynamic-jpeg-stack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/fixed-jpeg-stack-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/fixed-jpeg-stack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/jpeg-example-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/jpeg-example.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/jpeg-example2-async.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/jpeg-example2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/01-rgba-80-389-16-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/02-rgba-96-390-16-5.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/03-rgba-80-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/04-rgba-96-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/05-rgba-96-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/06-rgba-96-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/07-rgba-112-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/08-rgba-112-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/09-rgba-112-389-32-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/10-rgba-112-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/11-rgba-128-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/12-rgba-128-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/13-rgba-144-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/14-rgba-144-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/15-rgba-144-389-16-7.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/16-rgba-144-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/17-rgba-160-393-16-6.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/18-rgba-176-397-16-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/19-rgba-160-397-32-2.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/push-data/20-rgba-176-386-16-10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/examples/rgba-terminal.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/buffer_compat.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/buffer_compat.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/common.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/common.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/dynamic_jpeg_stack.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/dynamic_jpeg_stack.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/fixed_jpeg_stack.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/fixed_jpeg_stack.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/jpeg.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/jpeg.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/jpeg_encoder.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/jpeg_encoder.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/src/module.cpp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/image/node_modules/jpeg/wscript" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/imagemagick/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/imagemagick/imagemagick.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/imagemagick/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/imagemagick/test-crop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/imagemagick/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="bsword.iws" />
@@ -74,7 +249,7 @@
       <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="78" selection-start="369" selection-end="369" vertical-scroll-proportion="0.36217305">
+            <state line="12" column="19" selection-start="310" selection-end="310" vertical-scroll-proportion="0.36217305">
               <folding />
             </state>
           </provider>
@@ -400,23 +575,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/socket.io-client/test/socket.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="25" selection-start="8407" selection-end="8407" vertical-scroll-proportion="0.33199194">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="32" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/imagemagick/imagemagick.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="23" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -430,7 +591,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="78" selection-start="369" selection-end="369" vertical-scroll-proportion="0.36217305">
+        <state line="12" column="19" selection-start="310" selection-end="310" vertical-scroll-proportion="0.36217305">
           <folding />
         </state>
       </provider>

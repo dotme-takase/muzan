@@ -10,6 +10,6 @@
     , "redis": ">=0.7.1"
     , "connect-redis": ">= 1.1.0"
     , "hashlib": ">=1.0.1"
-    , "canvas": "https://github.com/elspoono/node-canvas-heroku/tarball/master"
+    , "canvas": ">=0.10.1"
   }
 }
