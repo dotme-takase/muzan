@@ -31,12 +31,10 @@ exports.test = function(req, res) {
     ctx.lineTo(50 + te.width, 102);
     ctx.stroke();
 
-    console.log('<img src="' + canvas.toDataURL() + '" />');
-
     if (req.session && req.session.stateId) {
     } else if (req.session) {
         req.session.stateId = appUtils.generateGuid();
         req.session.save();
     }
-    res.render('admin/test', { title: 'Express' })
+    res.render('admin/test', { image: canvas.toDataURL() })
 };
