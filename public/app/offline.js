@@ -95,7 +95,7 @@ $(function() {
                     __tileBmps[name] = bitmap;
                 }
                 $.get("/g/init", function(data) {
-                    __blockMap = data.blockMap;
+                    __blockMap = data.context.blockMap;
                     initializeGame();
                 });
 
