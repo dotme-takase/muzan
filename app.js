@@ -21,7 +21,7 @@ var sessionStore = (settings.redis && settings.redis.hostname) ?
 app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
-    app.use(express.bodyParser());
+    app.use(require('./utils/customizedBodyParser.js')());
     app.use(express.methodOverride());
     app.use(express.cookieParser()); // use session
     app.use(express.session({ secret: "4pYvLFVw", store: sessionStore}));
@@ -55,6 +55,7 @@ app.get('/t', routes.typing);
 
 //admin
 app.get('/admin/test', routes.test);
+app.post('/admin/test', routes.postTest);
 
 var port = process.env.PORT || 3000;
 app.listen(port);
