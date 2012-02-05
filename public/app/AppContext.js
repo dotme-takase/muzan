@@ -132,6 +132,15 @@ var AppContext = exports.AppContext = function () {
         _this.characterTree = new QuadTree(_this.mapBounds, false);
     }
 
+    function fixAngle(angle){
+        if(angle > 360){
+        }
+        angle = angle % 360;
+        if(angle > 180){
+          angle -= 360;
+        }
+        return angle;
+    }
     _this.collideCharacters = function(obj) {
         var oldX = obj.x;
         var oldY = obj.y;
@@ -148,8 +157,10 @@ var AppContext = exports.AppContext = function () {
                 var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
                 var theta = Math.atan2(deltaX, deltaY);
                 var angleForOther = 90 - (theta * 180 / Math.PI) - obj.direction;
+                angleForOther = fixAngle(angleForOther);
                 var theta2 = Math.atan2(-1 * deltaX, -1 * deltaY);
                 var angleForObj = 90 - (theta2 * 180 / Math.PI) - other.direction;
+                angleForObj = fixAngle(angleForObj);
 
                 if (obj.teamNumber != other.teamNumber
                     && obj.isAction && !obj.isWalk
