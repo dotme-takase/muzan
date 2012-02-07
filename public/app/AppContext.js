@@ -1,8 +1,8 @@
 if (typeof exports == "undefined") {
     exports = {
-        error:function(sMessage) {
+        error:function (sMessage) {
         },
-        inspect:function(o) {
+        inspect:function (o) {
         }
     };
 }
@@ -13,7 +13,7 @@ if (typeof require == "function") {
         window = {};
     }
     if (typeof Rectangle == "undefined") {
-        Rectangle = function(b, a, c, d) {
+        Rectangle = function (b, a, c, d) {
             this.x = b == null ? 0 : b;
             this.y = a == null ? 0 : a;
             this.width = c == null ? 0 : c;
@@ -29,7 +29,7 @@ function guid(delim) {
         return ( typeof(obj) == "string" || obj instanceof String );
     }
 
-    var S4 = function() {
+    var S4 = function () {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
     if (!isString(delim)) {
@@ -42,18 +42,18 @@ function guid(delim) {
 var EnemyMode = exports.EnemyMode = {
     RANDOM_WALK:1,
     ATTACK_TO_TARGET:2,
-    BYPASS_LEFT_TO_TARGET: 3,
+    BYPASS_LEFT_TO_TARGET:3,
     BYPASS_RIGHT_TO_TARGET:4
 };
 
 var CharacterAction = exports.CharacterAction = {
-    NONE: 0,
-    DEFENCE_MOTION: 1,
-    DEFENCE: 2,
-    ATTACK: 3,
-    PARRIED: 4,
-    DAMAGE: 5,
-    DEAD: 6
+    NONE:0,
+    DEFENCE_MOTION:1,
+    DEFENCE:2,
+    ATTACK:3,
+    PARRIED:4,
+    DAMAGE:5,
+    DEAD:6
 };
 var __maxDiffClientTime = 20;
 var __tileSize = 128;
@@ -82,18 +82,18 @@ var AppContext = exports.AppContext = function () {
 
 
     _this.effectsAnim;
-    _this.addEffect = function(x, y, name) {
+    _this.addEffect = function (x, y, name) {
         var newEffect = _this.effectsAnim.clone();
         newEffect.x = x;
         newEffect.y = y;
         newEffect.gotoAndPlay(name);
-        newEffect.onAnimationEnd = function() {
+        newEffect.onAnimationEnd = function () {
             _this.view.removeChild(newEffect);
         }
         _this.view.addChild(newEffect);
     }
 
-    _this.addCharacter = function(character, x, y) {
+    _this.addCharacter = function (character, x, y) {
         if (typeof character.stateId == "undefined") {
             character.stateId = guid();
         }
@@ -110,7 +110,7 @@ var AppContext = exports.AppContext = function () {
         character.py = character.y;
     }
 
-    _this.warpToRandom = function(character) {
+    _this.warpToRandom = function (character) {
         var arr = [];
         for (var i = 0; i < _this.blockMap[0].length; i++) {
             for (var j = 0; j < _this.blockMap.length; j++) {
@@ -125,23 +125,24 @@ var AppContext = exports.AppContext = function () {
         character.y = point.y;
     }
 
-    _this.loadBlockMap = function(blockMap) {
+    _this.loadBlockMap = function (blockMap) {
         _this.blockMap = blockMap;
         _this.mapBounds = new Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
         _this.blockTree = new QuadTree(_this.mapBounds, false);
         _this.characterTree = new QuadTree(_this.mapBounds, false);
     }
 
-    function fixAngle(angle){
-        if(angle > 360){
+    function fixAngle(angle) {
+        if (angle > 360) {
         }
         angle = angle % 360;
-        if(angle > 180){
-          angle -= 360;
+        if (angle > 180) {
+            angle -= 360;
         }
         return angle;
     }
-    _this.collideCharacters = function(obj) {
+
+    _this.collideCharacters = function (obj) {
         var oldX = obj.x;
         var oldY = obj.y;
         var isNPC = obj.teamNumber == 0;
@@ -167,8 +168,10 @@ var AppContext = exports.AppContext = function () {
                     && (obj.action == CharacterAction.ATTACK)
                     && (obj.attackFrame > 2)) {
                     if ((distance < range + 32)
-                        && ((angleForOther > -20) && (angleForOther < 80))) {// right
-                        if ((other.isAction && (other.action == CharacterAction.DEFENCE))
+                        && ((angleForOther > -20) && (angleForOther < 80))) {
+                        // right
+                        if ((other.isAction && (other.action == CharacterAction.DEFENCE)
+                            && (other.leftArm != null && other.leftArm.name == "shield"))
                             && ((angleForObj > -30) && (angleForObj < 60))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             obj.x += Math.cos(theta) * kickBackRange;
@@ -183,7 +186,7 @@ var AppContext = exports.AppContext = function () {
                             other.vY += Math.sin(theta) * kickBackRange;
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
-                            other.HP -= Math.ceil(Math.random() * 3);
+                            other.HP -= Math.ceil(Math.random() * 5 + 5);
                             if (other.HP <= 0) {
                                 other.HP = 0;
                                 other.action = CharacterAction.DEAD;
@@ -202,7 +205,7 @@ var AppContext = exports.AppContext = function () {
         }
     };
 
-    _this.collideBlocks = function(obj) {
+    _this.collideBlocks = function (obj) {
         var oldX = obj.x;
         var oldY = obj.y;
 
@@ -215,7 +218,7 @@ var AppContext = exports.AppContext = function () {
         var delta = 0;
 
 
-        var nearBlocks = _this.blockTree.retrieve({x:obj.x - obj.width / 2, y:obj.y - obj.height / 2, width: obj.width, height:obj.height});
+        var nearBlocks = _this.blockTree.retrieve({x:obj.x - obj.width / 2, y:obj.y - obj.height / 2, width:obj.width, height:obj.height});
         var len = nearBlocks.length;
         for (var i = 0; i < len; i++) {
             var block = nearBlocks[i];
@@ -284,7 +287,7 @@ var AppContext = exports.AppContext = function () {
         obj.py = obj.y;
     };
 
-    _this.collideCharactersOnServer = function(character) {
+    _this.collideCharactersOnServer = function (character) {
         _this.updateTree();
         _this.collideCharacters(character);
         var characters = _this.characterTree.retrieve(character);
@@ -294,7 +297,7 @@ var AppContext = exports.AppContext = function () {
         }
     };
 
-    _this.afterCharactersUpdate = function() {
+    _this.afterCharactersUpdate = function () {
         for (var k in _this.characters) {
             var character = _this.characters[k];
             _this.collideCharacters(character);
@@ -306,19 +309,19 @@ var AppContext = exports.AppContext = function () {
     };
 
     //ClientSide
-    _this.removeFromStage = function(obj) {
+    _this.removeFromStage = function (obj) {
         if (_this.view) {
             _this.view.removeChild(obj);
         }
     };
-    _this.addToStage = function(obj) {
+    _this.addToStage = function (obj) {
         if (_this.childIndex) {
             return _this.view.addChildAt(obj, _this.childIndex);
         } else {
             return _this.view.addChild(obj);
         }
     };
-    _this.initializeStage = function(blockMap, tileBmps) {
+    _this.initializeStage = function (blockMap, tileBmps) {
         _this.loadBlockMap(blockMap);
         _this.view = new Container();
         var lastChild = null;
@@ -353,11 +356,11 @@ var AppContext = exports.AppContext = function () {
 };
 
 var AppUtils = exports.AppUtils = {
-    updatePosition: function(character) {
+    updatePosition:function (character) {
         character.x += character.vX;
         character.y += character.vY;
     },
-    simpleAction :function(character, context) {
+    simpleAction:function (character, context) {
         function searchTarget() {
             var tempTarget = null;
             var tempDistance = 0;
@@ -380,6 +383,12 @@ var AppUtils = exports.AppUtils = {
             if (tempTarget) {
                 character.target = tempTarget;
             }
+        }
+
+        if (typeof character.aiWait == "undefined") {
+            character.aiWait = 0;
+        } else if (character.aiWait > 0) {
+            character.aiWait--;
         }
 
         var deltaX, deltaY, range, distance, theta, angleForTarget;
@@ -422,25 +431,17 @@ var AppUtils = exports.AppUtils = {
                     if (!character.isAction) {
                         character.isWalk = false;
                         character.isAction = true;
-                        if (dice > 12) {
-                            character.action = CharacterAction.DEFENCE_MOTION;
-                        } else {
-                            character.action = CharacterAction.ATTACK;
-                        }
+                        character.action = CharacterAction.DEFENCE_MOTION;
+                        character.aiWait = 4 + Math.round(dice / 10);
                     } else {
                         if (character.isWalk) {
                             character.action = CharacterAction.NONE;
                             character.isAction = false;
                         }
                         if (character.action == CharacterAction.DEFENCE) {
-                            if (dice > 16) {
+                            if (character.aiWait <= 0) {
                                 character.action = CharacterAction.ATTACK;
-                            } else {
-                                character.action = CharacterAction.DEFENCE
                             }
-                        } else if (character.action != CharacterAction.ATTACK) {
-                            character.action = CharacterAction.NONE;
-                            character.isAction = false;
                         }
                     }
                 } else {
@@ -453,7 +454,7 @@ var AppUtils = exports.AppUtils = {
             }
         }
     },
-    inputAction : function(character, context) {
+    inputAction:function (character, context) {
         var _this = character;
         if (typeof _this.defenceCount == "undefined") {
             _this.defenceCount = -1;
@@ -504,7 +505,7 @@ var AppUtils = exports.AppUtils = {
     }
 }
 
-exports.createStateJson = function(stateId) {
+exports.createStateJson = function (stateId) {
     var json = {};
     json.stateId = stateId;
     json.speed = 5;

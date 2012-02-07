@@ -15,7 +15,7 @@ function tick() {
     context.view.y = canvas.height / 2 - player.y;
     stage.update();
 
-    scoreField.text = player.HP + " / 256";
+    scoreField.text = player.HP + " / 100";
 }
 var __tileBmps = {};
 var __blockMap = [];
@@ -173,7 +173,7 @@ $(function() {
             player.onUpdate = context.collideBlocks;
             player.x = 384;
             player.y = 384;
-            player.HP = 256;
+            player.HP = 100;
             player.teamNumber = 1;
             player.tick = function() {
                 AppUtils.inputAction(player);
