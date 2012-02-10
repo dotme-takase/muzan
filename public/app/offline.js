@@ -55,37 +55,37 @@ var __blockMapDemo = [
 
 
 //initialize function, called when page loads.
-$(function() {
+$(function () {
         function init() {
             var imageTiles = new Image();
             imageTiles.src = "/app/img/tiles.png";
-            imageTiles.onload = function() {
+            imageTiles.onload = function () {
                 var spriteSheetTiles = new SpriteSheet({
-                    images: ["/app/img/tiles.png"],
-                    frames: {width:__tileSize, height:__tileSize},
+                    images:["/app/img/tiles.png"],
+                    frames:{width:__tileSize, height:__tileSize},
                     animations:{
-                        w1 : [9, 9],
-                        w1_tl1 : [0, 0],
-                        w1_t1 : [1, 1],
-                        w1_tr1 : [2, 2],
-                        w1_l1 : [8, 8],
-                        w1_r1 : [10, 10],
-                        w1_bl1 : [16, 16],
-                        w1_b1 : [17, 17],
-                        w1_br1 : [18, 18],
-                        w1_br2 : [3, 3],
-                        w1_bl2 : [4, 4],
-                        w1_tr2 : [11, 11],
-                        w1_tl2 : [12, 12],
-                        d1_t1 : [5, 5],
-                        d1_b1 : [6, 6],
-                        d1_l1 : [13, 13],
-                        d1_r1 : [14, 14],
-                        d2_b1 : [19, 19],
-                        d2_r1 : [20, 20],
-                        d2_l1 : [21, 21],
-                        d2_t1 : [22, 22],
-                        f1: [48,48]
+                        w1:[9, 9],
+                        w1_tl1:[0, 0],
+                        w1_t1:[1, 1],
+                        w1_tr1:[2, 2],
+                        w1_l1:[8, 8],
+                        w1_r1:[10, 10],
+                        w1_bl1:[16, 16],
+                        w1_b1:[17, 17],
+                        w1_br1:[18, 18],
+                        w1_br2:[3, 3],
+                        w1_bl2:[4, 4],
+                        w1_tr2:[11, 11],
+                        w1_tl2:[12, 12],
+                        d1_t1:[5, 5],
+                        d1_b1:[6, 6],
+                        d1_l1:[13, 13],
+                        d1_r1:[14, 14],
+                        d2_b1:[19, 19],
+                        d2_r1:[20, 20],
+                        d2_l1:[21, 21],
+                        d2_t1:[22, 22],
+                        f1:[48, 48]
                     }
                 });
                 var names = spriteSheetTiles.getAnimations();
@@ -94,7 +94,7 @@ $(function() {
                     var bitmap = new Bitmap(SpriteSheetUtils.extractFrame(spriteSheetTiles, name));
                     __tileBmps[name] = bitmap;
                 }
-                $.get("/g/init", function(data) {
+                $.get("/g/init", function (data) {
                     __blockMap = data.context.blockMap;
                     initializeGame();
                 });
@@ -117,22 +117,22 @@ $(function() {
             stage.addChild(scoreField);
 
             var spriteSheetEffects = new SpriteSheet({
-                images: ["/app/img/effect.png"],
-                frames: {width:128, height:128, regX:64, regY:64},
-                animations: {
-                    damage: [0, 4],
-                    parried: [5, 9],
-                    defence: [10, 24],
-                    dead: [25, 39]
+                images:["/app/img/effect.png"],
+                frames:{width:128, height:128, regX:64, regY:64},
+                animations:{
+                    damage:[0, 4],
+                    parried:[5, 9],
+                    defence:[10, 24],
+                    dead:[25, 39]
                 }
             });
 
             context.effectsAnim = new BitmapAnimation(spriteSheetEffects);
             var spriteSheetSwords = new SpriteSheet({
-                images: ["/app/img/swords.png"],
-                frames: {width:32, height:64, regX:15, regY:55},
-                animations: {
-                    sword: 0
+                images:["/app/img/swords.png"],
+                frames:{width:32, height:64, regX:15, regY:55},
+                animations:{
+                    sword:0
                 }
             });
             var swordAnim = new BitmapAnimation(spriteSheetSwords);
@@ -140,11 +140,11 @@ $(function() {
             swordAnim.gotoAndStop("sword");     //animate
 
             var spriteSheetShields = new SpriteSheet({
-                images: ["/app/img/shields.png"],
-                frames: {width:32, height:32, regX:16, regY:20},
-                animations: {
-                    shield: 0,
-                    shield_: 1
+                images:["/app/img/shields.png"],
+                frames:{width:32, height:32, regX:16, regY:20},
+                animations:{
+                    shield:0,
+                    shield_:1
                 }
             });
 
@@ -153,14 +153,14 @@ $(function() {
             shieldAnim.gotoAndStop("shield");     //animate
 
             var spriteSheetPlayer = new SpriteSheet({
-                images: ["/app/img/player.png"],
-                frames: {width:64, height:64, regX:32, regY:32},
-                animations: {
-                    walk: [0, 7],
-                    attack: [10, 15],
-                    defence: [8, 10],
-                    damage: [0, 1],
-                    parried: [0, 7]
+                images:["/app/img/player.png"],
+                frames:{width:64, height:64, regX:32, regY:32},
+                animations:{
+                    walk:[0, 7],
+                    attack:[10, 15],
+                    defence:[8, 10],
+                    damage:[0, 1],
+                    parried:[0, 7]
                 }
             });
 
@@ -175,7 +175,7 @@ $(function() {
             player.y = 384;
             player.HP = 100;
             player.teamNumber = 1;
-            player.tick = function() {
+            player.tick = function () {
                 AppUtils.inputAction(player);
                 player.updateFrame();
             }
@@ -185,14 +185,14 @@ $(function() {
             context.addToStage(player);
 
             var spriteSheetEnemy = new SpriteSheet({
-                images: ["/app/img/enemy.png"],
-                frames: {width:64, height:64, regX:32, regY:32},
-                animations: {
-                    walk: [0, 7],
-                    attack: [10, 15],
-                    defence: [8, 10],
-                    damage: [0, 1],
-                    parried: [0, 7]
+                images:["/app/img/enemy.png"],
+                frames:{width:64, height:64, regX:32, regY:32},
+                animations:{
+                    walk:[0, 7],
+                    attack:[10, 15],
+                    defence:[8, 10],
+                    damage:[0, 1],
+                    parried:[0, 7]
                 }
             });
             var enemyAnim = new BitmapAnimation(spriteSheetEnemy);
@@ -201,7 +201,7 @@ $(function() {
             enemyAnim.currentFrame = 0;
 
             function enemyTickFunction(enemy) {
-                return function() {
+                return function () {
                     AppUtils.simpleAction(enemy, context);
                     enemy.updateFrame();
                 }
@@ -233,22 +233,22 @@ $(function() {
             player.axisX = 0;
             player.axisY = 0;
             $(canvas).on("mousedown touchstart",
-                function(e) {
+                function (e) {
                     player.isMouseDown = true;
                     onDrag(e);
                     if (Math.pow(player.axisX, 2) + Math.pow(player.axisY, 2) < Math.pow(32, 2)) {
                         player.isCursor = true;
                     }
                 }).on("mousemove touchmove",
-                function(e) {
+                function (e) {
                     onDrag(e);
-                }).on("mouseup touchend mouseleave touchleave", function(e) {
+                }).on("mouseup touchend mouseleave touchleave", function (e) {
                     player.isCursor = player.isMouseDown = false;
                     player.axisX = player.axisY = 0;
                     player.vX = player.vY = 0;
                 });
 
-            var onDrag = function(e) {
+            var onDrag = function (e) {
                 var CANVAS_LEFT = $(canvas).offset().left;
                 var CANVAS_TOP = $(canvas).offset().top;
                 var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
@@ -268,3 +268,11 @@ $(function() {
     }
 
 );
+
+window.onorientationchange = function () {
+    if(window.orientation == 0){
+        canvas.height = 400;
+    } else {
+        canvas.height = 200;
+    };
+}
