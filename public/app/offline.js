@@ -271,8 +271,8 @@ $(function () {
 
 window.onorientationchange = function () {
     if(window.orientation == 0){
-        canvas.height = 400;
+        canvas.height = 464;
     } else {
-        canvas.height = 200;
+        canvas.height = 256;
     };
 }
