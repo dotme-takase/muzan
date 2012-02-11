@@ -15,7 +15,7 @@ var _basicHandMap = [
         [-13,26,180,false],
         [0,26,160,false],
         [23,16,115,false],
-        [-24,3,60,false],
+        [28,-7,60,false],
         [17,19,75,false]
     ],
     [
@@ -33,7 +33,7 @@ var _basicHandMap = [
         [17,-19,0,false],
         [3,-27,-15,false],
         [-23,-19,-30,false],
-        [28,-7,-65,false],
+        [-24,3,-65,false],
         [-13,-26,-75,false]
     ]
 ];

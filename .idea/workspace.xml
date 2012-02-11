@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/offline.js" afterPath="$PROJECT_DIR$/public/app/offline.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.ejs" afterPath="$PROJECT_DIR$/views/layout.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/practice.ejs" afterPath="$PROJECT_DIR$/views/practice.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/BaseCharacter.js" afterPath="$PROJECT_DIR$/public/app/BaseCharacter.js" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="offline.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="offline.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/offline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="275" column="27" selection-start="11048" selection-end="11048" vertical-scroll-proportion="0.75051975">
+            <state line="275" column="27" selection-start="11048" selection-end="11048" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -89,10 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseCharacter.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BaseCharacter.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="16" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0">
+            <state line="17" column="14" selection-start="434" selection-end="434" vertical-scroll-proportion="0.21829522">
               <folding />
             </state>
           </provider>
@@ -123,11 +121,11 @@
         <option value="$PROJECT_DIR$/views/admin/test.ejs" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
         <option value="$PROJECT_DIR$/public/app/AppContext.js" />
         <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/views/practice.ejs" />
         <option value="$PROJECT_DIR$/public/app/offline.js" />
+        <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
       </list>
     </option>
   </component>
@@ -170,74 +168,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bsword" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -475,11 +405,6 @@
         <state line="172" column="35" selection-start="7337" selection-end="7337" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="16" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="450" column="20" selection-start="17123" selection-end="17123" vertical-scroll-proportion="0.0">
@@ -508,7 +433,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/offline.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="27" selection-start="11048" selection-end="11048" vertical-scroll-proportion="0.75051975">
+        <state line="275" column="27" selection-start="11048" selection-end="11048" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="14" selection-start="434" selection-end="434" vertical-scroll-proportion="0.21829522">
           <folding />
         </state>
       </provider>
