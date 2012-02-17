@@ -187,11 +187,6 @@ var AppContext = exports.AppContext = function () {
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
                             other.HP -= Math.ceil(Math.random() * 5 + 5);
-                            if (other.HP <= 0) {
-                                other.HP = 0;
-                                other.action = CharacterAction.DEAD;
-                                delete _this.characters[other.stateId];
-                            }
                         }
                     }
                 }

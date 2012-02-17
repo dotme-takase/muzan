@@ -1,44 +1,44 @@
 // BaseCharacter
 var _basicHandMap = [
     [
-        [0,26,90,false],
-        [-13,26,105,false],
-        [-21,19,130,false],
-        [-13,26,105,false],
-        [0,26,90,false],
-        [17,19,75,false],
-        [23,10,50,false],
-        [17,19,75,false],
-        [0,26,260,false],
-        [-23,16,290,false],
-        [-24,-3,310,false],
-        [-13,26,180,false],
-        [0,26,160,false],
-        [23,16,115,false],
-        [28,-7,60,false],
-        [17,19,75,false]
+        [0, 26, 90, false],
+        [-13, 26, 105, false],
+        [-21, 19, 130, false],
+        [-13, 26, 105, false],
+        [0, 26, 90, false],
+        [17, 19, 75, false],
+        [23, 10, 50, false],
+        [17, 19, 75, false],
+        [0, 26, 260, false],
+        [-23, 16, 290, false],
+        [-24, -3, 310, false],
+        [-13, 26, 180, false],
+        [0, 26, 160, false],
+        [23, 16, 115, false],
+        [28, -7, 60, false],
+        [17, 19, 75, false]
     ],
     [
-        [3,-27,0,false],
-        [17,-19,15,false],
-        [23,-10,30,false],
-        [17,-19,15,false],
-        [3,-27,0,false],
-        [-13,-26,-25,false],
-        [-21,-19,-40,false],
-        [-13,-26,-25,false],
-        [3,-27,0,false],
-        [23,-19,50,false],
-        [28,7,90,false],
-        [17,-19,0,false],
-        [3,-27,-15,false],
-        [-23,-19,-30,false],
-        [-24,3,-65,false],
-        [-13,-26,-75,false]
+        [3, -27, 0, false],
+        [17, -19, 15, false],
+        [23, -10, 30, false],
+        [17, -19, 15, false],
+        [3, -27, 0, false],
+        [-13, -26, -25, false],
+        [-21, -19, -40, false],
+        [-13, -26, -25, false],
+        [3, -27, 0, false],
+        [23, -19, 50, false],
+        [28, 7, 90, false],
+        [17, -19, 0, false],
+        [3, -27, -15, false],
+        [-23, -19, -30, false],
+        [-24, 3, -65, false],
+        [-13, -26, -75, false]
     ]
 ];
 
-var BaseCharacter = function(context, bodyAnim, handMap, rightArm, leftArm) {
+var BaseCharacter = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.initialize(context, bodyAnim, handMap, rightArm, leftArm);
 };
 var p = BaseCharacter.prototype = new Container();
@@ -46,7 +46,7 @@ var p = BaseCharacter.prototype = new Container();
 
 p.Container_initialize = p.initialize;
 
-p.stateToJson = function() {
+p.stateToJson = function () {
     var json = {};
     json.stateId = this.stateId;
     json.speed = this.speed;
@@ -76,7 +76,7 @@ p.stateToJson = function() {
     return json;
 }
 
-p.jsonToState = function(json) {
+p.jsonToState = function (json) {
     this.stateId = json.stateId;
     this.speed = json.speed;
     this.direction = json.direction;
@@ -98,7 +98,7 @@ p.jsonToState = function(json) {
     this.py = json.py;
 }
 
-p.initialize = function(context, bodyAnim, handMap, rightArm, leftArm) {
+p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.context = context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
@@ -135,12 +135,18 @@ p.initialize = function(context, bodyAnim, handMap, rightArm, leftArm) {
 }
 
 //clientSide
-p.updateFrame = function() {
+p.updateFrame = function () {
     var _this = this;
     _this.alpha = 1;
+
+    if (_this.HP <= 0) {
+        _this.HP = 0;
+        _this.action = CharacterAction.DEAD;
+    }
+
     if (_this.isWalk) {
         _this.bodyAnim.paused = false;
-        _this.bodyAnim.onAnimationEnd = function() {
+        _this.bodyAnim.onAnimationEnd = function () {
             _this.bodyAnim.currentAnimationFrame = 0;
             _this.bodyAnim.gotoAndPlay("walk");     //animate
         };
@@ -150,7 +156,7 @@ p.updateFrame = function() {
         if (_this.action == CharacterAction.DEFENCE_MOTION) {
             if (_this.bodyAnim.currentAnimation != "defence") {
                 _this.bodyAnim.gotoAndPlay("defence");
-                _this.bodyAnim.onAnimationEnd = function() {
+                _this.bodyAnim.onAnimationEnd = function () {
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.DEFENCE;
                 };
@@ -165,7 +171,7 @@ p.updateFrame = function() {
                 if (_this.parriedCount > 0) {
                     _this.context.addEffect(_this.x, _this.y, "parried");
                 }
-                _this.bodyAnim.onAnimationEnd = function() {
+                _this.bodyAnim.onAnimationEnd = function () {
                     if (_this.parriedCount <= 0) {
                         _this.vX = _this.vY = 0;
                         _this.action = CharacterAction.NONE;
@@ -182,14 +188,15 @@ p.updateFrame = function() {
             if (_this.bodyAnim.currentAnimation != "damage") {
                 _this.bodyAnim.gotoAndPlay("damage");
                 _this.context.addEffect(_this.x, _this.y, "damage");
-                _this.bodyAnim.onAnimationEnd = function() {
+                _this.bodyAnim.onAnimationEnd = function () {
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.NONE;
                 };
             }
             _this.alpha = 0.5;
         } else if (_this.action == CharacterAction.DEAD) {
-            for (var i = 0; i < 4; i ++) {
+            delete _this.context.characters[_this.stateId];
+            for (var i = 0; i < 4; i++) {
                 _this.context.addEffect(_this.x + Math.random() * 8 - 16, _this.y + Math.random() * 8 - 16, "dead");
             }
             _this.context.removeFromStage(_this);
@@ -197,7 +204,7 @@ p.updateFrame = function() {
             _this.attackFrame = _this.bodyAnim.currentAnimationFrame;
             if (_this.bodyAnim.currentAnimation != "attack") {
                 _this.bodyAnim.gotoAndPlay("attack");
-                _this.bodyAnim.onAnimationEnd = function() {
+                _this.bodyAnim.onAnimationEnd = function () {
                     _this.attackFrame = 0;
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.NONE;

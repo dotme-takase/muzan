@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/.nvm/v0.4.12/bin/node">
+      <excludeFolder url="file://$USER_HOME$/.nvm/v0.4.12/bin/node/deps" />
+      <excludeFolder url="file://$USER_HOME$/.nvm/v0.4.12/bin/node/test" />
+    </content>
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
