@@ -10,10 +10,10 @@ if (typeof exports == "undefined") {
 var MapGenerator = exports.MapGenerator = {
     generate:function () {
         var result = [];
-        var areaWidth = 8;
-        var areaHeight = 8;
-        var areaXSize = 2 + (Math.ceil(Math.random() * 3) - 1);
-        var areaYSize = 2 + (Math.ceil(Math.random() * 3) - 1);
+        var areaWidth = 7;
+        var areaHeight = 7;
+        var areaXSize = 2 + (Math.round(Math.random() * 2));
+        var areaYSize = 2 + (Math.round(Math.random() * 1));
 
         var mapWidth = areaWidth * areaXSize;
         var mapHeight = areaHeight * areaYSize;
