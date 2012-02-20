@@ -1,7 +1,8 @@
 /*
  * GET home page.
  */
-var AppContext = require('../public/app/AppContext.js')
+var AppContext = require('../public/app/AppContext.js');
+var MapGenerator = require('../public/app/MapGenerator.js').MapGenerator;
 var appUtils = require('../utils/appUtils.js');
 
 var __blockMap = [
@@ -170,7 +171,8 @@ var appendEnemyNum = 5;
 
 function initializeAppContext() {
     AppContext.currentContext = new AppContextClass();
-    AppContext.currentContext.loadBlockMap(__blockMap);
+    var genMap = MapGenerator.generate();
+    AppContext.currentContext.loadBlockMap(genMap);
 
     for (var i = 0; i < appendEnemyNum; i++) {
         var enemy = AppContext.createStateJson();
@@ -240,6 +242,7 @@ globalTick = setInterval(function() {
 }, 50);
 
 exports.init = function(req, res) {
+    initializeAppContext();
     var data = {
         context: AppContext.currentContext
     };

@@ -106,7 +106,7 @@ $(function () {
             canvas = document.getElementById("stageCanvas");
             stage = new Stage(canvas);
             context = new AppContext();
-            context.initializeStage(__blockMapDemo, __tileBmps);
+            context.initializeStage(__blockMap, __tileBmps);
             stage.addChild(context.view);
 
             scoreField = new Text("", "bold 12px Arial", "#FFFFFF");
