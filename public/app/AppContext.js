@@ -208,8 +208,8 @@ var AppContext = exports.AppContext = function () {
         //var deltaW = obj.width * 0.5;
         //var deltaH = obj.height * 0.5;
         //var delta = 4;
-        var deltaW = 0;
-        var deltaH = 0;
+        var deltaW = 4;
+        var deltaH = 4;
         var delta = 0;
 
 
@@ -323,18 +323,22 @@ var AppContext = exports.AppContext = function () {
         for (var i = 0; i < _this.blockMap[0].length; i++) {
             for (var j = 0; j < _this.blockMap.length; j++) {
                 //place grass on all tiles
-                var tileBmp1 = tileBmps["f1"].clone();
-                tileBmp1.x = i * _this.tileSize;
-                tileBmp1.y = j * _this.tileSize;
-                lastChild = _this.view.addChild(tileBmp1);
+                var block = _this.blockMap[j][i];
+                if ((block == null)
+                    || (block.substring(0, 1) != "w")) {
+                    var tileBmp1 = tileBmps["f1"].clone();
+                    tileBmp1.x = i * _this.tileSize;
+                    tileBmp1.y = j * _this.tileSize;
+                    lastChild = _this.view.addChild(tileBmp1);
+                }
             }
         }
-        _this.childIndex = _this.view.getChildIndex(lastChild);
+        _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
 
         for (var i = 0; i < _this.blockMap[0].length; i++) {
             for (var j = 0; j < _this.blockMap.length; j++) {
                 var block = _this.blockMap[j][i];
-                if (block) {
+                if (block && (block != "w1")) {
                     var tileBmp2 = tileBmps[block].clone();
                     tileBmp2.x = i * _this.tileSize;
                     tileBmp2.y = j * _this.tileSize;

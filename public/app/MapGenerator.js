@@ -12,8 +12,8 @@ var MapGenerator = exports.MapGenerator = {
         var result = [];
         var areaWidth = 7;
         var areaHeight = 7;
-        var areaXSize = 2 + (Math.round(Math.random() * 2));
-        var areaYSize = 2 + (Math.round(Math.random() * 1));
+        var areaXSize = 4;
+        var areaYSize = 3;
 
         var mapWidth = areaWidth * areaXSize;
         var mapHeight = areaHeight * areaYSize;
@@ -373,16 +373,15 @@ var MapGenerator = exports.MapGenerator = {
             for (var x3 = 0; x3 < areaXSize; x3++) {
                 var area = areaList[y3][x3];
                 if (area["isRoom"] == true) {
-                    var rootDice = 3;
-                    var conS = (rootDice & 1 > 0);
+                    var rootDice = Math.ceil(Math.random() * 3);
+                    var conS = (rootDice & 1);
                     if (conS && (y3 + 1 < areaYSize)) {
                         connectNorthSouth(area, areaList[y3 + 1][x3]);
                     }
-                    var conE = (rootDice & 2 > 0);
+                    var conE = (rootDice & 2);
                     if (conE && (x3 + 1 < areaXSize)) {
                         connectEastWest(area, areaList[y3][x3 + 1]);
                     }
-
                 }
             }
         }
