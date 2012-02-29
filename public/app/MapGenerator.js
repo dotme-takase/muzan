@@ -137,7 +137,10 @@ var MapGenerator = exports.MapGenerator = {
                         southEnd:southEnd,
                         westEnd:westEnd,
                         eastEnd:eastEnd,
-                        connected:false
+                        connected:{n:false, s:false, w:false, e:false},
+                        isRoute:false,
+                        areaX:x2,
+                        areaY:y2
                     };
                     roomCount++;
                 } else {
@@ -149,7 +152,11 @@ var MapGenerator = exports.MapGenerator = {
                         }
                     }
                     areaLine[x2] = {
-                        isRoom:false
+                        isRoom:false,
+                        connected:{n:false, s:false, w:false, e:false},
+                        isRoute:false,
+                        areaX:x2,
+                        areaY:y2
                     };
                 }
                 areaCount++;
@@ -186,6 +193,11 @@ var MapGenerator = exports.MapGenerator = {
         function connectNorthSouth(area1, area2) {
             if (area1.isRoom) {
                 if (area2.isRoom) {
+                    area1.connected.s = true;
+                    area2.connected.n = true;
+                    if (area1.isRoute) {
+                        area2.isRoute = true;
+                    }
                     if (area2.northEnd - area1.southEnd <= 3) {
                         if (area1.cX2 > area2.eastEnd - 1) {
                             area1.cX2 = area2.eastEnd - 1;
@@ -279,6 +291,11 @@ var MapGenerator = exports.MapGenerator = {
         function connectEastWest(area1, area2) {
             if (area1.isRoom) {
                 if (area2.isRoom) {
+                    area1.connected.w = true;
+                    area2.connected.e = true;
+                    if (area1.isRoute) {
+                        area2.isRoute = true;
+                    }
                     if (area2.westEnd - area1.eastEnd <= 3) {
                         if (area1.cY2 > area2.southEnd - 1) {
                             area1.cY2 = area2.southEnd - 1;
@@ -373,6 +390,9 @@ var MapGenerator = exports.MapGenerator = {
             for (var x3 = 0; x3 < areaXSize; x3++) {
                 var area = areaList[y3][x3];
                 if (area["isRoom"] == true) {
+                    if ((y3 == 0) && (x3 == 0)) {
+                        area.isRoute = true;
+                    }
                     var rootDice = Math.ceil(Math.random() * 3);
                     var conS = (rootDice & 1);
                     if (conS && (y3 + 1 < areaYSize)) {
@@ -385,6 +405,47 @@ var MapGenerator = exports.MapGenerator = {
                 }
             }
         }
+
+        function forceRoute(area) {
+            if (area.isRoom) {
+                var nextArea = null;
+                if (area.areaY > 0 && !area.connected.n) {
+                    nextArea = areaList[area.areaY - 1][area.areaX];
+                    if (nextArea.isRoom) {
+                        connectNorthSouth(nextArea, area);
+                    }
+                } else if (area.areaY < areaYSize - 1 && !area.connected.s) {
+                    nextArea = areaList[area.areaY + 1][area.areaX];
+                    if (nextArea.isRoom) {
+                        connectNorthSouth(area, nextArea);
+                    }
+                } else if (area.areaX > 0 && !area.connected.e) {
+                    nextArea = areaList[area.areaY][area.areaX - 1];
+                    if (nextArea.isRoom) {
+                        connectEastWest(nextArea, area);
+                    }
+                } else if (area.areaX < areaXSize - 1 && !area.connected.w) {
+                    nextArea = areaList[area.areaY][area.areaX] + 1;
+                    if (nextArea.isRoom) {
+                        connectEastWest(area, nextArea);
+                    }
+                }
+
+                if ((nextArea != null) && (!nextArea.isRoute)) {
+                    forceRoute(nextArea);
+                }
+            }
+        }
+
+        for (var y2 = 0; y2 < areaYSize; y2++) {
+            for (var x2 = 0; x2 < areaXSize; x2++) {
+                var area = areaList[y2][x2];
+                if (!area.isRoute) {
+                    forceRoute(area);
+                }
+            }
+        }
+
         return result;
     }
 };
