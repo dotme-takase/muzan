@@ -64,6 +64,7 @@ var AppContext = exports.AppContext = function () {
     _this.currentHostId = -1;
     _this.view = null;
     _this.blockMap = null;
+    _this.floorMap = null;
     _this.mapBounds = null;
     _this.childIndex = 0;
 
@@ -78,7 +79,7 @@ var AppContext = exports.AppContext = function () {
             var character = _this.characters[k];
             _this.characterTree.insert(character);
         }
-    }
+    };
 
 
     _this.effectsAnim;
@@ -91,7 +92,7 @@ var AppContext = exports.AppContext = function () {
             _this.view.removeChild(newEffect);
         }
         _this.view.addChild(newEffect);
-    }
+    };
 
     _this.addCharacter = function (character, x, y) {
         if (typeof character.stateId == "undefined") {
@@ -108,7 +109,7 @@ var AppContext = exports.AppContext = function () {
         }
         character.px = character.x;
         character.py = character.y;
-    }
+    };
 
     _this.warpToRandom = function (character) {
         var arr = [];
@@ -123,14 +124,27 @@ var AppContext = exports.AppContext = function () {
         var point = arr[Math.max(0, (Math.floor(Math.random() * arr.length) - 1))];
         character.x = point.x;
         character.y = point.y;
-    }
+    };
+
+    _this.getRandomPoint = function () {
+        var arr = [];
+        for (var i = 0; i < _this.blockMap[0].length; i++) {
+            for (var j = 0; j < _this.blockMap.length; j++) {
+                var block = _this.blockMap[j][i];
+                if (block == null) {
+                    arr.push({x:i, y:j});
+                }
+            }
+        }
+        return arr[Math.max(0, (Math.floor(Math.random() * arr.length) - 1))];
+    };
 
     _this.loadBlockMap = function (blockMap) {
         _this.blockMap = blockMap;
         _this.mapBounds = new Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
         _this.blockTree = new QuadTree(_this.mapBounds, false);
         _this.characterTree = new QuadTree(_this.mapBounds, false);
-    }
+    };
 
     function fixAngle(angle) {
         if (angle > 360) {
@@ -141,6 +155,8 @@ var AppContext = exports.AppContext = function () {
         }
         return angle;
     }
+
+    ;
 
     _this.collideCharacters = function (obj) {
         var oldX = obj.x;
@@ -320,19 +336,31 @@ var AppContext = exports.AppContext = function () {
         _this.loadBlockMap(blockMap);
         _this.view = new Container();
         var lastChild = null;
-        for (var i = 0; i < _this.blockMap[0].length; i++) {
-            for (var j = 0; j < _this.blockMap.length; j++) {
+        var goal = _this.getRandomPoint();
+        _this.floorMap = [];
+        for (var i = 0; i < _this.blockMap.length; i++) {
+            var line = [];
+            for (var j = 0; j < _this.blockMap[i].length; j++) {
+                var floorName = null;
                 //place grass on all tiles
-                var block = _this.blockMap[j][i];
+                var block = _this.blockMap[i][j];
                 if ((block == null)
                     || (block.substring(0, 1) != "w")) {
-                    var tileBmp1 = tileBmps["f1"].clone();
-                    tileBmp1.x = i * _this.tileSize;
-                    tileBmp1.y = j * _this.tileSize;
+                    if (i == goal.x && j == goal.y) {
+                        floorName = "s1";
+                    } else {
+                        floorName = "f1";
+                    }
+                    var tileBmp1 = tileBmps[floorName].clone();
+                    tileBmp1.x = j * _this.tileSize;
+                    tileBmp1.y = i * _this.tileSize;
                     lastChild = _this.view.addChild(tileBmp1);
                 }
+                line[j] = floorName;
             }
+            _this.floorMap[i] = line;
         }
+        console.dir(_this.floorMap);
         _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
 
         for (var i = 0; i < _this.blockMap[0].length; i++) {

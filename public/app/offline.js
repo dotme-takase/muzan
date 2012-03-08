@@ -1,6 +1,8 @@
 //function called by the Tick instance at a set interval
+var floorNumber = 1;
 var canvas, stage, context;
 var scoreField;
+var initializing = true;
 function tick() {
     context.updateTree();
 
@@ -15,7 +17,27 @@ function tick() {
     context.view.y = canvas.height / 2 - player.y;
     stage.update();
 
-    scoreField.text = player.HP + " / 100";
+    var point = {
+        x:Math.floor(player.x / context.tileSize),
+        y:Math.floor(player.y / context.tileSize)
+    }
+    var floor = context.floorMap[point.y][point.x];
+
+    scoreField.text = "B" + floorNumber + "F: " + player.HP + " / 100";
+    if (!initializing) {
+        if (player.HP <= 0) {
+            initializing = true;
+            setTimeout(function () {
+                if (window.confirm('Retry?')) {
+                    $.resetStage();
+                }
+            }, 1000);
+        } else if (floor == "s1") {
+            initializing = true;
+            floorNumber++;
+            $.resetStage();
+        }
+    }
 }
 var __tileBmps = {};
 var __blockMap = [];
@@ -85,7 +107,8 @@ $(function () {
                         d2_r1:[20, 20],
                         d2_l1:[21, 21],
                         d2_t1:[22, 22],
-                        f1:[48, 48]
+                        f1:[48, 48],
+                        s1:[49, 49]
                     }
                 });
                 var names = spriteSheetTiles.getAnimations();
@@ -113,8 +136,6 @@ $(function () {
             scoreField.textAlign = "right";
             scoreField.x = canvas.width - 10;
             scoreField.y = 22;
-
-            stage.addChild(scoreField);
 
             var spriteSheetEffects = new SpriteSheet({
                 images:["/app/img/effect.png"],
@@ -223,11 +244,26 @@ $(function () {
                 context.addToStage(enemy);
             }
 
-
+            stage.addChild(scoreField);
             Ticker.setFPS(20);
             Ticker.addListener(window);
 
             //////
+            var onDrag = function (e) {
+                var CANVAS_LEFT = $(canvas).offset().left;
+                var CANVAS_TOP = $(canvas).offset().top;
+                var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
+                if (touchEnable && event.touches[0]) {
+                    player.axisX = event.touches[0].pageX - CANVAS_LEFT - canvas.width / 2;
+                    player.axisY = event.touches[0].pageY - CANVAS_TOP - canvas.height / 2;
+                    e.preventDefault();
+                } else {
+                    player.axisX = e.pageX - CANVAS_LEFT - canvas.width / 2;
+                    player.axisY = e.pageY - CANVAS_TOP - canvas.height / 2;
+                    e.preventDefault();
+                }
+            }
+
             player.isMouseDown = false;
             player.isCursor = false;
             player.axisX = 0;
@@ -248,31 +284,30 @@ $(function () {
                     player.vX = player.vY = 0;
                 });
 
-            var onDrag = function (e) {
-                var CANVAS_LEFT = $(canvas).offset().left;
-                var CANVAS_TOP = $(canvas).offset().top;
-                var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
-                if (touchEnable && event.touches[0]) {
-                    player.axisX = event.touches[0].pageX - CANVAS_LEFT - canvas.width / 2;
-                    player.axisY = event.touches[0].pageY - CANVAS_TOP - canvas.height / 2;
-                    e.preventDefault();
-                } else {
-                    player.axisX = e.pageX - CANVAS_LEFT - canvas.width / 2;
-                    player.axisY = e.pageY - CANVAS_TOP - canvas.height / 2;
-                    e.preventDefault();
-                }
-            }
+            window.onorientationchange();
+            initializing = false;
         }
 
         init();
+
+        $.resetStage = function () {
+            initializing = true;
+            $.get("/g/init", function (data) {
+                __blockMap = data.context.blockMap;
+                initializeGame();
+            });
+        }
     }
 
 );
 
 window.onorientationchange = function () {
-    if(window.orientation == 0){
+    if (typeof window.orientation == "undefined") {
+        canvas.height = 464;
+    } else if (window.orientation == 0) {
         canvas.height = 464;
     } else {
         canvas.height = 256;
-    };
-}
+        setTimeout(scrollTo, 100, 0, 1);
+    }
+};
