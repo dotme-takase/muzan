@@ -17,10 +17,7 @@ function tick() {
     context.view.y = canvas.height / 2 - player.y;
     stage.update();
 
-    var point = {
-        x:Math.floor(player.x / context.tileSize),
-        y:Math.floor(player.y / context.tileSize)
-    }
+    var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
     scoreField.text = "B" + floorNumber + "F: " + player.HP + " / 100";

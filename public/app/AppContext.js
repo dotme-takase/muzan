@@ -216,6 +216,13 @@ var AppContext = exports.AppContext = function () {
         }
     };
 
+    _this.getMapPoint = function (obj) {
+        return {
+            x:Math.floor(obj.x / _this.tileSize),
+            y:Math.floor(obj.y / _this.tileSize)
+        }
+    };
+
     _this.collideBlocks = function (obj) {
         var oldX = obj.x;
         var oldY = obj.y;
@@ -229,11 +236,21 @@ var AppContext = exports.AppContext = function () {
         var delta = 0;
 
 
-        var nearBlocks = _this.blockTree.retrieve({x:obj.x - obj.width / 2, y:obj.y - obj.height / 2, width:obj.width, height:obj.height});
+        //var nearBlocks = _this.blockTree.retrieve({x:obj.x - obj.width / 2, y:obj.y - obj.height / 2, width:obj.width, height:obj.height});
+        var mapPoint = _this.getMapPoint(obj);
+        var nearBlocks = [];
+        for (var _y = mapPoint.y - 2; _y < mapPoint.y + 3; _y++) {
+            for (var _x = mapPoint.x - 2; _x < mapPoint.x + 3; _x++) {
+                if((typeof _this.blockMap[_y][_x] != "undefined")
+                    && (_this.blockMap[_y][_x] != null)){
+                    nearBlocks.push(_this.blockMap[_y][_x]);
+                }
+            }
+        }
+
         var len = nearBlocks.length;
         for (var i = 0; i < len; i++) {
             var block = nearBlocks[i];
-            block.alpha = 1;
             var isFixed = false;
             if (oldY > block.y - deltaH
                 && oldY < block.y + _this.tileSize + deltaH
