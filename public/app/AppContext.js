@@ -241,13 +241,16 @@ var AppContext = exports.AppContext = function () {
         var nearBlocks = [];
         for (var _y = mapPoint.y - 2; _y < mapPoint.y + 3; _y++) {
             for (var _x = mapPoint.x - 2; _x < mapPoint.x + 3; _x++) {
-                if((typeof _this.blockMap[_y][_x] != "undefined")
-                    && (_this.blockMap[_y][_x] != null)){
-                    nearBlocks.push(_this.blockMap[_y][_x]);
+                if ((typeof _this.blockMap[_y] != "undefined")
+                    && (typeof _this.blockMap[_y][_x] != "undefined")
+                    && (_this.blockMap[_y][_x] != null)) {
+                    nearBlocks.push({
+                        x:_x * _this.tileSize,
+                        y:_y * _this.tileSize
+                    });
                 }
             }
         }
-
         var len = nearBlocks.length;
         for (var i = 0; i < len; i++) {
             var block = nearBlocks[i];
@@ -377,7 +380,6 @@ var AppContext = exports.AppContext = function () {
             }
             _this.floorMap[i] = line;
         }
-        console.dir(_this.floorMap);
         _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
 
         for (var i = 0; i < _this.blockMap[0].length; i++) {
