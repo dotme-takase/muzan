@@ -57,60 +57,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi16.parser.test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/History.md" afterPath="$PROJECT_DIR$/node_modules/canvas/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/README.md" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/mime.types" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/mime.types" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/node.types" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/node.types" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/Readme.md" afterPath="$PROJECT_DIR$/node_modules/formidable/Readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/History.md" afterPath="$PROJECT_DIR$/node_modules/qs/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/History.md" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/History.md" afterPath="$PROJECT_DIR$/node_modules/socket.io/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" afterPath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/lib/canvas.js" afterPath="$PROJECT_DIR$/node_modules/canvas/lib/canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/lib/context2d.js" afterPath="$PROJECT_DIR$/node_modules/canvas/lib/context2d.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/package.json" afterPath="$PROJECT_DIR$/node_modules/canvas/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.h" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/CanvasRenderingContext2d.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/CanvasRenderingContext2d.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Image.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Image.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/limit.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/limit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/package.json" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/mime.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/mime.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/package.json" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/test.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/package.json" afterPath="$PROJECT_DIR$/node_modules/formidable/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/test/legacy/simple/test-incoming-form.js" afterPath="$PROJECT_DIR$/node_modules/formidable/test/legacy/simple/test-incoming-form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/lib/querystring.js" afterPath="$PROJECT_DIR$/node_modules/qs/lib/querystring.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/package.json" afterPath="$PROJECT_DIR$/node_modules/qs/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/test/parse.js" afterPath="$PROJECT_DIR$/node_modules/qs/test/parse.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.min.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transport.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transport.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/htmlfile.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/htmlfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/websocket.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/websocket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr-polling.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr-polling.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/util.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/manager.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/parser.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/parser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/default.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/default.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-07-12.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-07-12.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-16.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-16.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/xhr-polling.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/xhr-polling.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/MapGenerator.js" afterPath="$PROJECT_DIR$/public/app/MapGenerator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/img/enemy.png" afterPath="$PROJECT_DIR$/public/app/img/enemy.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/img/player.png" afterPath="$PROJECT_DIR$/public/app/img/player.png" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -472,14 +420,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="57" width="1101" height="638" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38746437" sideWeight="0.39042357" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37606838" sideWeight="0.6703499" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37606838" sideWeight="0.6703499" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
