@@ -12,8 +12,8 @@ var MapGenerator = exports.MapGenerator = {
         var result = [];
         var areaWidth = 7;
         var areaHeight = 7;
-        var areaXSize = 4;
-        var areaYSize = 3;
+        var areaXSize = 5;
+        var areaYSize = 5;
 
         var mapWidth = areaWidth * areaXSize;
         var mapHeight = areaHeight * areaYSize;

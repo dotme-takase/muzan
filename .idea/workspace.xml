@@ -2,7 +2,115 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/AppContext.js" afterPath="$PROJECT_DIR$/public/app/AppContext.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/History.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/benchmark.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/examples.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/lib/querystring.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/mocha.opts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/parse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/stringify.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/no-filename/generic.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-chrome-13.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-firefox-3.6.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-safari-5.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-chrome-12.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-7.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-8.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-safari-5.http" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/should.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/index.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/runner.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.styl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-17.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/cert.crt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/key.key" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/hybi-common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/io.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/leaks/socket.leaktest.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/manager.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/namespace.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/parser.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/static.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.memory.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.redis.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.flashsocket.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.htmlfile.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.jsonp-polling.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi07-12.parser.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi16.parser.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/History.md" afterPath="$PROJECT_DIR$/node_modules/canvas/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/README.md" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/mime.types" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/mime.types" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/node.types" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/types/node.types" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/Readme.md" afterPath="$PROJECT_DIR$/node_modules/formidable/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/History.md" afterPath="$PROJECT_DIR$/node_modules/qs/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/History.md" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/History.md" afterPath="$PROJECT_DIR$/node_modules/socket.io/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" afterPath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/lib/canvas.js" afterPath="$PROJECT_DIR$/node_modules/canvas/lib/canvas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/lib/context2d.js" afterPath="$PROJECT_DIR$/node_modules/canvas/lib/context2d.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/package.json" afterPath="$PROJECT_DIR$/node_modules/canvas/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.cc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.h" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Canvas.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/CanvasRenderingContext2d.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/CanvasRenderingContext2d.cc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/canvas/src/Image.cc" afterPath="$PROJECT_DIR$/node_modules/canvas/src/Image.cc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/limit.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/limit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/session.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/package.json" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/connect/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/mime.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/mime.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/package.json" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/mime/test.js" afterPath="$PROJECT_DIR$/node_modules/express/node_modules/mime/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/package.json" afterPath="$PROJECT_DIR$/node_modules/formidable/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/test/legacy/simple/test-incoming-form.js" afterPath="$PROJECT_DIR$/node_modules/formidable/test/legacy/simple/test-incoming-form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/lib/querystring.js" afterPath="$PROJECT_DIR$/node_modules/qs/lib/querystring.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/package.json" afterPath="$PROJECT_DIR$/node_modules/qs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/qs/test/parse.js" afterPath="$PROJECT_DIR$/node_modules/qs/test/parse.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.min.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/dist/socket.io.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/socket.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transport.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/htmlfile.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/htmlfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/websocket.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/websocket.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr-polling.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/transports/xhr-polling.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/util.js" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/lib/util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io-client/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/examples/chat/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/examples/irc-output/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/manager.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/manager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/parser.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/parser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/http.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/default.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/default.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-07-12.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-07-12.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-16.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-16.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/xhr-polling.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/xhr-polling.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/MapGenerator.js" afterPath="$PROJECT_DIR$/public/app/MapGenerator.js" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,10 +159,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppContext.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppContext.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="248" column="45" selection-start="8681" selection-end="8681" vertical-scroll-proportion="0.43288592">
+            <state line="247" column="19" selection-start="8608" selection-end="8608" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapGenerator.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="25" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="3" selection-start="374" selection-end="374" vertical-scroll-proportion="0.45546558">
               <folding />
             </state>
           </provider>
@@ -89,16 +215,16 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/admin/test.ejs" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/routes/game.js" />
-        <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
         <option value="$PROJECT_DIR$/views/practice.ejs" />
         <option value="$PROJECT_DIR$/public/app/easel.js" />
         <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
         <option value="$PROJECT_DIR$/public/app/offline.js" />
         <option value="$PROJECT_DIR$/public/app/AppContext.js" />
+        <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -134,6 +260,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,21 +375,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="PublishConfig" serverName="bsword@49.212.124.86" serverId="1f3c4a84-c826-4c48-99a3-b5618d928c19" exclude=".svn;.cvs;.idea;.DS_Store;.git;node_modules">
     <servers>
@@ -346,26 +472,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="57" width="1101" height="638" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296501" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38746437" sideWeight="0.39042357" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36752138" sideWeight="0.6703499" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37606838" sideWeight="0.6703499" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296501" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -432,11 +558,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/canvas/lib/canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="12" selection-start="936" selection-end="936" vertical-scroll-proportion="0.30181086" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/admin/test.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="40" selection-start="176" selection-end="176" vertical-scroll-proportion="-1.875" />
@@ -452,11 +573,6 @@
         <state line="11" column="12" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="78" selection-start="361" selection-end="422" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" />
@@ -465,11 +581,6 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="34" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="409" column="30" selection-start="18706" selection-end="18706" vertical-scroll-proportion="11.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/practice.ejs">
@@ -487,6 +598,11 @@
         <state line="105" column="187" selection-start="44982" selection-end="44982" vertical-scroll-proportion="0.94035786" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="44" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" />
@@ -497,23 +613,28 @@
         <state line="164" column="37" selection-start="7173" selection-end="7173" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
+    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="44" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0">
+        <state line="247" column="19" selection-start="8608" selection-end="8608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="18" selection-start="6177" selection-end="6177" vertical-scroll-proportion="0.0">
+        <state line="195" column="18" selection-start="6177" selection-end="6177" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="25" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="45" selection-start="8681" selection-end="8681" vertical-scroll-proportion="0.43288592">
+        <state line="15" column="3" selection-start="374" selection-end="374" vertical-scroll-proportion="0.45546558">
           <folding />
         </state>
       </provider>
