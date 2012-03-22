@@ -34,6 +34,7 @@ function tick() {
             floorNumber++;
             $.resetStage();
         }
+        context.drawMap(point, stage);
     }
 }
 var __tileBmps = {};

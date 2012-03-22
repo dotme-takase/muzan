@@ -71,7 +71,8 @@ var AppContext = exports.AppContext = function () {
     _this.characters = {};
     _this.characterTree = null;
     _this.blocks = [];
-    _this.blockTree = null;
+    //_this.blockTree = null;
+    _this.mapTips = null;
 
     this.updateTree = function () {
         _this.characterTree.clear();
@@ -113,11 +114,11 @@ var AppContext = exports.AppContext = function () {
 
     _this.warpToRandom = function (character) {
         var arr = [];
-        for (var i = 0; i < _this.blockMap[0].length; i++) {
-            for (var j = 0; j < _this.blockMap.length; j++) {
-                var block = _this.blockMap[j][i];
+        for (var i = 0; i < _this.blockMap.length; i++) {
+            for (var j = 0; j < _this.blockMap[0].length; j++) {
+                var block = _this.blockMap[i][j];
                 if (block == null) {
-                    arr.push({x:(i + 0.5) * _this.tileSize, y:(j + 0.5) * _this.tileSize});
+                    arr.push({x:(j + 0.5) * _this.tileSize, y:(i + 0.5) * _this.tileSize});
                 }
             }
         }
@@ -128,11 +129,11 @@ var AppContext = exports.AppContext = function () {
 
     _this.getRandomPoint = function () {
         var arr = [];
-        for (var i = 0; i < _this.blockMap[0].length; i++) {
-            for (var j = 0; j < _this.blockMap.length; j++) {
-                var block = _this.blockMap[j][i];
+        for (var i = 0; i < _this.blockMap.length; i++) {
+            for (var j = 0; j < _this.blockMap[0].length; j++) {
+                var block = _this.blockMap[i][j];
                 if (block == null) {
-                    arr.push({x:i, y:j});
+                    arr.push({x:j, y:i});
                 }
             }
         }
@@ -142,8 +143,9 @@ var AppContext = exports.AppContext = function () {
     _this.loadBlockMap = function (blockMap) {
         _this.blockMap = blockMap;
         _this.mapBounds = new Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
-        _this.blockTree = new QuadTree(_this.mapBounds, false);
+        //_this.blockTree = new QuadTree(_this.mapBounds, false);
         _this.characterTree = new QuadTree(_this.mapBounds, false);
+        _this.mapTips = null;
     };
 
     function fixAngle(angle) {
@@ -360,13 +362,13 @@ var AppContext = exports.AppContext = function () {
         _this.floorMap = [];
         for (var i = 0; i < _this.blockMap.length; i++) {
             var line = [];
-            for (var j = 0; j < _this.blockMap[i].length; j++) {
+            for (var j = 0; j < _this.blockMap[0].length; j++) {
                 var floorName = null;
                 //place grass on all tiles
                 var block = _this.blockMap[i][j];
                 if ((block == null)
                     || (block.substring(0, 1) != "w")) {
-                    if (i == goal.x && j == goal.y) {
+                    if (j == goal.x && i == goal.y) {
                         floorName = "s1";
                     } else {
                         floorName = "f1";
@@ -382,22 +384,58 @@ var AppContext = exports.AppContext = function () {
         }
         _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
 
-        for (var i = 0; i < _this.blockMap[0].length; i++) {
-            for (var j = 0; j < _this.blockMap.length; j++) {
-                var block = _this.blockMap[j][i];
+        for (var i = 0; i < _this.blockMap.length; i++) {
+            for (var j = 0; j < _this.blockMap[0].length; j++) {
+                var block = _this.blockMap[i][j];
                 if (block && (block != "w1")) {
                     var tileBmp2 = tileBmps[block].clone();
-                    tileBmp2.x = i * _this.tileSize;
-                    tileBmp2.y = j * _this.tileSize;
+                    tileBmp2.x = j * _this.tileSize;
+                    tileBmp2.y = i * _this.tileSize;
                     tileBmp2.width = _this.tileSize;
                     tileBmp2.height = _this.tileSize;
 
                     _this.blocks.push(tileBmp2);
-                    _this.blockTree.insert(tileBmp2);
+                    //_this.blockTree.insert(tileBmp2);
                     _this.view.addChild(tileBmp2);
                 }
             }
         }
+    };
+
+    _this.drawMap = function (point, stage) {
+        var tipSize = 6;
+        if (_this.mapTips == null) {
+            var g = new Graphics();
+            for (var i = 0; i < _this.floorMap.length; i++) {
+                for (var j = 0; j < _this.floorMap[0].length; j++) {
+                    var floor = _this.floorMap[i][j];
+                    var _x = j * tipSize;
+                    var _y = i * tipSize;
+                    if (floor == "f1") {
+                        g.beginFill(Graphics.getRGB(128, 160, 255, 0.7));
+                        g.drawRect(_x, _y, tipSize, tipSize);
+                    } else if (floor == "s1") {
+                        g.beginFill(Graphics.getRGB(255, 255, 128, 0.7));
+                        g.drawRect(_x, _y, tipSize, tipSize);
+                    }
+                }
+            }
+
+            var g2 = new Graphics();
+            g2.beginFill(Graphics.getRGB(64, 255, 64, 0.7));
+            g2.drawRect(0, 0, 6, 6);
+
+            _this.mapTips = {
+                background:new Shape(g),
+                player:new Shape(g2)
+            }
+            _this.mapTips.background.cache(0, 0, 300, 300);
+            _this.mapTips.player.cache(0, 0, 6, 6);
+            stage.addChild(_this.mapTips.background);
+            stage.addChild(_this.mapTips.player);
+        }
+        _this.mapTips.player.x = point.x * tipSize;
+        _this.mapTips.player.y = point.y * tipSize;
     };
 };
 
