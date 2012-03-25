@@ -10,10 +10,10 @@ if (typeof exports == "undefined") {
 var MapGenerator = exports.MapGenerator = {
     generate:function () {
         var result = [];
-        var areaWidth = 7;
-        var areaHeight = 7;
+        var areaWidth = 5;
+        var areaHeight = 5;
         var areaXSize = 5;
-        var areaYSize = 4;
+        var areaYSize = 5;
 
         var mapWidth = areaWidth * areaXSize;
         var mapHeight = areaHeight * areaYSize;
@@ -44,7 +44,7 @@ var MapGenerator = exports.MapGenerator = {
                     isRoom = true;
                 }
                 if (isRoom) {
-                    var mN = Math.ceil(Math.random() * 3);
+                    var mN = Math.ceil(Math.random() * 2);
                     for (var m1 = 0; m1 < mN; m1++) {
                         var my1 = offY + m1;
                         for (var _mx1 = 0; _mx1 < areaWidth; _mx1++) {
@@ -58,7 +58,7 @@ var MapGenerator = exports.MapGenerator = {
                         }
                     }
                     //SouthWall
-                    var mS = Math.ceil(Math.random() * 3);
+                    var mS = Math.ceil(Math.random() * 2);
                     for (var m2 = 0; m2 < mS; m2++) {
                         var my2 = offY + areaHeight - m2 - 1;
                         for (var _mx2 = 0; _mx2 < areaWidth; _mx2++) {
@@ -73,7 +73,7 @@ var MapGenerator = exports.MapGenerator = {
                     }
 
                     //WestWall
-                    var mW = Math.ceil(Math.random() * 3);
+                    var mW = Math.ceil(Math.random() * 2);
                     for (var m3 = 0; m3 < mW; m3++) {
                         var mx3 = offX + m3;
                         for (var _my3 = 0; _my3 < areaHeight; _my3++) {
@@ -93,7 +93,7 @@ var MapGenerator = exports.MapGenerator = {
                         }
                     }
                     //EastWall
-                    var mE = Math.ceil(Math.random() * 3);
+                    var mE = Math.ceil(Math.random() * 2);
                     for (var m4 = 0; m4 < mE; m4++) {
                         var mx4 = offX + areaWidth - m4 - 1;
                         for (var _my4 = 0; _my4 < areaHeight; _my4++) {

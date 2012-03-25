@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/img/enemy2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/img/enemy3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/img/enemy4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/img/enemy5.png" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitignore" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitmodules" afterPath="" />
@@ -57,7 +61,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi16.parser.test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/img/player.png" afterPath="$PROJECT_DIR$/public/app/img/player.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/app/img/enemy.png" afterPath="$PROJECT_DIR$/public/app/img/enemy1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/AppContext.js" afterPath="$PROJECT_DIR$/public/app/AppContext.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/MapGenerator.js" afterPath="$PROJECT_DIR$/public/app/MapGenerator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/offline.js" afterPath="$PROJECT_DIR$/public/app/offline.js" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,17 +90,55 @@
       <file leaf-file-name="AppContext.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="431" column="42" selection-start="15711" selection-end="15716" vertical-scroll-proportion="-6.1153846">
+            <state line="407" column="21" selection-start="14705" selection-end="14705" vertical-scroll-proportion="-25.745455">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="offline.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MapGenerator.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="32" selection-start="435" selection-end="435" vertical-scroll-proportion="0.43866944">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="184" column="4" selection-start="7743" selection-end="7747" vertical-scroll-proportion="-4.6923075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/layout.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="-2.8333333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="offline.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/offline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="23" selection-start="652" selection-end="652" vertical-scroll-proportion="0.3144654">
-              <folding />
+            <state line="36" column="8" selection-start="1119" selection-end="1119" vertical-scroll-proportion="-14.423077">
+              <folding>
+                <element signature="e#1221#3474#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,14 +165,14 @@
         <option value="$PROJECT_DIR$/views/admin/test.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/layout.ejs" />
-        <option value="$PROJECT_DIR$/routes/game.js" />
         <option value="$PROJECT_DIR$/views/practice.ejs" />
         <option value="$PROJECT_DIR$/public/app/easel.js" />
         <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
+        <option value="$PROJECT_DIR$/routes/game.js" />
         <option value="$PROJECT_DIR$/public/app/AppContext.js" />
         <option value="$PROJECT_DIR$/public/app/offline.js" />
+        <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
       </list>
     </option>
   </component>
@@ -253,28 +299,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
@@ -283,14 +307,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="bsword@49.212.124.86" serverId="1f3c4a84-c826-4c48-99a3-b5618d928c19" exclude=".svn;.cvs;.idea;.DS_Store;.git;node_modules">
     <servers>
@@ -374,7 +398,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="114" y="57" width="1101" height="638" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -382,11 +406,11 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3931624" sideWeight="0.32596686" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4017094" sideWeight="0.33517495" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38746437" sideWeight="0.39042357" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3931624" sideWeight="0.6611418" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4017094" sideWeight="0.6519337" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -460,11 +484,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/layout.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="34" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" />
@@ -480,11 +499,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="195" column="18" selection-start="6177" selection-end="6177" vertical-scroll-proportion="0.0" />
@@ -492,25 +506,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="26" selection-start="7675" selection-end="7675" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="3" column="10" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/old/crafty.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/img/swords.png">
@@ -518,35 +519,54 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/img/enemy.png">
+    <entry file="file://$PROJECT_DIR$/public/app/img/enemy1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/easel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.0">
+        <state line="32" column="0" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="-2.8333333">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="25" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
+    <entry file="file://$PROJECT_DIR$/routes/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="431" column="42" selection-start="15711" selection-end="15716" vertical-scroll-proportion="-6.1153846">
+        <state line="184" column="4" selection-start="7743" selection-end="7747" vertical-scroll-proportion="-4.6923075">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/offline.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="23" selection-start="652" selection-end="652" vertical-scroll-proportion="0.3144654">
+        <state line="36" column="8" selection-start="1119" selection-end="1119" vertical-scroll-proportion="-14.423077">
+          <folding>
+            <element signature="e#1221#3474#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="407" column="21" selection-start="14705" selection-end="14705" vertical-scroll-proportion="-25.745455">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="32" selection-start="435" selection-end="435" vertical-scroll-proportion="0.43866944">
           <folding />
         </state>
       </provider>

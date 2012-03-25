@@ -20,7 +20,7 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    scoreField.text = "B" + floorNumber + "F: " + player.HP + " / 100";
+    scoreField.text = Ticker.getMeasuredFPS() + " B" + floorNumber + "F: " + player.HP + " / 100";
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
@@ -204,7 +204,7 @@ $(function () {
             context.addToStage(player);
 
             var spriteSheetEnemy = new SpriteSheet({
-                images:["/app/img/enemy.png"],
+                images:["/app/img/enemy1.png"],
                 frames:{width:64, height:64, regX:32, regY:32},
                 animations:{
                     walk:[0, 7],

@@ -65,6 +65,7 @@ var AppContext = exports.AppContext = function () {
     _this.view = null;
     _this.blockMap = null;
     _this.floorMap = null;
+    _this.autoMap = null;
     _this.mapBounds = null;
     _this.childIndex = 0;
 
@@ -404,35 +405,75 @@ var AppContext = exports.AppContext = function () {
 
     _this.drawMap = function (point, stage) {
         var tipSize = 6;
-        if (_this.mapTips == null) {
+        var range = 2;
+
+        function drawAutoMap() {
             var g = new Graphics();
             for (var i = 0; i < _this.floorMap.length; i++) {
                 for (var j = 0; j < _this.floorMap[0].length; j++) {
-                    var floor = _this.floorMap[i][j];
-                    var _x = j * tipSize;
-                    var _y = i * tipSize;
-                    if (floor == "f1") {
-                        g.beginFill(Graphics.getRGB(128, 160, 255, 0.7));
-                        g.drawRect(_x, _y, tipSize, tipSize);
-                    } else if (floor == "s1") {
-                        g.beginFill(Graphics.getRGB(255, 255, 128, 0.7));
-                        g.drawRect(_x, _y, tipSize, tipSize);
+                    if (_this.autoMap[i][j] == 1) {
+                        var floor = _this.floorMap[i][j];
+                        var _x = j * tipSize;
+                        var _y = i * tipSize;
+                        if (floor == "f1") {
+                            g.beginFill(Graphics.getRGB(128, 160, 255, 0.7));
+                            g.drawRect(_x, _y, tipSize, tipSize);
+                        } else if (floor == "s1") {
+                            g.beginFill(Graphics.getRGB(255, 255, 128, 0.7));
+                            g.drawRect(_x, _y, tipSize, tipSize);
+                        }
                     }
                 }
             }
+            return g;
+        }
 
+        function updateAutoMap() {
+            var result = false;
+            for (var i = point.y - range; i <= point.y + range; i++) {
+                for (var j = point.x - range; j <= point.x + range; j++) {
+                    if (typeof _this.autoMap[i] != "undefined") {
+                        if (typeof _this.autoMap[i][j] != "undefined") {
+                            if (_this.autoMap[i][j] == 0) {
+                                result = true;
+                                _this.autoMap[i][j] = 1;
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        if (_this.mapTips == null) {
+
+            _this.autoMap = [];
+            for (var i = 0; i < _this.floorMap.length; i++) {
+                _this.autoMap[i] = AppUtils.filledArray(0, _this.floorMap[0].length);
+            }
+
+            updateAutoMap();
             var g2 = new Graphics();
             g2.beginFill(Graphics.getRGB(64, 255, 64, 0.7));
             g2.drawRect(0, 0, 6, 6);
 
             _this.mapTips = {
-                background:new Shape(g),
+                background:new Shape(drawAutoMap()),
                 player:new Shape(g2)
             }
             _this.mapTips.background.cache(0, 0, 300, 300);
             _this.mapTips.player.cache(0, 0, 6, 6);
             stage.addChild(_this.mapTips.background);
             stage.addChild(_this.mapTips.player);
+        } else {
+            if (updateAutoMap()) {
+                stage.removeChild(_this.mapTips.player);
+                stage.removeChild(_this.mapTips.background);
+                _this.mapTips.background = new Shape(drawAutoMap());
+                _this.mapTips.background.cache(0, 0, 300, 300);
+                stage.addChild(_this.mapTips.background);
+                stage.addChild(_this.mapTips.player);
+            }
         }
         _this.mapTips.player.x = point.x * tipSize;
         _this.mapTips.player.y = point.y * tipSize;
@@ -586,6 +627,11 @@ var AppUtils = exports.AppUtils = {
                 }
             }
         }
+    },
+    filledArray:function (v, length) {
+        var array = [];
+        for (var i = 0; i < length; array[i++] = v);
+        return array;
     }
 }
 
@@ -613,3 +659,6 @@ exports.createStateJson = function (stateId) {
     json.expire = 200;
     return json;
 };
+
+
+
