@@ -39,40 +39,28 @@ function tick() {
 }
 var __tileBmps = {};
 var __blockMap = [];
-var __blockMapDemo = [
-    ["w1_br2", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_bl2"]
-    ,
-    ["w1_r1", "w1_tl1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_tr1", "w1_tl1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_tr1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, null, null, null, null, null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "d2_l1", null, null, null, "w1_br2", "w1_bl2", null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, null, null, "w1_r1", "w1_l1", null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_bl1", "w1_b1", "w1_b1", "w1_b1", "w1_br1", "w1_l1", null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_tl1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_tl2", null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, null, null, null, null, null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, "w1_br2", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_br1", "w1_bl1", "w1_bl2", null, "w1_br2", "w1_b1", "w1_br1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, "w1_tr2", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_tr1", "w1_tl1", "w1_tl2", null, "w1_tr2", "w1_t1", "w1_tr1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, null, null, null, null, null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, "w1_br2", "w1_bl2", null, null, null, "w1_r1", "w1_l1", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, "w1_r1", "w1_l1", null, null, null, "w1_tr2", "w1_tl2", null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_l1", null, "w1_r1", "w1_l1", null, null, null, null, null, null, null, null, null, "w1_r1", "w1_l1"]
-    ,
-    ["w1_r1", "w1_bl1", "w1_b1", "w1_br1", "w1_bl1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_b1", "w1_br1", "w1_l1"]
-    ,
-    ["w1_tr2", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_t1", "w1_tl2"]
+var enemyData = [
+    {
+        HP:10,
+        speed:8
+    },
+    {
+        HP:120,
+        speed:6
+    },
+    {
+        HP:40,
+        speed:10
+    },
+    {
+        HP:60,
+        speed:9
+    },
+    {
+        HP:30,
+        speed:16
+    }
 ];
-
 
 //initialize function, called when page loads.
 $(function () {
@@ -203,21 +191,25 @@ $(function () {
             context.addCharacter(player);
             context.addToStage(player);
 
-            var spriteSheetEnemy = new SpriteSheet({
-                images:["/app/img/enemy1.png"],
-                frames:{width:64, height:64, regX:32, regY:32},
-                animations:{
-                    walk:[0, 7],
-                    attack:[10, 15],
-                    defence:[8, 10],
-                    damage:[0, 1],
-                    parried:[0, 7]
-                }
-            });
-            var enemyAnim = new BitmapAnimation(spriteSheetEnemy);
-            enemyAnim.name = "player";
-            enemyAnim.gotoAndPlay("walk");     //animate
-            enemyAnim.currentFrame = 0;
+
+            for (var i = 0; i < enemyData.length; i++) {
+                var spriteSheetEnemy = new SpriteSheet({
+                    images:["/app/img/enemy" + (i + 1) + ".png"],
+                    frames:{width:64, height:64, regX:32, regY:32},
+                    animations:{
+                        walk:[0, 7],
+                        attack:[10, 15],
+                        defence:[8, 10],
+                        damage:[0, 1],
+                        parried:[0, 7]
+                    }
+                });
+                var enemyAnim = new BitmapAnimation(spriteSheetEnemy);
+                enemyAnim.name = "enemy";
+                enemyAnim.gotoAndPlay("walk");     //animate
+                enemyAnim.currentFrame = 0;
+                enemyData[i]["anim"] = enemyAnim;
+            }
 
             function enemyTickFunction(enemy) {
                 return function () {
@@ -226,12 +218,19 @@ $(function () {
                 }
             }
 
-            var enemyNum = 10;
+            var enemyNum = 16;
             for (var i = 0; i < enemyNum; i++) {
-                var _enemyAnim = enemyAnim.clone();
+                var index = Math.floor(Math.random() * enemyData.length);
+                var _enemy = enemyData[index];
+                var _enemyAnim = _enemy.anim.clone();
                 var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim.clone(), null);
+                for (var k in _enemy) {
+                    if (k != "anim") {
+                        enemy[k] = _enemy[k];
+                    }
+                }
+
                 enemy.onUpdate = context.collideBlocks;
-                enemy.speed = 8;
                 enemy.x = Math.random() * 2048;
                 enemy.y = Math.random() * 2048;
                 enemy.frame = 0;

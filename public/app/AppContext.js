@@ -175,11 +175,11 @@ var AppContext = exports.AppContext = function () {
                 var range = (other.width / 2 + obj.width / 2);
                 var collisionRange = range * 0.6;
                 var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-                var theta = Math.atan2(deltaX, deltaY);
-                var angleForOther = 90 - (theta * 180 / Math.PI) - obj.direction;
+                var theta = Math.atan2(deltaY, deltaX);
+                var angleForOther = (theta * 180 / Math.PI) - obj.direction;
                 angleForOther = fixAngle(angleForOther);
-                var theta2 = Math.atan2(-1 * deltaX, -1 * deltaY);
-                var angleForObj = 90 - (theta2 * 180 / Math.PI) - other.direction;
+                var theta2 = Math.atan2(-1 * deltaY, -1 * deltaX);
+                var angleForObj = (theta2 * 180 / Math.PI) - other.direction;
                 angleForObj = fixAngle(angleForObj);
 
                 if (obj.teamNumber != other.teamNumber
@@ -193,16 +193,16 @@ var AppContext = exports.AppContext = function () {
                             && (other.leftArm != null && other.leftArm.name == "shield"))
                             && ((angleForObj > -30) && (angleForObj < 60))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
-                            obj.x += Math.cos(theta) * kickBackRange;
-                            obj.y += Math.sin(theta) * kickBackRange;
+                            obj.x -= Math.cos(theta) * kickBackRange;
+                            obj.y -= Math.sin(theta) * kickBackRange;
                             _this.collideBlocks(obj);
                             obj.isAction = true;
                             obj.action = CharacterAction.PARRIED;
                             obj.parriedCount = 1;
                         } else if (!other.isAction || (other.action != CharacterAction.DAMAGE)) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
-                            other.vX += Math.cos(theta) * kickBackRange;
-                            other.vY += Math.sin(theta) * kickBackRange;
+                            other.vX -= Math.cos(theta) * kickBackRange;
+                            other.vY -= Math.sin(theta) * kickBackRange;
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
                             other.HP -= Math.ceil(Math.random() * 5 + 5);
@@ -211,8 +211,8 @@ var AppContext = exports.AppContext = function () {
                 }
 
                 if (distance < collisionRange) {
-                    obj.x += Math.cos(theta) * (collisionRange - distance);
-                    obj.y += Math.sin(theta) * (collisionRange - distance);
+                    obj.x -= Math.cos(theta) * (collisionRange - distance);
+                    obj.y -= Math.sin(theta) * (collisionRange - distance);
                     _this.collideBlocks(obj);
                 }
             }
@@ -522,11 +522,11 @@ var AppUtils = exports.AppUtils = {
             deltaY = character.target.y - character.y;
             range = character.target.height / 2 + character.target.height / 2;
             distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-            theta = Math.atan2(deltaX, deltaY);
-            angleForTarget = 90 - (theta * 180 / Math.PI) - character.direction;
+            theta = Math.atan2(deltaY, deltaX);
+            angleForTarget = (theta * 180 / Math.PI) - character.direction;
         } else {
             theta = 0;
-            angleForTarget = 90 - (theta * 180 / Math.PI) - character.direction;
+            angleForTarget = (theta * 180 / Math.PI) - character.direction;
             searchTarget();
         }
         if (character.isAction && (character.action == CharacterAction.DAMAGE
@@ -536,8 +536,8 @@ var AppUtils = exports.AppUtils = {
         } else {
             if (character.mode == EnemyMode.RANDOM_WALK) {
                 if (character.target) {
-                    if ((distance < range * 3)
-                        && (angleForTarget > -80) && (angleForTarget < 80)) {
+                    if ((distance < range * 5)
+                        && (angleForTarget > -100) && (angleForTarget < 100)) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;
                     } else if (character.action == CharacterAction.DAMAGE) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;
@@ -552,18 +552,19 @@ var AppUtils = exports.AppUtils = {
                 if (character.target.HP <= 0) {
                     character.mode = EnemyMode.RANDOM_WALK;
                 } else if (distance < range * 1.5) {
-                    var dice = Math.random() * 20;
+                    var dice = Math.random() * 4;
                     if (!character.isAction) {
                         character.isWalk = false;
                         character.isAction = true;
                         character.action = CharacterAction.DEFENCE_MOTION;
-                        character.aiWait = 4 + Math.round(dice / 10);
+                        character.aiWait = Math.max((10 - character.speed) + Math.round(dice), 0);
                     } else {
                         if (character.isWalk) {
                             character.action = CharacterAction.NONE;
                             character.isAction = false;
                         }
-                        if (character.action == CharacterAction.DEFENCE) {
+                        if ((character.action == CharacterAction.DEFENCE)
+                            || (character.action == CharacterAction.DEFENCE_MOTION)) {
                             if (character.aiWait <= 0) {
                                 character.action = CharacterAction.ATTACK;
                             }
@@ -572,7 +573,7 @@ var AppUtils = exports.AppUtils = {
                 } else {
                     character.isWalk = true;
                 }
-                character.direction = 90 - (theta * 180 / Math.PI);
+                character.direction = (theta * 180 / Math.PI);
                 if (distance > range * 5) {
                     character.mode = EnemyMode.RANDOM_WALK;
                 }
@@ -590,7 +591,7 @@ var AppUtils = exports.AppUtils = {
             _this.isWalk = false;
         } else {
             if (_this.isMouseDown) {
-                _this.direction = 90 - (Math.atan2(_this.axisX, _this.axisY) * 180 / Math.PI);
+                _this.direction = (Math.atan2(_this.axisY, _this.axisX) * 180 / Math.PI);
             }
 
             if (_this.isCursor) {
