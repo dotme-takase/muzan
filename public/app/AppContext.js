@@ -178,8 +178,7 @@ var AppContext = exports.AppContext = function () {
                 var theta = Math.atan2(deltaY, deltaX);
                 var angleForOther = (theta * 180 / Math.PI) - obj.direction;
                 angleForOther = fixAngle(angleForOther);
-                var theta2 = Math.atan2(-1 * deltaY, -1 * deltaX);
-                var angleForObj = (theta2 * 180 / Math.PI) - other.direction;
+                var angleForObj = (theta * 180 / Math.PI) - 180 - other.direction;
                 angleForObj = fixAngle(angleForObj);
 
                 if (obj.teamNumber != other.teamNumber
