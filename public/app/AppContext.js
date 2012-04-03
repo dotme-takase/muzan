@@ -149,18 +149,6 @@ var AppContext = exports.AppContext = function () {
         _this.mapTips = null;
     };
 
-    function fixAngle(angle) {
-        if (angle > 360) {
-        }
-        angle = angle % 360;
-        if (angle > 180) {
-            angle -= 360;
-        }
-        return angle;
-    }
-
-    ;
-
     _this.collideCharacters = function (obj) {
         var oldX = obj.x;
         var oldY = obj.y;
@@ -177,9 +165,9 @@ var AppContext = exports.AppContext = function () {
                 var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
                 var theta = Math.atan2(deltaY, deltaX);
                 var angleForOther = (theta * 180 / Math.PI) - obj.direction;
-                angleForOther = fixAngle(angleForOther);
+                angleForOther = AppUtils.fixAngle(angleForOther);
                 var angleForObj = (theta * 180 / Math.PI) - 180 - other.direction;
-                angleForObj = fixAngle(angleForObj);
+                angleForObj = AppUtils.fixAngle(angleForObj);
 
                 if (obj.teamNumber != other.teamNumber
                     && obj.isAction && !obj.isWalk
@@ -189,7 +177,7 @@ var AppContext = exports.AppContext = function () {
                         && ((angleForOther > -20) && (angleForOther < 80))) {
                         // right
                         if ((other.isAction && (other.action == CharacterAction.DEFENCE)
-                            && (other.leftArm != null && other.leftArm.name == "shield"))
+                            && (other.leftArm != null && other.leftArm.type == BitmapItem.TYPE_SHIELD))
                             && ((angleForObj > -30) && (angleForObj < 60))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             obj.x -= Math.cos(theta) * kickBackRange;
@@ -198,6 +186,7 @@ var AppContext = exports.AppContext = function () {
                             obj.isAction = true;
                             obj.action = CharacterAction.PARRIED;
                             obj.parriedCount = 1;
+                            other.leftArm.onUse(other, obj);
                         } else if (!other.isAction || (other.action != CharacterAction.DAMAGE)) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             other.vX -= Math.cos(theta) * kickBackRange;
@@ -632,6 +621,15 @@ var AppUtils = exports.AppUtils = {
         var array = [];
         for (var i = 0; i < length; array[i++] = v);
         return array;
+    },
+    fixAngle:function (angle) {
+        angle = angle % 360;
+        if (angle > 180) {
+            angle -= 360;
+        } else if (angle < -180) {
+            angle += 360;
+        }
+        return angle;
     }
 }
 

@@ -142,8 +142,8 @@ $(function () {
                     sword:0
                 }
             });
-            var swordAnim = new BitmapAnimation(spriteSheetSwords);
-            swordAnim.name = "sword";
+            var swordAnim = new BitmapItem(spriteSheetSwords);
+            swordAnim.type = BitmapItem.TYPE_SWORD;
             swordAnim.gotoAndStop("sword");     //animate
 
             var spriteSheetShields = new SpriteSheet({
@@ -155,8 +155,10 @@ $(function () {
                 }
             });
 
-            var shieldAnim = new BitmapAnimation(spriteSheetShields);
-            shieldAnim.name = "shield";
+            var shieldAnim = new BitmapItem(spriteSheetShields);
+            shieldAnim.type = BitmapItem.TYPE_SHIELD;
+            shieldAnim.HP = 10;
+            shieldAnim.BONUS_POINT = 4;
             shieldAnim.gotoAndStop("shield");     //animate
 
             var spriteSheetPlayer = new SpriteSheet({

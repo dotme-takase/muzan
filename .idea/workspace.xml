@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/BitmapItem.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/test.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitignore" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitmodules" afterPath="" />
@@ -59,6 +60,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/AppContext.js" afterPath="$PROJECT_DIR$/public/app/AppContext.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/offline.js" afterPath="$PROJECT_DIR$/public/app/offline.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.ejs" afterPath="$PROJECT_DIR$/views/layout.ejs" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,10 +83,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AppContext.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppContext.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="37" selection-start="5276" selection-end="5276" vertical-scroll-proportion="0.24948025">
+            <state line="647" column="13" selection-start="24429" selection-end="24433" vertical-scroll-proportion="-5.5384617">
               <folding />
             </state>
           </provider>
@@ -92,7 +95,7 @@
       <file leaf-file-name="MapGenerator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="32" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+            <state line="22" column="24" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +104,7 @@
       <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="4" selection-start="7743" selection-end="7747" vertical-scroll-proportion="0.0">
+            <state line="226" column="53" selection-start="9201" selection-end="9202" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,7 +122,7 @@
       <file leaf-file-name="layout.ejs" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0">
+            <state line="33" column="49" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
@@ -128,7 +131,16 @@
       <file leaf-file-name="offline.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/offline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="16" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0">
+            <state line="160" column="38" selection-start="5154" selection-end="5154" vertical-scroll-proportion="-1.1538461">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="practice.ejs" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/practice.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -137,7 +149,25 @@
       <file leaf-file-name="BaseCharacter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="202" column="20" selection-start="6552" selection-end="6552" vertical-scroll-proportion="0.0">
+            <state line="40" column="4" selection-start="1026" selection-end="1026" vertical-scroll-proportion="27.192308">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BitmapItem.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/app/BitmapItem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="23" selection-start="840" selection-end="840" vertical-scroll-proportion="0.18564357">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="easel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/easel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -157,22 +187,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/views/typing.ejs" />
         <option value="$PROJECT_DIR$/public/app/test.js" />
         <option value="$PROJECT_DIR$/settings.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/admin/test.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/views/practice.ejs" />
         <option value="$PROJECT_DIR$/public/app/easel.js" />
         <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes/game.js" />
         <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
-        <option value="$PROJECT_DIR$/public/app/offline.js" />
+        <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/public/app/AppContext.js" />
+        <option value="$PROJECT_DIR$/public/app/offline.js" />
+        <option value="$PROJECT_DIR$/public/app/BitmapItem.js" />
       </list>
     </option>
   </component>
@@ -307,14 +337,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="bsword@49.212.124.86" serverId="1f3c4a84-c826-4c48-99a3-b5618d928c19" exclude=".svn;.cvs;.idea;.DS_Store;.git;node_modules">
     <servers>
@@ -329,8 +359,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/app/img" />
       <recent name="$PROJECT_DIR$/public/app" />
+      <recent name="$PROJECT_DIR$/public/app/img" />
       <recent name="$PROJECT_DIR$/views/admin" />
       <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$" />
@@ -402,21 +432,21 @@
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4017094" sideWeight="0.33517495" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38746437" sideWeight="0.39042357" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43019944" sideWeight="0.6519337" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4396961" sideWeight="0.6703499" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4017094" sideWeight="0.33517495" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -489,11 +519,6 @@
         <state line="45" column="34" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/practice.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="-1.875" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/img/tiles.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -521,17 +546,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/easel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.0" />
+        <state line="32" column="0" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="49" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="32" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="4" selection-start="7743" selection-end="7747" vertical-scroll-proportion="0.0" />
+        <state line="22" column="24" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
@@ -539,24 +570,44 @@
         <state line="22" column="0" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.ejs">
+    <entry file="file://$PROJECT_DIR$/routes/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="6" selection-start="1228" selection-end="1228" vertical-scroll-proportion="0.0" />
+        <state line="226" column="53" selection-start="9201" selection-end="9202" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
+    <entry file="file://$PROJECT_DIR$/views/practice.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="16" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" />
+        <state line="4" column="0" selection-start="233" selection-end="233" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="20" selection-start="6552" selection-end="6552" vertical-scroll-proportion="0.0" />
+        <state line="40" column="4" selection-start="1026" selection-end="1026" vertical-scroll-proportion="27.192308">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="37" selection-start="5276" selection-end="5276" vertical-scroll-proportion="0.24948025">
+        <state line="647" column="13" selection-start="24429" selection-end="24433" vertical-scroll-proportion="-5.5384617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="38" selection-start="5154" selection-end="5154" vertical-scroll-proportion="-1.1538461">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/BitmapItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="23" selection-start="840" selection-end="840" vertical-scroll-proportion="0.18564357">
           <folding />
         </state>
       </provider>
