@@ -153,8 +153,11 @@ var AppContext = exports.AppContext = function () {
         var oldX = obj.x;
         var oldY = obj.y;
         var isNPC = obj.teamNumber == 0;
+        //var otherCharacters = _this.characters;//_this.characterTree.retrieve(obj);
+        _this.updateTree();
         var otherCharacters = _this.characterTree.retrieve(obj);
         var len = otherCharacters.length;
+        //for (var k in otherCharacters) {
         for (var k = 0; k < len; k++) {
             var other = otherCharacters[k];
             if (other != obj) {
@@ -525,7 +528,7 @@ var AppUtils = exports.AppUtils = {
             if (character.mode == EnemyMode.RANDOM_WALK) {
                 if (character.target) {
                     if ((distance < range * 5)
-                        && (angleForTarget > -100) && (angleForTarget < 100)) {
+                        && (angleForTarget > -60) && (angleForTarget < 60)) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;
                     } else if (character.action == CharacterAction.DAMAGE) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;

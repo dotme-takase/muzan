@@ -41,24 +41,24 @@ var __tileBmps = {};
 var __blockMap = [];
 var enemyData = [
     {
-        HP:10,
+        HP:20,
         speed:8
     },
     {
-        HP:120,
+        HP:80,
         speed:6
     },
     {
-        HP:40,
+        HP:30,
         speed:10
     },
     {
-        HP:60,
+        HP:40,
         speed:9
     },
     {
-        HP:30,
-        speed:16
+        HP:10,
+        speed:14
     }
 ];
 
