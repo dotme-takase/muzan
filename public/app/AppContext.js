@@ -153,12 +153,11 @@ var AppContext = exports.AppContext = function () {
         var oldX = obj.x;
         var oldY = obj.y;
         var isNPC = obj.teamNumber == 0;
-        //var otherCharacters = _this.characters;//_this.characterTree.retrieve(obj);
-        _this.updateTree();
-        var otherCharacters = _this.characterTree.retrieve(obj);
+        var otherCharacters = _this.characters;//_this.characterTree.retrieve(obj);
+        //var otherCharacters = _this.characterTree.retrieve(obj);
         var len = otherCharacters.length;
-        //for (var k in otherCharacters) {
-        for (var k = 0; k < len; k++) {
+        for (var k in otherCharacters) {
+        //for (var k = 0; k < len; k++) {
             var other = otherCharacters[k];
             if (other != obj) {
                 var deltaX = other.x - oldX;
