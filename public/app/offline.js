@@ -225,7 +225,7 @@ $(function () {
                 var index = Math.floor(Math.random() * enemyData.length);
                 var _enemy = enemyData[index];
                 var _enemyAnim = _enemy.anim.clone();
-                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim.clone(), null);
+                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim.clone(), shieldAnim.clone());
                 for (var k in _enemy) {
                     if (k != "anim") {
                         enemy[k] = _enemy[k];
