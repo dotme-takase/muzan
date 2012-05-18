@@ -291,10 +291,8 @@ $(function () {
 
         $.resetStage = function () {
             initializing = true;
-            $.get("/g/init", function (data) {
-                __blockMap = data.context.blockMap;
-                initializeGame();
-            });
+            __blockMap = MapGenerator.generate();
+            initializeGame();
         }
     }
 
