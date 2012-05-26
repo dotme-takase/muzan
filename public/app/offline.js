@@ -245,6 +245,7 @@ $(function () {
 
             stage.addChild(scoreField);
             Ticker.setFPS(20);
+            Ticker.userRAF = true;
             Ticker.addListener(window);
 
             //////
