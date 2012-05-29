@@ -159,6 +159,10 @@ p.updateFrame = function () {
                 _this.bodyAnim.onAnimationEnd = function () {
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.DEFENCE;
+                    var endFrame = _this.bodyAnim.currentFrame +
+                        _this.bodyAnim.spriteSheet.getNumFrames(_this.bodyAnim.currentAnimation) - 1;
+                    _this.bodyAnim.gotoAndStop(endFrame);
+                    _this.bodyAnim.paused = true;
                 };
             }
             _this.vX = Math.cos(_this.direction * Math.PI / 180) * -2;

@@ -184,7 +184,7 @@ $(function () {
             player.y = 384;
             player.HP = 100;
             player.teamNumber = 1;
-            player.tick = function () {
+            player.onTick = function () {
                 AppUtils.inputAction(player);
                 player.updateFrame();
             }
@@ -237,7 +237,7 @@ $(function () {
                 enemy.y = Math.random() * 2048;
                 enemy.frame = 0;
                 enemy.mode = EnemyMode.RANDOM_WALK;
-                enemy.tick = enemyTickFunction(enemy);
+                enemy.onTick = enemyTickFunction(enemy);
 
                 context.addCharacter(enemy);
                 context.addToStage(enemy);
