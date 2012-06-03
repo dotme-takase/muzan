@@ -74,7 +74,7 @@ p.stateToJson = function () {
     json.height = this.height;
     json.clientTime = this.clientTime;
     return json;
-}
+};
 
 p.jsonToState = function (json) {
     this.stateId = json.stateId;
@@ -96,15 +96,13 @@ p.jsonToState = function (json) {
     this.rotation = json.rotation;
     this.px = json.px;
     this.py = json.py;
-}
+};
 
 p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.context = context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
     this.handMap = handMap;
-    this.rightArm = rightArm;
-    this.leftArm = leftArm;
     this.speed = 10;
     this.direction = 90;
     this.vX = 0;
@@ -119,20 +117,97 @@ p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.HP = 20;
     this.teamNumber = 0;
     this.clientTime = 0;
+    this.dropList = {};
 
-    if (this.rightArm) {
-        this.addChild(this.rightArm);
+    if (rightArm) {
+        this.equipRight(rightArm);
     }
 
     this.addChild(this.bodyAnim);
     this.spriteSheet = this.bodyAnim.spriteSheet;
 
-    if (this.leftArm) {
-        this.addChild(this.leftArm);
+    if (leftArm) {
+        this.equipLeft(leftArm);
     }
     this.width = this.spriteSheet._frameWidth;
     this.height = this.spriteSheet._frameHeight;
-}
+};
+
+p.equipLeft = function (item) {
+    var _this = this;
+    _this.ejectLeft();
+    _this.leftArm = item.clone();
+    if (_this.leftArm.currentAnimation.endsWith("_")) {
+        _this.leftArm.gotoAndStop(_this.leftArm.currentAnimation.chop());
+    }
+    _this.addChild(_this.leftArm);
+    var handMapPos = _this.handMap[1][_this.bodyAnim.currentFrame];
+    _this.leftArm.x = handMapPos[0];
+    _this.leftArm.y = handMapPos[1];
+    _this.leftArm.rotation = handMapPos[2];
+};
+
+p.equipRight = function (item) {
+    var _this = this;
+    _this.ejectRight();
+    _this.rightArm = item.clone();
+    if (_this.rightArm.currentAnimation.endsWith("_")) {
+        _this.rightArm.gotoAndStop(_this.rightArm.currentAnimation.chop());
+    }
+    _this.addChild(_this.rightArm);
+    var handMapPos = _this.handMap[0][_this.bodyAnim.currentFrame];
+    _this.rightArm.x = handMapPos[0];
+    _this.rightArm.y = handMapPos[1];
+    _this.rightArm.rotation = handMapPos[2];
+};
+
+p.ejectLeft = function () {
+    var _this = this;
+    if (_this.leftArm) {
+        _this.removeChild(_this.leftArm);
+        _this.leftArm = null;
+    }
+};
+
+p.ejectRight = function () {
+    var _this = this;
+    if (_this.rightArm) {
+        _this.removeChild(_this.rightArm);
+        _this.rightArm = null;
+    }
+};
+
+
+p.addToDropList = function (item, rate) {
+    var _this = this;
+    _this.dropList[parseInt(rate)] = item;
+};
+
+p.die = function () {
+    var _this = this;
+    _this.HP = 0;
+    _this.action = CharacterAction.DEAD;
+    if (Math.floor(Math.random() * 100) < 10) {
+        var rateSum = 0;
+        var rateMap = {};
+        for (var k in _this.dropList) {
+            if (_this.dropList.hasOwnProperty(k)) {
+                rateSum += parseInt(k);
+                rateMap[rateSum] = _this.dropList[k];
+            }
+        }
+
+        var dice = Math.floor(Math.random() * rateSum);
+        for (var k2 in rateMap) {
+            if (dice < k2) {
+                if (rateMap.hasOwnProperty(k2)) {
+                    rateMap[k2].drop(_this.context, _this.x, _this.y);
+                }
+                break;
+            }
+        }
+    }
+};
 
 //clientSide
 p.updateFrame = function () {
@@ -140,8 +215,7 @@ p.updateFrame = function () {
     _this.alpha = 1;
 
     if (_this.HP <= 0) {
-        _this.HP = 0;
-        _this.action = CharacterAction.DEAD;
+        _this.die();
     }
 
     if (_this.isWalk) {
@@ -249,4 +323,22 @@ p.updateFrame = function () {
         _this.leftArm.rotation = lhandMapPos[2];
     }
     _this.clientTime++;
+};
+
+p.checkDropItem = function () {
+    var _this = this;
+    var dropItems = _this.context.dropItems;
+    for (var k in dropItems) {
+        if (dropItems.hasOwnProperty(k)) {
+            var item = dropItems[k];
+            var deltaX = item.x - _this.x;
+            var deltaY = item.y - _this.y;
+            var collisionRange = _this.width / 2;
+            var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+            if (distance < collisionRange) {
+                item.onPick(_this);
+                break;
+            }
+        }
+    }
 };

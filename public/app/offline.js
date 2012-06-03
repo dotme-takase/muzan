@@ -139,27 +139,30 @@ $(function () {
                 images:["/app/img/swords.png"],
                 frames:{width:32, height:64, regX:15, regY:55},
                 animations:{
-                    sword:0
+                    sabel:0,
+                    sabel_:0
                 }
             });
+
+            //load swords
             var swordAnim = new BitmapItem(spriteSheetSwords);
-            swordAnim.type = BitmapItem.TYPE_SWORD;
-            swordAnim.gotoAndStop("sword");     //animate
+            swordAnim.TYPE = BitmapItem.TYPE_SWORD;
+            swordAnim.gotoAndStop("sabel");     //animate
 
             var spriteSheetShields = new SpriteSheet({
                 images:["/app/img/shields.png"],
                 frames:{width:32, height:32, regX:16, regY:20},
                 animations:{
-                    shield:0,
-                    shield_:1
+                    wooden_shield:0,
+                    wooden_shield_:16
                 }
             });
 
             var shieldAnim = new BitmapItem(spriteSheetShields);
-            shieldAnim.type = BitmapItem.TYPE_SHIELD;
+            shieldAnim.TYPE = BitmapItem.TYPE_SHIELD;
             shieldAnim.HP = 10;
             shieldAnim.BONUS_POINT = 4;
-            shieldAnim.gotoAndStop("shield");     //animate
+            shieldAnim.gotoAndStop("wooden_shield");     //animate
 
             var spriteSheetPlayer = new SpriteSheet({
                 images:["/app/img/player.png"],
@@ -187,6 +190,7 @@ $(function () {
             player.onTick = function () {
                 AppUtils.inputAction(player);
                 player.updateFrame();
+                player.checkDropItem();
             }
 
 
@@ -225,7 +229,7 @@ $(function () {
                 var index = Math.floor(Math.random() * enemyData.length);
                 var _enemy = enemyData[index];
                 var _enemyAnim = _enemy.anim.clone();
-                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim.clone(), shieldAnim.clone());
+                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim, shieldAnim);
                 for (var k in _enemy) {
                     if (k != "anim") {
                         enemy[k] = _enemy[k];
@@ -238,6 +242,7 @@ $(function () {
                 enemy.frame = 0;
                 enemy.mode = EnemyMode.RANDOM_WALK;
                 enemy.onTick = enemyTickFunction(enemy);
+                enemy.addToDropList(shieldAnim, 1);
 
                 context.addCharacter(enemy);
                 context.addToStage(enemy);

@@ -71,9 +71,12 @@ var AppContext = exports.AppContext = function () {
 
     _this.characters = {};
     _this.characterTree = null;
+    _this.items = {};
+    _this.dropItems = [];
     _this.blocks = [];
     //_this.blockTree = null;
     _this.mapTips = null;
+
 
     this.updateTree = function () {
         _this.characterTree.clear();
@@ -179,7 +182,7 @@ var AppContext = exports.AppContext = function () {
                         && ((angleForOther > -20) && (angleForOther < 80))) {
                         // right
                         if ((other.isAction && (other.action == CharacterAction.DEFENCE)
-                            && (other.leftArm != null && other.leftArm.type == BitmapItem.TYPE_SHIELD))
+                            && (other.leftArm != null && other.leftArm.TYPE == BitmapItem.TYPE_SHIELD))
                             && ((angleForObj > -30) && (angleForObj < 60))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             obj.x -= Math.cos(theta) * kickBackRange;
@@ -660,5 +663,22 @@ exports.createStateJson = function (stateId) {
     return json;
 };
 
+
+String.prototype.startsWith = function(prefix, toffset) {
+  var i = 0;
+  if(toffset && (typeof toffset === 'number')) {
+    i = toffset;
+  }
+  return this.slice(i).indexOf(prefix) === 0;
+};
+
+String.prototype.endsWith = function(suffix) {
+  var sub = this.length - suffix.length;
+  return (sub >= 0) && (this.lastIndexOf(suffix) === sub);
+};
+
+String.prototype.chop = function() {
+  return this.substring(0, this.length - 1);
+};
 
 
