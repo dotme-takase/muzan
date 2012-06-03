@@ -31,8 +31,18 @@
             case BitmapItem.TYPE_SHIELD:
                 character.equipLeft(_this);
                 break;
+            default:
+                _this.onUse(character, character);
+                break;
         }
         context.removeFromStage(_this);
+        for (var k in context.dropItems) {
+            if (context.dropItems.hasOwnProperty(k)) {
+                if (_this == context.dropItems[k]) {
+                    delete context.dropItems[k];
+                }
+            }
+        }
         delete _this;
     };
 

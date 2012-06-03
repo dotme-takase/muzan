@@ -129,7 +129,7 @@ $(function () {
                 animations:{
                     damage:[0, 4],
                     parried:[5, 9],
-                    defence:[10, 24],
+                    heal:[10, 24],
                     dead:[25, 39]
                 }
             });
@@ -163,6 +163,24 @@ $(function () {
             shieldAnim.HP = 10;
             shieldAnim.BONUS_POINT = 4;
             shieldAnim.gotoAndStop("wooden_shield");     //animate
+
+
+            var spriteSheetItems = new SpriteSheet({
+                images:["/app/img/items.png"],
+                frames:{width:32, height:32, regX:16, regY:20},
+                animations:{
+                    aid_box:0
+                }
+            });
+
+            var aidBox = new BitmapItem(spriteSheetItems);
+            aidBox.TYPE = null;
+            aidBox.onUse = function (character, target) {
+                var aid = 50;
+                character.context.addEffect(character.x, character.y, 'heal');
+                character.HP += Math.min(100 - character.HP, aid);
+            };
+            aidBox.gotoAndStop("aid_box");     //animate
 
             var spriteSheetPlayer = new SpriteSheet({
                 images:["/app/img/player.png"],
@@ -243,6 +261,7 @@ $(function () {
                 enemy.mode = EnemyMode.RANDOM_WALK;
                 enemy.onTick = enemyTickFunction(enemy);
                 enemy.addToDropList(shieldAnim, 1);
+                enemy.addToDropList(aidBox, 5);
 
                 context.addCharacter(enemy);
                 context.addToStage(enemy);

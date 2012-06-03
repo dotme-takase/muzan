@@ -187,7 +187,7 @@ p.die = function () {
     var _this = this;
     _this.HP = 0;
     _this.action = CharacterAction.DEAD;
-    if (Math.floor(Math.random() * 100) < 10) {
+    if (Math.floor(Math.random() * 100) < 50) {
         var rateSum = 0;
         var rateMap = {};
         for (var k in _this.dropList) {
