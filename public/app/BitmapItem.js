@@ -39,7 +39,8 @@
         for (var k in context.dropItems) {
             if (context.dropItems.hasOwnProperty(k)) {
                 if (_this == context.dropItems[k]) {
-                    delete context.dropItems[k];
+                    context.dropItems.splice(k, 1);
+                    delete _this;
                     break;
                 }
             }

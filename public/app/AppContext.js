@@ -160,7 +160,7 @@ var AppContext = exports.AppContext = function () {
         //var otherCharacters = _this.characterTree.retrieve(obj);
         var len = otherCharacters.length;
         for (var k in otherCharacters) {
-        //for (var k = 0; k < len; k++) {
+            //for (var k = 0; k < len; k++) {
             var other = otherCharacters[k];
             if (other != obj) {
                 var deltaX = other.x - oldX;
@@ -478,6 +478,190 @@ var AppUtils = exports.AppUtils = {
         character.x += character.vX;
         character.y += character.vY;
     },
+    pathToTarget:function (character, target, context) {
+        if (!target) {
+            for (var k in context.characters) {
+                var other = context.characters[k];
+                if (other.teamNumber != character.teamNumber) {
+                    target = other;
+                    break;
+                }
+            }
+        }
+
+        var Node = function (x, y) {
+            var _this = this;
+            if ((typeof x != "undefined")
+                && (typeof y != "undefined")) {
+                _this.pos = {x:x, y:y};
+            } else {
+                _this.pos = context.getMapPoint(character);
+            }
+            _this.goal = context.getMapPoint(target);
+            _this.hs = Math.pow((_this.pos.x - _this.goal.x), 2)
+                + Math.pow((_this.pos.y - _this.goal.y), 2);
+            _this.fs = 0;
+            _this.ownerList = null;
+            _this.parentNode = null;
+
+            _this.isGoal = function () {
+                return ((_this.goal.x == _this.pos.x) && (_this.goal.y == _this.pos.y));
+            };
+        }
+
+        var NodeList = function (list) {
+            var _this = this;
+            _this.list = list;
+            _this.find = function (x, y) {
+                var self = _this.list;
+                for (var k in self) {
+                    var t = self[k];
+                    if ((t.pos.x == x) && (t.pos.y == y)) {
+                        return t;
+                    }
+                }
+                return null;
+            };
+
+            _this.remove = function (node) {
+                var self = _this.list;
+                for (var k = 0; k < self.length; k++) {
+                    if (self.hasOwnProperty(k)) {
+                        if (node == self[k]) {
+                            self.splice(k, 1);
+                            delete node;
+                            break;
+                        }
+                    }
+                }
+            };
+
+            _this.append = function (object) {
+                _this.list.push(object);
+            };
+
+            _this.minFs = function () {
+                var min = null;
+                var self = _this.list;
+                var node = null;
+                for (var k in self) {
+                    if (self.hasOwnProperty(k)) {
+                        node = self[k];
+                        if ((min == null) || (min > node.fs)) {
+                            min = node.fs;
+                        }
+                    }
+                }
+                return node;
+            };
+        };
+
+        //スタート位置とゴール位置を設定
+        var startNode = new Node();
+        var endNode = null;
+        var mapHeight = context.floorMap.length;
+        var mapWidth = context.floorMap[0].length;
+
+        //OpenリストとCloseリストを設定
+        var openList = new NodeList([]);
+        var closeList = new NodeList([]);
+        startNode.fs = startNode.hs;
+        openList.append(startNode);
+
+        var vectors = [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+            [1, 1],
+            [-1, 1],
+            [1, -1],
+            [-1, -1]
+        ];
+        var vectorsSize = vectors.length;
+
+        while (true) {
+            //Openリストが空になったら解なし
+            if (openList.list.length == 0) {
+                console.log("There is no route until reaching a goal.");
+                break;
+            }
+            //Openリストからf*が最少のノードnを取得
+
+            var n = openList.minFs();
+            if (n == null) {
+                console.log("There is no nodes.");
+                break;
+            }
+            openList.remove(n)
+            closeList.append(n)
+
+            //最小ノードがゴールだったら終了
+            if (n.isGoal()) {
+                endNode = n;
+                break;
+            }
+
+
+            //f*() = g*() + h*() -> g*() = f*() - h*()
+            var n_gs = n.fs - n.hs;
+
+            //ノードnの移動可能方向のノードを調べる
+            for (var i = 0; i < vectorsSize; i++) {
+                var v = vectors[i];
+                var x = n.pos.x + v[0];
+                var y = n.pos.y + v[1];
+                //マップが範囲外または壁(O)の場合はcontinue
+                if ((y < 0) || (y >= mapHeight)
+                    || (x < 0) || (x >= mapWidth)
+                    || (context.floorMap[y][x] == null)) {
+                    continue;
+                }
+
+                //移動先のノードがOpen,Closeのどちらのリストに
+                //格納されているか、または新規ノードなのかを調べる
+                var m = openList.find(x, y);
+                var dist = Math.pow((n.pos.x - x), 2)
+                    + Math.pow((n.pos.y - y), 2);
+                if (m) {
+                    //移動先のノードがOpenリストに格納されていた場合、
+                    //より小さいf*ならばノードmのf*を更新し、親を書き換え
+                    if (m.fs > n_gs + m.hs + dist) {
+                        m.fs = n_gs + m.hs + dist;
+                        m.parentNode = n;
+                    }
+                } else {
+                    m = closeList.find(x, y)
+                    if (m) {
+                        //移動先のノードがCloseリストに格納されていた場合、
+                        //より小さいf*ならばノードmのf*を更新し、親を書き換え
+                        //かつ、Openリストに移動する
+                        if (m.fs > n_gs + m.hs + dist) {
+                            m.fs = n_gs + m.hs + dist;
+                            m.parentNode = n;
+                            openList.append(m);
+                            closeList.remove(m);
+                        }
+
+                    } else {
+                        //新規ノードならばOpenリストにノードに追加
+                        m = new Node(x, y);
+                        m.fs = n_gs + m.hs + dist
+                        m.parentNode = n
+                        openList.append(m);
+                    }
+                }
+            }
+        }
+        //endノードから親を辿っていくと、最短ルートを示す
+        if (endNode != null) {
+            var n = endNode.parentNode;
+            while ((n != null) && (n.parentNode != null)) {
+                n = n.parentNode;
+                console.log("(" + n.pos.x + ", " + n.pos.y + ") to " +"(" + n.goal.x + ", " + n.goal.y + ")");
+            }
+        }
+    },
     simpleAction:function (character, context) {
         function searchTarget() {
             var tempTarget = null;
@@ -664,21 +848,21 @@ exports.createStateJson = function (stateId) {
 };
 
 
-String.prototype.startsWith = function(prefix, toffset) {
-  var i = 0;
-  if(toffset && (typeof toffset === 'number')) {
-    i = toffset;
-  }
-  return this.slice(i).indexOf(prefix) === 0;
+String.prototype.startsWith = function (prefix, toffset) {
+    var i = 0;
+    if (toffset && (typeof toffset === 'number')) {
+        i = toffset;
+    }
+    return this.slice(i).indexOf(prefix) === 0;
 };
 
-String.prototype.endsWith = function(suffix) {
-  var sub = this.length - suffix.length;
-  return (sub >= 0) && (this.lastIndexOf(suffix) === sub);
+String.prototype.endsWith = function (suffix) {
+    var sub = this.length - suffix.length;
+    return (sub >= 0) && (this.lastIndexOf(suffix) === sub);
 };
 
-String.prototype.chop = function() {
-  return this.substring(0, this.length - 1);
+String.prototype.chop = function () {
+    return this.substring(0, this.length - 1);
 };
 
 
