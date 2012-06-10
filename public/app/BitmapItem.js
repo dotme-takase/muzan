@@ -40,6 +40,7 @@
             if (context.dropItems.hasOwnProperty(k)) {
                 if (_this == context.dropItems[k]) {
                     delete context.dropItems[k];
+                    break;
                 }
             }
         }
