@@ -270,7 +270,7 @@ $(function () {
             stage.addChild(scoreField);
             Ticker.init();
             Ticker.useRAF = true;
-            Ticker.setFPS(18);
+            Ticker.setFPS(16);
             Ticker.addListener(window);
 
             //////
