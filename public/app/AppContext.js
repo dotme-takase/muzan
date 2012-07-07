@@ -479,6 +479,246 @@ var AppUtils = exports.AppUtils = {
         character.y += character.vY;
     },
     pathToTarget:function (character, target, context) {
+        var SEARCH_LEVEL = 3;
+        var trail = [];
+
+        var nodeMax = 0;
+        var retryMax = 0;
+        var goalCount = 0;
+
+        var mapHeight = context.floorMap.length;
+        var mapWidth = context.floorMap[0].length;
+
+        var Node = function (x, y) {
+            var _this = this;
+            /** x座標 */
+            this.x = 0;
+            /** y座標 */
+            this.y = 0;
+
+            if ((typeof x != "undefined")
+                && (typeof y != "undefined")) {
+                this.x = x;
+                this.y = y;
+            }
+            /** 次のノード */
+            this.next = null;
+
+            /**
+             * 次のノードを返します。
+             * @return 次のノード
+             */
+            this.getNext = function () {
+                return _this.next;
+            };
+
+            /**
+             * 次のノードを設定します。
+             * @param next 次のノード
+             */
+            this.setNext = function (next) {
+                _this.next = next;
+            };
+
+            /**
+             * ノードを次のノードとの間に挿入します。
+             * @param node 挿入するノード
+             */
+            this.insert = function (node) {
+                node.setNext(_this.next);
+                _this.next = node;
+            };
+
+            /**
+             * 次のノードを取り除きます。
+             */
+            this.removeNext = function () {
+                _this.next = _this.next.getNext();
+            };
+        };
+
+        var isStreet = function (x, y) {
+            if (typeof y == "undefined") {
+                return isStreet(x.x, x.y);
+            }
+            if ((y < 0) || (y >= mapHeight)
+                || (x < 0) || (x >= mapWidth)
+                || (context.floorMap[y][x] == null)) {
+                return false;
+            }
+            return true;
+        };
+
+        var isStraightPoint = function (x1, y1, x2, y2) {
+            if (x1 == x2) {
+                var start = Math.min(y1, y2);
+                var end = Math.max(y1, y2);
+                for (var y = start; y <= end; y++) {
+                    if (!isStreet(x1, y)) {
+                        return false;
+                    }
+
+                }
+                return true;
+            } else if (y1 == y2) {
+                var start = Math.min(x1, x2);
+                var end = Math.max(x1, x2);
+                for (var x = start; x <= end; x++) {
+                    if (!isStreet(x, y1)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        };
+
+        var isStraight = function (node, nextNode) {
+            if (typeof nextNode == "undefined") {
+                if (node == null) {
+                    return false;
+                }
+                return isStraight(node, node.getNext());
+            }
+            if (node == null || nextNode == null) {
+                return false;
+            }
+            return isStraightPoint(node.x, node.y, nextNode.x, nextNode.y);
+        };
+
+        var countNode = function (node) {
+            var count = 1;
+            while ((node = node.getNext()) != null) {
+                count++;
+            }
+            return count;
+        };
+
+        var searchRoute = function (node, level) {
+            // 次に進むノードを取得
+            if (node == null) {
+                return;
+            }
+            var nextNode = node.getNext();
+
+            // 終端なら探索終了
+            if (nextNode == null) return;
+            // 対象のノードが進入不可能な位置にあるなら探索終了
+            if (!isStreet(node) || !isStreet(nextNode)) {
+                return;
+            }
+            // 一直線に進めるなら探索終了
+            if (isStraight(node)) {
+                return;
+            }
+
+            // 進めない場合は、中継ノードを求め挿入
+            var relayNode = searchRelayNode(node);
+            if (relayNode != null) {
+                //
+                for (var i = 0; i < trail.length; i++) {
+                    var trailNode = trail[i];
+                    if ((trailNode.x == relayNode.x)
+                        && (trailNode.y == relayNode.y)) {
+                        console.log("no route");
+                        return null;
+                    }
+                }
+                trail.push(relayNode);
+
+                /*
+                 console.log("relay " + relayNode.x + ", " + relayNode.y
+                 + " to " + goalPos.x + ", " + goalPos.y);
+
+                 console.log("from " + node.x + ", " + node.y
+                 + " to " + goalPos.x + ", " + goalPos.y);
+                 */
+
+                node.insert(relayNode);
+                // 余分なノードを除去
+                if (isStraight(relayNode, nextNode.getNext())) {
+                    relayNode.removeNext();
+                }
+                // 再帰的に探索
+                if (level >= SEARCH_LEVEL) {
+                    searchRoute(relayNode, ++level);
+                }
+                searchRoute(node, ++level);
+            }
+
+            // 最大ノード数を集計
+            var count = countNode(node);
+            nodeMax = Math.max(nodeMax, count);
+        };
+
+        var searchRelayNode = function (node) {
+            var nextNode = node.getNext();
+            // 中間点を求める
+            var x = Math.round((node.x + nextNode.x) / 2);
+            var y = Math.round((node.y + nextNode.y) / 2);
+            var relayNode = new Node(x, y);
+
+            // 次のノードとの位置関係で場合分けする
+            if (node.x == nextNode.x) {
+                // 上下に移動可能な場所を探す
+                for (var d = 0; d <= mapWidth; d++) {
+                    if (isStreet(relayNode.x + d, relayNode.y)) {
+                        relayNode.x = relayNode.x + d;
+                        break;
+                    } else if (isStreet(relayNode.x - d, relayNode.y)) {
+                        relayNode.x = relayNode.x - d;
+                        break;
+                    }
+                }
+            } else if (node.y == nextNode.y) {
+                // 左右に移動可能な場所を探す
+                for (var d = 0; d <= mapHeight; d++) {
+                    if (isStreet(relayNode.x, relayNode.y + d)) {
+                        relayNode.y = relayNode.y + d;
+                        break;
+                    } else if (isStreet(relayNode.x, relayNode.y - d)) {
+                        relayNode.y = relayNode.y - d;
+                        break;
+                    }
+                }
+            } else {
+                // 1回曲がって到達可能か？
+                if (isStraightPoint(node.x, node.y, node.x, nextNode.y) &&
+                    isStraightPoint(node.x, nextNode.y, nextNode.x, nextNode.y)) {
+                    relayNode.x = node.x;
+                    relayNode.y = nextNode.y;
+                } else if (isStraightPoint(node.x, node.y, nextNode.x, node.y) &&
+                    isStraightPoint(nextNode.x, node.y, nextNode.x, nextNode.y)) {
+                    relayNode.x = nextNode.x;
+                    relayNode.y = node.y;
+                } else {
+                    var dx = node.x < nextNode.x ? 1 : -1;
+                    var dy = node.y < nextNode.y ? 1 : -1;
+
+                    for (var d = 0; d <= mapWidth; d++) {
+                        if (isStreet(relayNode.x + d, relayNode.y - d * (dx * dy))) {
+                            relayNode.x += d;
+                            relayNode.y -= d * (dx * dy);
+                            break;
+                        } else if (isStreet(relayNode.x - d, relayNode.y + d * (dx * dy))) {
+                            relayNode.x -= d;
+                            relayNode.y += d * (dx * dy);
+                            break;
+                        }
+                    }
+                }
+            }
+            return relayNode;
+        };
+
+        var startPos = context.getMapPoint(character);
+        var goalPos = context.getMapPoint(target);
+        var startNode = new Node(startPos.x, startPos.y);
+        var goalNode = new Node(goalPos.x, goalPos.y);
+        startNode.setNext(goalNode);
+        searchRoute(startNode, 1);
+    },
+    pathToTargetByAStar:function (character, target, context) {
         if (!target) {
             for (var k in context.characters) {
                 var other = context.characters[k];
@@ -498,6 +738,7 @@ var AppUtils = exports.AppUtils = {
                 _this.pos = context.getMapPoint(character);
             }
             _this.goal = context.getMapPoint(target);
+
             _this.hs = Math.pow((_this.pos.x - _this.goal.x), 2)
                 + Math.pow((_this.pos.y - _this.goal.y), 2);
             _this.fs = 0;
@@ -507,7 +748,7 @@ var AppUtils = exports.AppUtils = {
             _this.isGoal = function () {
                 return ((_this.goal.x == _this.pos.x) && (_this.goal.y == _this.pos.y));
             };
-        }
+        };
 
         var NodeList = function (list) {
             var _this = this;
@@ -572,11 +813,7 @@ var AppUtils = exports.AppUtils = {
             [1, 0],
             [-1, 0],
             [0, 1],
-            [0, -1],
-            [1, 1],
-            [-1, 1],
-            [1, -1],
-            [-1, -1]
+            [0, -1]
         ];
         var vectorsSize = vectors.length;
 
@@ -655,12 +892,21 @@ var AppUtils = exports.AppUtils = {
         }
         //endノードから親を辿っていくと、最短ルートを示す
         if (endNode != null) {
-            var n = endNode.parentNode;
+            var list = [];
+            var n = endNode;
+            var count = 0;
             while ((n != null) && (n.parentNode != null)) {
+                list.unshift({x:n.pos.x, y:n.pos.y});
                 n = n.parentNode;
-                console.log("(" + n.pos.x + ", " + n.pos.y + ") to " +"(" + n.goal.x + ", " + n.goal.y + ")");
             }
+
+            if (character.stateId == document.debugStateId) {
+                console.dir(endNode);
+                console.dir(list);
+            }
+            return list;
         }
+        return null;
     },
     simpleAction:function (character, context) {
         function searchTarget() {
@@ -694,6 +940,7 @@ var AppUtils = exports.AppUtils = {
         }
 
         var deltaX, deltaY, range, distance, theta, angleForTarget;
+        var pathDeltaX, pathDeltaY, pathTheta;
         if (character.target) {
             deltaX = character.target.x - character.x;
             deltaY = character.target.y - character.y;
@@ -712,18 +959,52 @@ var AppUtils = exports.AppUtils = {
             character.isWalk = false;
         } else {
             if (character.mode == EnemyMode.RANDOM_WALK) {
+                if ((!character.hasOwnProperty("path"))
+                    || (!character.path)) {
+                    var target;
+                    if (character.target) {
+                        target = character.target;
+                    } else {
+                        target = {x:0, y:0};
+                        target = context.warpToRandom(target);
+                    }
+                    character.path = AppUtils.pathToTargetByAStar(character, target, context);
+                    character.nextToTarget = character.path.shift();
+                }
                 if (character.target) {
                     if ((distance < range * 5)
                         && (angleForTarget > -60) && (angleForTarget < 60)) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;
                     } else if (character.action == CharacterAction.DAMAGE) {
                         character.mode = EnemyMode.ATTACK_TO_TARGET;
+                        character.direction = (theta * 180 / Math.PI);
                     }
                 }
-                character.isWalk = true;
-                if (Math.random() * 100 > 80) {
-                    character.direction = Math.random() * 360;
-                    searchTarget();
+
+                if (character.mode != EnemyMode.ATTACK_TO_TARGET) {
+                    character.isWalk = true;
+                    if ((!character.target)
+                        || (Math.random() * 100 > 80)) {
+                        //change to nearest target
+                        searchTarget();
+                    } else if (character.hasOwnProperty("nextToTarget")
+                        && (character.nextToTarget != null)) {
+                        var mapPt = context.getMapPoint(character);
+                        if ((character.nextToTarget.x == mapPt.x)
+                            && (character.nextToTarget.y == mapPt.y)) {
+                            character.nextToTarget = character.path.shift();
+                        }
+                        if (character.nextToTarget) {
+                            var nextPoint = {x:(character.nextToTarget.x + 0.5) * context.tileSize,
+                                y:(character.nextToTarget.y + 0.5) * context.tileSize};
+                            var _deltaX = nextPoint.x - character.x;
+                            var _deltaY = nextPoint.y - character.y;
+                            var _theta = Math.atan2(_deltaY, _deltaX);
+                            character.direction = (_theta * 180 / Math.PI);
+                        } else {
+                            character.path = null;
+                        }
+                    }
                 }
             } else if (character.mode == EnemyMode.ATTACK_TO_TARGET) {
                 if (character.target.HP <= 0) {

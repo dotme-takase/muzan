@@ -2,66 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/img/items.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/connect/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/benchmark.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/examples.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/lib/querystring.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/mocha.opts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/parse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/express/node_modules/qs/test/stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/no-filename/generic.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-chrome-13.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-firefox-3.6.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/osx-safari-5.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-chrome-12.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-7.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-ie-8.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/formidable/test/fixture/http/special-chars-in-filename/xp-safari-5.http" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/lib/vendor/web-socket-js/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/should.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/runner.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/javascript/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io-client/support/test-runner/public/stylesheets/main.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/transports/websocket/hybi-17.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/cert.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/fixtures/key.key" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/hybi-common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/io.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/leaks/socket.leaktest.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/manager.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/namespace.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/static.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.memory.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/stores.redis.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.flashsocket.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.htmlfile.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.jsonp-polling.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi07-12.parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.hybi16.parser.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.websocket.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/socket.io/test/transports.xhr-polling.test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/app/img/imp.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/BaseCharacter.js" afterPath="$PROJECT_DIR$/public/app/BaseCharacter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/BitmapItem.js" afterPath="$PROJECT_DIR$/public/app/BitmapItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/AppContext.js" afterPath="$PROJECT_DIR$/public/app/AppContext.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/offline.js" afterPath="$PROJECT_DIR$/public/app/offline.js" />
     </list>
     <ignored path="bsword.iws" />
@@ -84,35 +26,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaseCharacter.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BaseCharacter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="44" selection-start="5054" selection-end="5054" vertical-scroll-proportion="0.33333334">
+            <state line="100" column="60" selection-start="2720" selection-end="2723" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tiles.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/img/tiles.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="easel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/easel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="506" selection-start="15459" selection-end="15460" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppContext.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AppContext.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="10" selection-start="2162" selection-end="2162" vertical-scroll-proportion="-21.136364">
+            <state line="955" column="77" selection-start="33797" selection-end="33797" vertical-scroll-proportion="20.662056">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="2" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,7 +56,7 @@
       <file leaf-file-name="offline.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/offline.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="70" selection-start="5800" selection-end="5800" vertical-scroll-proportion="-4.076923">
+            <state line="270" column="41" selection-start="9210" selection-end="9231" vertical-scroll-proportion="-5.072727">
               <folding />
             </state>
           </provider>
@@ -160,7 +95,7 @@
       <file leaf-file-name="BitmapItem.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/BitmapItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="48" selection-start="1235" selection-end="1235" vertical-scroll-proportion="19.0">
+            <state line="41" column="49" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -179,8 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/admin/test.ejs" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/routes/game.js" />
         <option value="$PROJECT_DIR$/public/app/MapGenerator.js" />
@@ -191,18 +124,20 @@
         <option value="$PROJECT_DIR$/public/offline.html" />
         <option value="$PROJECT_DIR$/arc/index.html" />
         <option value="$PROJECT_DIR$/public/app/easel.js" />
-        <option value="$PROJECT_DIR$/public/app/AppContext.js" />
-        <option value="$PROJECT_DIR$/public/app/offline.js" />
-        <option value="$PROJECT_DIR$/public/app/BitmapItem.js" />
         <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
+        <option value="$PROJECT_DIR$/public/app/BitmapItem.js" />
+        <option value="$PROJECT_DIR$/settings.js" />
+        <option value="$PROJECT_DIR$/text.js" />
+        <option value="$PROJECT_DIR$/public/app/offline.js" />
+        <option value="$PROJECT_DIR$/public/app/AppContext.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="66" />
     <option name="y" value="48" />
-    <option name="width" value="1101" />
-    <option name="height" value="638" />
+    <option name="width" value="1299" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -380,16 +315,16 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="bsword@49.212.124.86" serverId="1f3c4a84-c826-4c48-99a3-b5618d928c19" exclude=".svn;.cvs;.idea;.DS_Store;.git;node_modules">
     <servers>
@@ -484,31 +419,51 @@
       <created>1338732050863</created>
       <updated>1338732050863</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="client bug fix">
+      <created>1338749353938</created>
+      <updated>1338749353938</updated>
+    </task>
+    <task id="LOCAL-00005" summary="client bug fix">
+      <created>1338823415091</created>
+      <updated>1338823415091</updated>
+    </task>
+    <task id="LOCAL-00006" summary="client bug fix">
+      <created>1339340970258</created>
+      <updated>1339340970258</updated>
+    </task>
+    <task id="LOCAL-00007" summary="client bug fix">
+      <created>1339342793345</created>
+      <updated>1339342793345</updated>
+    </task>
+    <task id="LOCAL-00008" summary="client bug fix">
+      <created>1339348305446</created>
+      <updated>1339348305446</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="66" y="48" width="1101" height="638" extended-state="0" />
+    <frame x="66" y="48" width="1299" height="720" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4017094" sideWeight="0.33517495" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35897437" sideWeight="0.26062846" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3665717" sideWeight="0.72643256" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.6703297" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32933652" sideWeight="0.99357945" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4017094" sideWeight="0.33517495" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -578,16 +533,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/practice.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="62" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="71" selection-start="1984" selection-end="1984" vertical-scroll-proportion="-5.8333335" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/person.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -600,30 +545,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/arc/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="16" selection-start="7791" selection-end="7791" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="91" column="16" selection-start="7791" selection-end="7791" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/MapGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="407" column="0" selection-start="18639" selection-end="18639" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="47" selection-start="4723" selection-end="4723" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/easel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="506" selection-start="15459" selection-end="15460" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="407" column="0" selection-start="18639" selection-end="18639" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/img/tiles.png">
@@ -631,7 +558,22 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/easel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="506" selection-start="15459" selection-end="15460" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="2" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/img/shields.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/img/effect.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -641,35 +583,35 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
+    <entry file="file://$PROJECT_DIR$/routes/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="10" selection-start="2162" selection-end="2162" vertical-scroll-proportion="-21.136364">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/img/effect.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="70" selection-start="5800" selection-end="5800" vertical-scroll-proportion="-4.076923">
-          <folding />
-        </state>
+        <state line="96" column="47" selection-start="4723" selection-end="4723" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/BitmapItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="48" selection-start="1235" selection-end="1235" vertical-scroll-proportion="19.0">
+        <state line="41" column="49" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/BaseCharacter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="44" selection-start="5054" selection-end="5054" vertical-scroll-proportion="0.33333334">
+        <state line="100" column="60" selection-start="2720" selection-end="2723" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/offline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="270" column="41" selection-start="9210" selection-end="9231" vertical-scroll-proportion="-5.072727">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/AppContext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="955" column="77" selection-start="33797" selection-end="33797" vertical-scroll-proportion="20.662056">
           <folding />
         </state>
       </provider>

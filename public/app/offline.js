@@ -20,7 +20,7 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    scoreField.text = Ticker.getMeasuredFPS() + " B" + floorNumber + "F: " + player.HP + " / 100";
+    scoreField.text = point.x + ", " + point.y + " B" + floorNumber + "F: " + player.HP + " / 100";
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
@@ -265,6 +265,12 @@ $(function () {
 
                 context.addCharacter(enemy);
                 context.addToStage(enemy);
+
+                //debug
+                if (i == 0) {
+                    document.debugStateId = enemy.stateId;
+                }
+                //debug
             }
 
             stage.addChild(scoreField);
