@@ -76,6 +76,7 @@ var AppContext = exports.AppContext = function () {
     _this.blocks = [];
     //_this.blockTree = null;
     _this.mapTips = null;
+    _this.heavyTasks = [];
 
 
     this.updateTree = function () {
@@ -718,7 +719,35 @@ var AppUtils = exports.AppUtils = {
         startNode.setNext(goalNode);
         searchRoute(startNode, 1);
     },
-    pathToTargetByAStar:function (character, target, context) {
+    pathToRandom:function (character, context) {
+        var result = [];
+        var vectors = [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1]
+        ];
+        var mapHeight = context.floorMap.length;
+        var mapWidth = context.floorMap[0].length;
+        var vectorsSize = vectors.length;
+        var mapPt = context.getMapPoint(character);
+        for (var i = 0; i < vectorsSize; i++) {
+            var v = vectors[i];
+            var x = mapPt.x + v[0];
+            var y = mapPt.y + v[1];
+            //マップが範囲外または壁(O)の場合はcontinue
+            if ((y < 0) || (y >= mapHeight)
+                || (x < 0) || (x >= mapWidth)
+                || (context.floorMap[y][x] == null)) {
+                continue;
+            }
+            result.push({x:x, y:y});
+            break;
+        }
+        return result;
+    },
+    pathToTargetByAStar:function (character, target, context, maxDepth) {
+        var depth = 0;
         if (!target) {
             for (var k in context.characters) {
                 var other = context.characters[k];
@@ -727,6 +756,9 @@ var AppUtils = exports.AppUtils = {
                     break;
                 }
             }
+        }
+        if (!maxDepth) {
+            maxDepth = 100;
         }
 
         var Node = function (x, y) {
@@ -818,16 +850,18 @@ var AppUtils = exports.AppUtils = {
         var vectorsSize = vectors.length;
 
         while (true) {
+            depth++;
+            if(depth > maxDepth){
+                break;
+            }
+
             //Openリストが空になったら解なし
             if (openList.list.length == 0) {
-                console.log("There is no route until reaching a goal.");
                 break;
             }
             //Openリストからf*が最少のノードnを取得
-
             var n = openList.minFs();
             if (n == null) {
-                console.log("There is no nodes.");
                 break;
             }
             openList.remove(n)
@@ -891,22 +925,22 @@ var AppUtils = exports.AppUtils = {
             }
         }
         //endノードから親を辿っていくと、最短ルートを示す
+        var list = null;
         if (endNode != null) {
-            var list = [];
+            list = [];
             var n = endNode;
             var count = 0;
             while ((n != null) && (n.parentNode != null)) {
                 list.unshift({x:n.pos.x, y:n.pos.y});
                 n = n.parentNode;
             }
-
-            if (character.stateId == document.debugStateId) {
-                console.dir(endNode);
-                console.dir(list);
-            }
-            return list;
         }
-        return null;
+        if (context.heavyTasks.indexOf(character.stateId)) {
+            var i = context.heavyTasks.indexOf(character.stateId);
+            context.heavyTasks.splice(i, 1);
+        }
+        context.lastPathLength = depth + "@" + list.length;
+        return list;
     },
     simpleAction:function (character, context) {
         function searchTarget() {
@@ -968,7 +1002,17 @@ var AppUtils = exports.AppUtils = {
                         target = {x:0, y:0};
                         target = context.warpToRandom(target);
                     }
-                    character.path = AppUtils.pathToTargetByAStar(character, target, context);
+                    if (context.heavyTasks.length < 2) {
+                        if (context.heavyTasks.indexOf(character.stateId) < 0) {
+                            context.heavyTasks.push(character.stateId);
+                            setTimeout(function () {
+                                    character.path = AppUtils.pathToTargetByAStar(character, target, context);
+                                    character.nextToTarget = character.path.shift();
+                                }, (5000 * Math.random())
+                            );
+                        }
+                    }
+                    character.path = AppUtils.pathToRandom(character, context);
                     character.nextToTarget = character.path.shift();
                 }
                 if (character.target) {
@@ -1001,7 +1045,9 @@ var AppUtils = exports.AppUtils = {
                             var _deltaY = nextPoint.y - character.y;
                             var _theta = Math.atan2(_deltaY, _deltaX);
                             character.direction = (_theta * 180 / Math.PI);
-                        } else {
+                        }
+                    } else {
+                        if (context.heavyTasks.indexOf(character.stateId) < 0) {
                             character.path = null;
                         }
                     }
