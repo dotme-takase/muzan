@@ -851,7 +851,7 @@ var AppUtils = exports.AppUtils = {
 
         while (true) {
             depth++;
-            if(depth > maxDepth){
+            if (depth > maxDepth) {
                 break;
             }
 
@@ -939,7 +939,6 @@ var AppUtils = exports.AppUtils = {
             var i = context.heavyTasks.indexOf(character.stateId);
             context.heavyTasks.splice(i, 1);
         }
-        context.lastPathLength = depth + "@" + list.length;
         return list;
     },
     simpleAction:function (character, context) {
@@ -1007,7 +1006,9 @@ var AppUtils = exports.AppUtils = {
                             context.heavyTasks.push(character.stateId);
                             setTimeout(function () {
                                     character.path = AppUtils.pathToTargetByAStar(character, target, context);
-                                    character.nextToTarget = character.path.shift();
+                                    if (character.path != null) {
+                                        character.nextToTarget = character.path.shift();
+                                    }
                                 }, (5000 * Math.random())
                             );
                         }

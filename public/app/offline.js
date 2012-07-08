@@ -20,7 +20,7 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    scoreField.text = context.lastPathLength + ": B" + floorNumber + "F: " + player.HP + " / 100";
+    scoreField.text = "B" + floorNumber + "F: " + player.HP + " / 100";
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
