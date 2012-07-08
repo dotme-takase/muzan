@@ -31,9 +31,9 @@ exports.get = function() {
         "mysql" : {
             "hostname" : "localhost",
             "port" : 3306,
-            "user" : "chatbull",
+            "user" : "******",
             "password" : "******",
-            "dbname" : "chatbull"
+            "dbname" : "******"
         },
         "redis" : redisOpts,
         "smtp" : {

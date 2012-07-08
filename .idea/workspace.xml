@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43b126e-6344-48f0-a5c2-6f65e16b846f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/arc/img/gear.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/arc/img/person.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/arc/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/arc/js/Arctic.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/arc/js/game.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/app/old/crafty-min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/app/old/crafty.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/app/old/game.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/app/old/touch.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/AppContext.js" afterPath="$PROJECT_DIR$/public/app/AppContext.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/offline.js" afterPath="$PROJECT_DIR$/public/app/offline.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.js" afterPath="$PROJECT_DIR$/settings.js" />
     </list>
     <ignored path="bsword.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,10 +43,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gear.png" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gear.png" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/images/gear.png">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="30" selection-start="996" selection-end="996" vertical-scroll-proportion="0.95454544">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -73,13 +72,6 @@
             <state line="22" column="23" selection-start="652" selection-end="652" vertical-scroll-proportion="-12.692307">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shields.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/img/shields.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -140,10 +132,10 @@
         <option value="$PROJECT_DIR$/public/app/easel.js" />
         <option value="$PROJECT_DIR$/public/app/BaseCharacter.js" />
         <option value="$PROJECT_DIR$/public/app/BitmapItem.js" />
-        <option value="$PROJECT_DIR$/settings.js" />
         <option value="$PROJECT_DIR$/text.js" />
         <option value="$PROJECT_DIR$/public/app/offline.js" />
         <option value="$PROJECT_DIR$/public/app/AppContext.js" />
+        <option value="$PROJECT_DIR$/settings.js" />
       </list>
     </option>
   </component>
@@ -407,7 +399,11 @@
       <created>1341677726951</created>
       <updated>1341677726951</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="client bug fix">
+      <created>1341755590433</created>
+      <updated>1341755590433</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -516,11 +512,6 @@
         <state line="36" column="506" selection-start="15459" selection-end="15460" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="2" selection-start="1467" selection-end="1467" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/img/shields.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -577,6 +568,13 @@
     <entry file="file://$PROJECT_DIR$/public/images/gear.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="30" selection-start="996" selection-end="996" vertical-scroll-proportion="0.95454544">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
