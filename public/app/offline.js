@@ -258,11 +258,13 @@ $(function () {
                 context.addCharacter(enemy);
                 context.addToStage(enemy);
 
-                //debug
-                if (i == 0) {
-                    document.debugStateId = enemy.stateId;
-                }
-                //debug
+                /* --debug
+                var stateIdField = new Text(enemy.stateId, "bold 12px Arial", "#00FFFF");
+                stateIdField.textAlign = "center";
+                stateIdField.x = 0;
+                stateIdField.y = 0;
+                enemy.addChild(stateIdField);
+                */
             }
 
             stage.addChild(scoreField);

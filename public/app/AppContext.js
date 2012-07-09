@@ -723,9 +723,9 @@ var AppUtils = exports.AppUtils = {
         var result = [];
         var vectors = [
             [1, 0],
+            [0, -1],
             [-1, 0],
-            [0, 1],
-            [0, -1]
+            [0, 1]
         ];
         var mapHeight = context.floorMap.length;
         var mapWidth = context.floorMap[0].length;
@@ -994,6 +994,7 @@ var AppUtils = exports.AppUtils = {
             if (character.mode == EnemyMode.RANDOM_WALK) {
                 if ((!character.hasOwnProperty("path"))
                     || (!character.path)) {
+
                     var target;
                     if (character.target) {
                         target = character.target;
@@ -1009,7 +1010,7 @@ var AppUtils = exports.AppUtils = {
                                     if (character.path != null) {
                                         character.nextToTarget = character.path.shift();
                                     }
-                                }, (5000 * Math.random())
+                                }, (1000 * Math.random())
                             );
                         }
                     }
@@ -1047,10 +1048,9 @@ var AppUtils = exports.AppUtils = {
                             var _theta = Math.atan2(_deltaY, _deltaX);
                             character.direction = (_theta * 180 / Math.PI);
                         }
-                    } else {
-                        if (context.heavyTasks.indexOf(character.stateId) < 0) {
-                            character.path = null;
-                        }
+                    }
+                    if (character.path.length == 0) {
+                        character.path = null;
                     }
                 }
             } else if (character.mode == EnemyMode.ATTACK_TO_TARGET) {
