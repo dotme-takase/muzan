@@ -1095,7 +1095,7 @@ var AppUtils = exports.AppUtils = {
             || _this.action == CharacterAction.PARRIED)) {
             _this.isWalk = false;
         } else {
-            if (_this.isMouseDown) {
+            if (_this.isMouseDown || _this.isMouseClick) {
                 _this.direction = (Math.atan2(_this.axisY, _this.axisX) * 180 / Math.PI);
             }
 
@@ -1117,10 +1117,15 @@ var AppUtils = exports.AppUtils = {
                 }
             } else {
                 _this.isWalk = false;
+                if (!_this.isAction && _this.isMouseClick) {
+                    _this.isAction = true;
+                    _this.action = CharacterAction.DEFENCE_MOTION;
+                }
+
                 if (_this.isAction) {
                     if (_this.action == CharacterAction.ATTACK) {
-                    } else if (_this.action == CharacterAction.DEFENCE
-                        && _this.defenceCount > 0) {
+                    } else if ((_this.action == CharacterAction.DEFENCE)
+                        && (_this.defenceCount > 0)) {
                         _this.action = CharacterAction.ATTACK;
                     } else if (_this.action == CharacterAction.DEFENCE_MOTION) {
                         _this.action = CharacterAction.ATTACK;
@@ -1133,6 +1138,7 @@ var AppUtils = exports.AppUtils = {
                 }
             }
         }
+        _this.isMouseClick = false;
     },
     filledArray:function (v, length) {
         var array = [];

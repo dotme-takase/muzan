@@ -259,12 +259,12 @@ $(function () {
                 context.addToStage(enemy);
 
                 /* --debug
-                var stateIdField = new Text(enemy.stateId, "bold 12px Arial", "#00FFFF");
-                stateIdField.textAlign = "center";
-                stateIdField.x = 0;
-                stateIdField.y = 0;
-                enemy.addChild(stateIdField);
-                */
+                 var stateIdField = new Text(enemy.stateId, "bold 12px Arial", "#00FFFF");
+                 stateIdField.textAlign = "center";
+                 stateIdField.x = 0;
+                 stateIdField.y = 0;
+                 enemy.addChild(stateIdField);
+                 */
             }
 
             stage.addChild(scoreField);
@@ -290,6 +290,8 @@ $(function () {
             }
 
             player.isMouseDown = false;
+            player.clickDuration = false;
+            player.isMouseClick = false;
             player.isCursor = false;
             player.axisX = 0;
             player.axisY = 0;
@@ -300,15 +302,22 @@ $(function () {
                     if (Math.pow(player.axisX, 2) + Math.pow(player.axisY, 2) < Math.pow(32, 2)) {
                         player.isCursor = true;
                     }
+                    player.clickDuration = true;
+                    setTimeout(function () {
+                        player.clickDuration = false;
+                    }, 60);
                 }).on("mousemove touchmove",
                 function (e) {
                     onDrag(e);
                 }).on("mouseup touchend mouseleave touchleave", function (e) {
                     player.isCursor = player.isMouseDown = false;
-                    player.axisX = player.axisY = 0;
+                    if (player.clickDuration) {
+                        player.isMouseClick = true;
+                    } else {
+                        player.axisX = player.axisY = 0;
+                    }
                     player.vX = player.vY = 0;
                 });
-
             window.onorientationchange();
             initializing = false;
         }
