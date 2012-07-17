@@ -727,22 +727,32 @@ var AppUtils = exports.AppUtils = {
             [-1, 0],
             [0, 1]
         ];
-        var mapHeight = context.floorMap.length;
-        var mapWidth = context.floorMap[0].length;
-        var vectorsSize = vectors.length;
-        var mapPt = context.getMapPoint(character);
-        for (var i = 0; i < vectorsSize; i++) {
-            var v = vectors[i];
-            var x = mapPt.x + v[0];
-            var y = mapPt.y + v[1];
-            //マップが範囲外または壁(O)の場合はcontinue
-            if ((y < 0) || (y >= mapHeight)
-                || (x < 0) || (x >= mapWidth)
-                || (context.floorMap[y][x] == null)) {
-                continue;
+
+        function restart(list, index) {
+            var start = index % list.length;
+            return list.slice(start).concat(list.slice(0, start));
+        }
+
+        var _vectors = vectors;
+        for (var j = 0; j < 100; j++) {
+            var mapHeight = context.floorMap.length;
+            var mapWidth = context.floorMap[0].length;
+            var vectorsSize = vectors.length;
+            var mapPt = context.getMapPoint(character);
+            for (var i = 0; i < vectorsSize; i++) {
+                var v = _vectors[i];
+                var x = mapPt.x + v[0];
+                var y = mapPt.y + v[1];
+                //マップが範囲外または壁(O)の場合はcontinue
+                if ((y < 0) || (y >= mapHeight)
+                    || (x < 0) || (x >= mapWidth)
+                    || (context.floorMap[y][x] == null)) {
+                    continue;
+                }
+                result.push({x:x, y:y});
+                _vectors = restart(_vectors, i);
+                break;
             }
-            result.push({x:x, y:y});
-            break;
         }
         return result;
     },
