@@ -66,10 +66,10 @@ var enemyData = [
 $(function () {
         function init() {
             var imageTiles = new Image();
-            imageTiles.src = "/app/img/tiles.png";
+            imageTiles.src = "/app/img/tiles" + Math.ceil(Math.random() * 3) +".png";
             imageTiles.onload = function () {
                 var spriteSheetTiles = new SpriteSheet({
-                    images:["/app/img/tiles" + Math.ceil(Math.random() * 3) +".png"],
+                    images:[imageTiles.src],
                     frames:{width:__tileSize, height:__tileSize},
                     animations:{
                         w1:[9, 9],
