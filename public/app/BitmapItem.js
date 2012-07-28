@@ -4,22 +4,19 @@
         this.initialize(spriteSheet);
         for (var k in params) {
             if (params.hasOwnProperty(k)) {
-                this.k = params[k];
+                this[k] = params[k];
             }
         }
     };
 
     BitmapItem.TYPE_SWORD = "sword";
     BitmapItem.TYPE_SHIELD = "shield";
+    BitmapItem.TYPE_MISC = "misc";
 
     var p = BitmapItem.prototype = new BitmapAnimation();
 
     p.BitmapAnimation_initialize = p.initialize;
     p.BitmapAnimation_clone = p.clone;
-
-    p.HP = 0;
-    p.BONUS_POINT = 0;
-    p.TYPE = null;
 
     p.onPick = function (character) {
         var _this = this;
@@ -81,6 +78,7 @@
         _clone.BitmapAnimation_clone = _this.BitmapAnimation_clone;
         _clone.HP = _this.HP;
         _clone.BONUS_POINT = _this.BONUS_POINT;
+        _clone.RANGE = _this.RANGE;
         _clone.TYPE = _this.TYPE;
         _clone.onPick = _this.onPick;
         _clone.drop = _this.drop;
@@ -96,6 +94,10 @@
      */
     p.initialize = function (spriteSheet) {
         this.BitmapAnimation_initialize(spriteSheet);
+        this.HP = 0;
+        this.BONUS_POINT = 0;
+        this.RANGE = 0;
+        this.TYPE = null;
     };
 
     window.BitmapItem = BitmapItem;

@@ -117,7 +117,8 @@ p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.HP = 20;
     this.teamNumber = 0;
     this.clientTime = 0;
-    this.dropList = {};
+    this.dropList = [];
+    this.isPlayer = false;
 
     if (rightArm) {
         this.equipRight(rightArm);
@@ -145,6 +146,10 @@ p.equipLeft = function (item) {
     _this.leftArm.x = handMapPos[0];
     _this.leftArm.y = handMapPos[1];
     _this.leftArm.rotation = handMapPos[2];
+
+    if (_this.isPlayer) {
+        context.playData.leftArm = _this.leftArm.currentAnimation;
+    }
 };
 
 p.equipRight = function (item) {
@@ -154,11 +159,17 @@ p.equipRight = function (item) {
     if (_this.rightArm.currentAnimation.endsWith("_")) {
         _this.rightArm.gotoAndStop(_this.rightArm.currentAnimation.chop());
     }
-    _this.addChild(_this.rightArm);
+
+    _this.addChildAt(_this.rightArm, 0);
+
     var handMapPos = _this.handMap[0][_this.bodyAnim.currentFrame];
     _this.rightArm.x = handMapPos[0];
     _this.rightArm.y = handMapPos[1];
     _this.rightArm.rotation = handMapPos[2];
+
+    if (_this.isPlayer) {
+        context.playData.rightArm = _this.rightArm.currentAnimation;
+    }
 };
 
 p.ejectLeft = function () {
@@ -166,6 +177,9 @@ p.ejectLeft = function () {
     if (_this.leftArm) {
         _this.removeChild(_this.leftArm);
         _this.leftArm = null;
+        if (_this.isPlayer) {
+            context.playData.leftArm = null;
+        }
     }
 };
 
@@ -174,29 +188,34 @@ p.ejectRight = function () {
     if (_this.rightArm) {
         _this.removeChild(_this.rightArm);
         _this.rightArm = null;
+        if (_this.isPlayer) {
+            context.playData.rightArm = null;
+        }
     }
 };
 
 
 p.addToDropList = function (item, rate) {
     var _this = this;
-    _this.dropList[parseInt(rate)] = item;
+    _this.dropList.push({
+        item:item,
+        rate:rate
+    });
 };
 
 p.die = function () {
     var _this = this;
     _this.HP = 0;
     _this.action = CharacterAction.DEAD;
-    if (Math.floor(Math.random() * 100) < 50) {
+    if (Math.floor(Math.random() * 100) < 80) {
         var rateSum = 0;
         var rateMap = {};
         for (var k in _this.dropList) {
             if (_this.dropList.hasOwnProperty(k)) {
-                rateSum += parseInt(k);
-                rateMap[rateSum] = _this.dropList[k];
+                rateSum += parseInt(_this.dropList[k]['rate']);
+                rateMap[rateSum] = _this.dropList[k]['item'];
             }
         }
-
         var dice = Math.floor(Math.random() * rateSum);
         for (var k2 in rateMap) {
             if (dice < k2) {

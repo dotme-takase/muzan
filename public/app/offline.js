@@ -1,5 +1,4 @@
 //function called by the Tick instance at a set interval
-var floorNumber = 1;
 var canvas, stage, context;
 var scoreField;
 var initializing = true;
@@ -20,18 +19,19 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    scoreField.text = "B" + floorNumber + "F: " + player.HP + " / 100";
+    scoreField.text = "B" + context.playData.floorNumber + "F: " + player.HP + " / 100";
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
             setTimeout(function () {
                 if (window.confirm('Retry?')) {
+                    context.playData = null;
                     $.resetStage();
                 }
             }, 1000);
         } else if (floor == "s1") {
             initializing = true;
-            floorNumber++;
+            context.playData.floorNumber++;
             $.resetStage();
         }
         context.drawMap(point, stage);
@@ -42,31 +42,134 @@ var __blockMap = [];
 var enemyData = [
     {
         HP:20,
-        speed:8
+        speed:8,
+        items:{
+            rightArm:"shortSword",
+            leftArm:"woodenShield",
+            dropItems:{
+                woodenShield:1
+            }
+        }
     },
     {
         HP:80,
-        speed:6
+        speed:6,
+        items:{
+            rightArm:"longSword",
+            leftArm:"ironShield",
+            dropItems:{
+                longSword:1,
+                handAxe:1,
+                ironShield:1,
+                aidBox:2
+            }
+        }
     },
     {
         HP:30,
-        speed:10
+        speed:10,
+        items:{
+            rightArm:"katana",
+            leftArm:null,
+            dropItems:{
+                katana:1,
+                aidBox:2
+            }
+        }
     },
     {
         HP:40,
-        speed:9
+        speed:9,
+        items:{
+            rightArm:"ryuyotou",
+            leftArm:"bronzeShield",
+            dropItems:{
+                ryuyotou:1,
+                bronzeShield:2,
+                aidBox:2
+            }
+        }
     },
     {
         HP:10,
-        speed:14
+        speed:14,
+        items:{
+            rightArm:"shortSword",
+            leftArm:null,
+            dropItems:{
+                aidBox:1
+            }
+        }
     }
 ];
+
+var itemData = {
+    shortSword:{
+        TYPE:BitmapItem.TYPE_SWORD,
+        RANGE:26,
+        BONUS_POINT:5
+    },
+    handAxe:{
+        TYPE:BitmapItem.TYPE_SWORD,
+        RANGE:26,
+        BONUS_POINT:12
+    },
+    katana:{
+        TYPE:BitmapItem.TYPE_SWORD,
+        RANGE:36,
+        BONUS_POINT:8
+    },
+    ryuyotou:{
+        TYPE:BitmapItem.TYPE_SWORD,
+        RANGE:32,
+        BONUS_POINT:10
+    },
+    longSword:{
+        TYPE:BitmapItem.TYPE_SWORD,
+        RANGE:40,
+        BONUS_POINT:12
+    },
+    woodenShield:{
+        TYPE:BitmapItem.TYPE_SHIELD,
+        HP:10,
+        BONUS_POINT:4},
+    bronzeShield:{
+        TYPE:BitmapItem.TYPE_SHIELD,
+        HP:40,
+        BONUS_POINT:5
+    },
+    ironShield:{
+        TYPE:BitmapItem.TYPE_SHIELD,
+        HP:80,
+        BONUS_POINT:6
+    },
+    blueShield:{
+        TYPE:BitmapItem.TYPE_SHIELD,
+        HP:60,
+        BONUS_POINT:12
+    },
+    redShield:{TYPE:BitmapItem.TYPE_SHIELD,
+        HP:70,
+        BONUS_POINT:16
+    },
+    aidBox:{
+        TYPE:BitmapItem.TYPE_MISC,
+        onUse:function (character, target) {
+            var aid = 50;
+            character.context.addEffect(character.x,
+                character.y,
+                'heal');
+            character.HP += Math.min(100 - character.HP,
+                aid);
+        }
+    }
+};
 
 //initialize function, called when page loads.
 $(function () {
         function init() {
             var imageTiles = new Image();
-            imageTiles.src = "/app/img/tiles" + Math.ceil(Math.random() * 3) +".png";
+            imageTiles.src = "/app/img/tiles" + Math.ceil(Math.random() * 3) + ".png";
             imageTiles.onload = function () {
                 var spriteSheetTiles = new SpriteSheet({
                     images:[imageTiles.src],
@@ -97,16 +200,16 @@ $(function () {
                 }
                 $.get("/g/init", function (data) {
                     __blockMap = data.context.blockMap;
-                    initializeGame();
+                    initializeGame(null);
                 });
 
             };
         }
 
-        function initializeGame() {
+        function initializeGame(playData) {
             canvas = document.getElementById("stageCanvas");
             stage = new Stage(canvas);
-            context = new AppContext();
+            context = new AppContext(playData);
             context.initializeStage(__blockMap, __tileBmps);
             stage.addChild(context.view);
 
@@ -131,48 +234,64 @@ $(function () {
                 images:["/app/img/swords.png"],
                 frames:{width:32, height:64, regX:15, regY:55},
                 animations:{
-                    sabel:0,
-                    sabel_:0
+                    shortSword:0,
+                    shortSword_:0,
+                    handAxe:1,
+                    handAxe_:1,
+                    katana:2,
+                    katana_:2,
+                    ryuyotou:3,
+                    ryuyotou_:3,
+                    longSword:4,
+                    longSword_:4
                 }
             });
-
-            //load swords
-            var swordAnim = new BitmapItem(spriteSheetSwords);
-            swordAnim.TYPE = BitmapItem.TYPE_SWORD;
-            swordAnim.gotoAndStop("sabel");     //animate
 
             var spriteSheetShields = new SpriteSheet({
                 images:["/app/img/shields.png"],
                 frames:{width:32, height:32, regX:16, regY:20},
                 animations:{
-                    wooden_shield:0,
-                    wooden_shield_:16
+                    woodenShield:0,
+                    woodenShield_:16,
+                    bronzeShield:1,
+                    bronzeShield_:17,
+                    ironShield:2,
+                    ironShield_:18,
+                    blueShield:3,
+                    blueShield_:19,
+                    redShield:4,
+                    redShield_:20
                 }
             });
-
-            var shieldAnim = new BitmapItem(spriteSheetShields);
-            shieldAnim.TYPE = BitmapItem.TYPE_SHIELD;
-            shieldAnim.HP = 10;
-            shieldAnim.BONUS_POINT = 4;
-            shieldAnim.gotoAndStop("wooden_shield");     //animate
-
 
             var spriteSheetItems = new SpriteSheet({
                 images:["/app/img/items.png"],
                 frames:{width:32, height:32, regX:16, regY:20},
                 animations:{
-                    aid_box:0
+                    aidBox:0
                 }
             });
 
-            var aidBox = new BitmapItem(spriteSheetItems);
-            aidBox.TYPE = null;
-            aidBox.onUse = function (character, target) {
-                var aid = 50;
-                character.context.addEffect(character.x, character.y, 'heal');
-                character.HP += Math.min(100 - character.HP, aid);
-            };
-            aidBox.gotoAndStop("aid_box");     //animate
+            for (var i in itemData) {
+                if (itemData.hasOwnProperty(i)) {
+                    var item = itemData[i];
+                    switch (item.TYPE) {
+                        case BitmapItem.TYPE_SWORD:
+                            context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
+                            context.itemMaster[i].gotoAndStop(i);
+                            break;
+                        case BitmapItem.TYPE_SHIELD:
+                            context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
+                            context.itemMaster[i].gotoAndStop(i);
+                            break;
+                        case BitmapItem.TYPE_MISC:
+                            context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
+                            context.itemMaster[i].gotoAndStop(i);
+                            break;
+                        default:
+                    }
+                }
+            }
 
             var spriteSheetPlayer = new SpriteSheet({
                 images:["/app/img/player.png"],
@@ -191,7 +310,10 @@ $(function () {
             playerAnim.gotoAndPlay("walk");     //animate
             playerAnim.currentFrame = 0;
 
-            player = new BaseCharacter(context, playerAnim, _basicHandMap, swordAnim, shieldAnim);
+            player = new BaseCharacter(context, playerAnim, _basicHandMap,
+                context.itemMaster[context.playData.rightArm],
+                context.itemMaster[context.playData.leftArm]);
+            player.isPlayer = true;
             player.onUpdate = context.collideBlocks;
             player.x = 384;
             player.y = 384;
@@ -239,7 +361,9 @@ $(function () {
                 var index = Math.floor(Math.random() * enemyData.length);
                 var _enemy = enemyData[index];
                 var _enemyAnim = _enemy.anim.clone();
-                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap, swordAnim, shieldAnim);
+                var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap,
+                    context.itemMaster[_enemy.items['rightArm']],
+                    context.itemMaster[_enemy.items['leftArm']]);
                 for (var k in _enemy) {
                     if (k != "anim") {
                         enemy[k] = _enemy[k];
@@ -252,19 +376,18 @@ $(function () {
                 enemy.frame = 0;
                 enemy.mode = EnemyMode.RANDOM_WALK;
                 enemy.onTick = enemyTickFunction(enemy);
-                enemy.addToDropList(shieldAnim, 1);
-                enemy.addToDropList(aidBox, 5);
 
+                if (_enemy.hasOwnProperty("items")
+                    && _enemy.items.hasOwnProperty("dropItems")) {
+                    for (var j in _enemy.items.dropItems) {
+                        if (context.itemMaster.hasOwnProperty(j)) {
+                            enemy.addToDropList(context.itemMaster[j], _enemy.items.dropItems[j]);
+                        }
+                    }
+                }
                 context.addCharacter(enemy);
                 context.addToStage(enemy);
 
-                /* --debug
-                 var stateIdField = new Text(enemy.stateId, "bold 12px Arial", "#00FFFF");
-                 stateIdField.textAlign = "center";
-                 stateIdField.x = 0;
-                 stateIdField.y = 0;
-                 enemy.addChild(stateIdField);
-                 */
             }
 
             stage.addChild(scoreField);
@@ -327,7 +450,7 @@ $(function () {
         $.resetStage = function () {
             initializing = true;
             __blockMap = MapGenerator.generate();
-            initializeGame();
+            initializeGame(context.playData);
         }
     }
 

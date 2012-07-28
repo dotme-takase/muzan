@@ -58,7 +58,7 @@ var CharacterAction = exports.CharacterAction = {
 var __maxDiffClientTime = 20;
 var __tileSize = 128;
 exports.currentContext = null;
-var AppContext = exports.AppContext = function () {
+var AppContext = exports.AppContext = function (playData) {
     var _this = this;
     _this.tileSize = __tileSize;
     _this.currentHostId = -1;
@@ -73,11 +73,22 @@ var AppContext = exports.AppContext = function () {
     _this.characterTree = null;
     _this.items = {};
     _this.dropItems = [];
+    _this.itemMaster = {};
     _this.blocks = [];
     //_this.blockTree = null;
     _this.mapTips = null;
     _this.heavyTasks = [];
 
+    if (playData) {
+        _this.playData = playData;
+    } else {
+        _this.playData = {
+            floorNumber:1
+            ,
+            rightArm:"shortSword",
+            leftArm:"woodenShield"
+        };
+    }
 
     this.updateTree = function () {
         _this.characterTree.clear();
@@ -179,7 +190,16 @@ var AppContext = exports.AppContext = function () {
                     && obj.isAction && !obj.isWalk
                     && (obj.action == CharacterAction.ATTACK)
                     && (obj.attackFrame > 2)) {
-                    if ((distance < range + 32)
+
+                    var weaponRange = 0;
+                    var weaponPoint = 0;
+                    if (obj.rightArm.TYPE == BitmapItem.TYPE_SWORD) {
+                        weaponRange = obj.rightArm.RANGE;
+                        weaponPoint = obj.rightArm.BONUS_POINT;
+                    }
+
+
+                    if ((distance < range + weaponRange)
                         && ((angleForOther > -20) && (angleForOther < 80))) {
                         // right
                         if ((other.isAction && (other.action == CharacterAction.DEFENCE)
@@ -199,7 +219,7 @@ var AppContext = exports.AppContext = function () {
                             other.vY -= Math.sin(theta) * kickBackRange;
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
-                            other.HP -= Math.ceil(Math.random() * 5 + 5);
+                            other.HP -= Math.ceil(weaponPoint * (Math.random() * 0.20 + 1));
                         }
                     }
                 }
@@ -377,7 +397,7 @@ var AppContext = exports.AppContext = function () {
             }
             _this.floorMap[i] = line;
         }
-        _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
+        //_this.childIndex = _this.view.getChildIndex(lastChild) + 1;
 
         for (var i = 0; i < _this.blockMap.length; i++) {
             for (var j = 0; j < _this.blockMap[0].length; j++) {
@@ -391,10 +411,11 @@ var AppContext = exports.AppContext = function () {
 
                     _this.blocks.push(tileBmp2);
                     //_this.blockTree.insert(tileBmp2);
-                    _this.view.addChild(tileBmp2);
+                    lastChild = _this.view.addChild(tileBmp2);
                 }
             }
         }
+        _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
     };
 
     _this.drawMap = function (point, stage) {
