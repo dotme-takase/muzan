@@ -82,7 +82,7 @@ var enemyData = [
     },
     {
         body:2,
-        HP:80,
+        HP:60,
         speed:6,
         items:{
             rightArm:"longSword",
