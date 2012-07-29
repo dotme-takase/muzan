@@ -193,9 +193,9 @@ var AppContext = exports.AppContext = function (playData) {
 
                     var weaponRange = 0;
                     var weaponPoint = 0;
-                    if (obj.rightArm.TYPE == BitmapItem.TYPE_SWORD) {
-                        weaponRange = obj.rightArm.RANGE;
-                        weaponPoint = obj.rightArm.BONUS_POINT;
+                    if (obj.rightArm.type == BitmapItem.TYPE_SWORD) {
+                        weaponRange = obj.rightArm.range;
+                        weaponPoint = obj.rightArm.bonusPoint;
                     }
 
 
@@ -203,7 +203,7 @@ var AppContext = exports.AppContext = function (playData) {
                         && ((angleForOther > -20) && (angleForOther < 80))) {
                         // right
                         if ((other.isAction && (other.action == CharacterAction.DEFENCE)
-                            && (other.leftArm != null && other.leftArm.TYPE == BitmapItem.TYPE_SHIELD))
+                            && (other.leftArm != null && other.leftArm.type == BitmapItem.TYPE_SHIELD))
                             && ((angleForObj > -30) && (angleForObj < 60))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             obj.x -= Math.cos(theta) * kickBackRange;
@@ -1087,7 +1087,7 @@ var AppUtils = exports.AppUtils = {
             } else if (character.mode == EnemyMode.ATTACK_TO_TARGET) {
                 if (character.target.HP <= 0) {
                     character.mode = EnemyMode.RANDOM_WALK;
-                } else if (distance < range * 1.5) {
+                } else if (distance < range + character.rightArm.range) {
                     var dice = Math.random() * 4;
                     if (!character.isAction) {
                         character.isWalk = false;

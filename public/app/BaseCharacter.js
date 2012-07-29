@@ -310,7 +310,19 @@ p.updateFrame = function () {
             if (_this.bodyAnim.currentAnimationFrame > 3) {
                 _this.vX = Math.cos(_this.direction * Math.PI / 180) * -3;
                 _this.vY = Math.sin(_this.direction * Math.PI / 180) * -3;
-            } else {
+            } else if (_this.bodyAnim.currentAnimationFrame == 0) {
+                console.dir( _this.rightArm);
+                if (_this.rightArm && _this.rightArm.speed) {
+                    var speed = _this.rightArm.speed;
+                    for(var i = 0; i < speed; i++){
+                        _this.bodyAnim.advance();
+                    }
+                    _this.vX = Math.cos(_this.direction * Math.PI / 180) * 3 * speed;
+                    _this.vY = Math.sin(_this.direction * Math.PI / 180) * 3 * speed;
+                    _this.attackFrame = _this.bodyAnim.currentAnimationFrame;
+                }
+            }
+            else {
                 _this.vX = Math.cos(_this.direction * Math.PI / 180) * 3;
                 _this.vY = Math.sin(_this.direction * Math.PI / 180) * 3;
             }

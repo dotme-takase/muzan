@@ -41,63 +41,139 @@ var __tileBmps = {};
 var __blockMap = [];
 var enemyData = [
     {
+        body:5,
+        HP:20,
+        speed:10,
+        items:{
+            rightArm:"shortSword",
+            leftArm:null,
+            dropItems:{
+                woodenShield:3,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:1,
         HP:20,
         speed:8,
         items:{
             rightArm:"shortSword",
             leftArm:"woodenShield",
             dropItems:{
-                woodenShield:1
+                woodenShield:3,
+                aidBox:5
             }
         }
     },
     {
+        body:4,
+        HP:30,
+        speed:9,
+        items:{
+            rightArm:"longSword",
+            leftArm:"woodenShield",
+            dropItems:{
+                longSword:1,
+                woodenShield:5,
+                aidBox:10
+            }
+        }
+    },
+    {
+        body:2,
         HP:80,
         speed:6,
         items:{
             rightArm:"longSword",
-            leftArm:"ironShield",
+            leftArm:"woodenShield",
             dropItems:{
-                longSword:1,
-                handAxe:1,
-                ironShield:1,
-                aidBox:2
+                longSword:2,
+                woodenShield:3,
+                aidBox:5
             }
         }
     },
     {
-        HP:30,
+        body:5,
+        HP:20,
+        speed:14,
+        items:{
+            rightArm:"fasterShortSword",
+            leftArm:null,
+            dropItems:{
+                fasterShortSword:3,
+                aidBox:10
+            }
+        }
+    },
+    {
+        body:1,
+        HP:60,
+        speed:9,
+        items:{
+            rightArm:"longSword",
+            leftArm:"bronzeShield",
+            dropItems:{
+                longSword:5,
+                bronzeShield:3,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:4,
+        HP:60,
         speed:10,
+        items:{
+            rightArm:"ryuyotou",
+            leftArm:"ironShield",
+            dropItems:{
+                ryuyotou:2,
+                ironShield:1,
+                bronzeShield:3,
+                aidBox:3
+            }
+        }
+    },
+    {
+        body:3,
+        HP:50,
+        speed:12,
         items:{
             rightArm:"katana",
             leftArm:null,
             dropItems:{
                 katana:1,
-                aidBox:2
+                aidBox:5
             }
         }
     },
     {
+        body:5,
         HP:40,
-        speed:9,
-        items:{
-            rightArm:"ryuyotou",
-            leftArm:"bronzeShield",
-            dropItems:{
-                ryuyotou:1,
-                bronzeShield:2,
-                aidBox:2
-            }
-        }
-    },
-    {
-        HP:10,
         speed:14,
         items:{
-            rightArm:"shortSword",
-            leftArm:null,
+            rightArm:"katana",
+            leftArm:"redShield",
             dropItems:{
-                aidBox:1
+                katana:3,
+                redShield:1,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:2,
+        HP:80,
+        speed:7,
+        items:{
+            rightArm:"broadSword",
+            leftArm:"blueShield",
+            dropItems:{
+                broadSword:1,
+                blueShield:2,
+                aidBox:5
             }
         }
     }
@@ -105,55 +181,73 @@ var enemyData = [
 
 var itemData = {
     shortSword:{
-        TYPE:BitmapItem.TYPE_SWORD,
-        RANGE:26,
-        BONUS_POINT:5
-    },
-    handAxe:{
-        TYPE:BitmapItem.TYPE_SWORD,
-        RANGE:26,
-        BONUS_POINT:12
-    },
-    katana:{
-        TYPE:BitmapItem.TYPE_SWORD,
-        RANGE:36,
-        BONUS_POINT:8
-    },
-    ryuyotou:{
-        TYPE:BitmapItem.TYPE_SWORD,
-        RANGE:32,
-        BONUS_POINT:10
+        type:BitmapItem.TYPE_SWORD,
+        range:20,
+        bonusPoint:4,
+        speed:1
     },
     longSword:{
-        TYPE:BitmapItem.TYPE_SWORD,
-        RANGE:40,
-        BONUS_POINT:12
+        type:BitmapItem.TYPE_SWORD,
+        range:28,
+        bonusPoint:8,
+        speed:1
+    },
+    fasterShortSword:{
+        type:BitmapItem.TYPE_SWORD,
+        range:18,
+        bonusPoint:5,
+        speed:2
+    },
+    handAxe:{
+        type:BitmapItem.TYPE_SWORD,
+        range:20,
+        bonusPoint:14,
+        speed:0
+    },
+    katana:{
+        type:BitmapItem.TYPE_SWORD,
+        range:28,
+        bonusPoint:8,
+        speed:2
+    },
+    ryuyotou:{
+        type:BitmapItem.TYPE_SWORD,
+        range:24,
+        bonusPoint:10,
+        speed:0
+    },
+    broadSword:{
+        type:BitmapItem.TYPE_SWORD,
+        range:32,
+        bonusPoint:12,
+        speed:1
     },
     woodenShield:{
-        TYPE:BitmapItem.TYPE_SHIELD,
+        type:BitmapItem.TYPE_SHIELD,
         HP:10,
-        BONUS_POINT:4},
+        bonusPoint:4
+    },
     bronzeShield:{
-        TYPE:BitmapItem.TYPE_SHIELD,
+        type:BitmapItem.TYPE_SHIELD,
         HP:40,
-        BONUS_POINT:5
+        bonusPoint:5
     },
     ironShield:{
-        TYPE:BitmapItem.TYPE_SHIELD,
+        type:BitmapItem.TYPE_SHIELD,
         HP:80,
-        BONUS_POINT:6
+        bonusPoint:6
     },
     blueShield:{
-        TYPE:BitmapItem.TYPE_SHIELD,
+        type:BitmapItem.TYPE_SHIELD,
         HP:60,
-        BONUS_POINT:12
+        bonusPoint:12
     },
-    redShield:{TYPE:BitmapItem.TYPE_SHIELD,
+    redShield:{type:BitmapItem.TYPE_SHIELD,
         HP:70,
-        BONUS_POINT:16
+        bonusPoint:16
     },
     aidBox:{
-        TYPE:BitmapItem.TYPE_MISC,
+        type:BitmapItem.TYPE_MISC,
         onUse:function (character, target) {
             var aid = 50;
             character.context.addEffect(character.x,
@@ -236,14 +330,18 @@ $(function () {
                 animations:{
                     shortSword:0,
                     shortSword_:0,
-                    handAxe:1,
-                    handAxe_:1,
-                    katana:2,
-                    katana_:2,
-                    ryuyotou:3,
-                    ryuyotou_:3,
-                    longSword:4,
-                    longSword_:4
+                    longSword:1,
+                    longSword_:1,
+                    fasterShortSword:2,
+                    fasterShortSword_:2,
+                    handAxe:3,
+                    handAxe_:3,
+                    katana:4,
+                    katana_:4,
+                    ryuyotou:5,
+                    ryuyotou_:5,
+                    broadSword:6,
+                    broadSword_:6
                 }
             });
 
@@ -275,7 +373,7 @@ $(function () {
             for (var i in itemData) {
                 if (itemData.hasOwnProperty(i)) {
                     var item = itemData[i];
-                    switch (item.TYPE) {
+                    switch (item.type) {
                         case BitmapItem.TYPE_SWORD:
                             context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
                             context.itemMaster[i].gotoAndStop(i);
@@ -331,8 +429,9 @@ $(function () {
 
 
             for (var i = 0; i < enemyData.length; i++) {
+                var _enemyData = enemyData[i];
                 var spriteSheetEnemy = new SpriteSheet({
-                    images:["/app/img/enemy" + (i + 1) + ".png"],
+                    images:["/app/img/enemy" + _enemyData.body + ".png"],
                     frames:{width:64, height:64, regX:32, regY:32},
                     animations:{
                         walk:[0, 7],
@@ -346,7 +445,7 @@ $(function () {
                 enemyAnim.name = "enemy";
                 enemyAnim.gotoAndPlay("walk");     //animate
                 enemyAnim.currentFrame = 0;
-                enemyData[i]["anim"] = enemyAnim;
+                _enemyData["anim"] = enemyAnim;
             }
 
             function enemyTickFunction(enemy) {
@@ -356,9 +455,10 @@ $(function () {
                 }
             }
 
-            var enemyNum = 16;
+            var floorBonus = Math.floor(context.playData.floorNumber / 3);
+            var enemyNum = 10 + Math.min(floorBonus, 6);
             for (var i = 0; i < enemyNum; i++) {
-                var index = Math.floor(Math.random() * enemyData.length);
+                var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
                 var _enemy = enemyData[index];
                 var _enemyAnim = _enemy.anim.clone();
                 var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap,

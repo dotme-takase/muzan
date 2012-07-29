@@ -21,7 +21,7 @@
     p.onPick = function (character) {
         var _this = this;
         var context = character.context;
-        switch (_this.TYPE) {
+        switch (_this.type) {
             case BitmapItem.TYPE_SWORD:
                 character.equipRight(_this);
                 break;
@@ -58,13 +58,13 @@
 
     p.onUse = function (character, target) {
         var _this = this;
-        switch (_this.TYPE) {
+        switch (_this.type) {
             case BitmapItem.TYPE_SWORD:
                 break;
             case BitmapItem.TYPE_SHIELD:
                 var damage = Math.ceil(Math.random() * 5 + 5);
-                character.HP -= Math.max(0, (damage - _this.BONUS_POINT * 2));
-                _this.HP -= Math.max(0, damage - _this.BONUS_POINT);
+                character.HP -= Math.max(0, (damage - _this.bonusPoint * 2));
+                _this.HP -= Math.max(0, damage - _this.bonusPoint);
                 if (_this.HP <= 0) {
                     character.ejectLeft();
                 }
@@ -77,9 +77,10 @@
         var _clone = _this.BitmapAnimation_clone();
         _clone.BitmapAnimation_clone = _this.BitmapAnimation_clone;
         _clone.HP = _this.HP;
-        _clone.BONUS_POINT = _this.BONUS_POINT;
-        _clone.RANGE = _this.RANGE;
-        _clone.TYPE = _this.TYPE;
+        _clone.bonusPoint = _this.bonusPoint;
+        _clone.range = _this.range;
+        _clone.speed = _this.speed;
+        _clone.type = _this.type;
         _clone.onPick = _this.onPick;
         _clone.drop = _this.drop;
         _clone.onUse = _this.onUse;
@@ -95,9 +96,10 @@
     p.initialize = function (spriteSheet) {
         this.BitmapAnimation_initialize(spriteSheet);
         this.HP = 0;
-        this.BONUS_POINT = 0;
-        this.RANGE = 0;
-        this.TYPE = null;
+        this.bonusPoint = 0;
+        this.range = 0;
+        this.speed = 0;
+        this.type = null;
     };
 
     window.BitmapItem = BitmapItem;
