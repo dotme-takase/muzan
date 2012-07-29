@@ -42,7 +42,7 @@ var __blockMap = [];
 var enemyData = [
     {
         body:5,
-        HP:20,
+        HP:10,
         speed:10,
         items:{
             rightArm:"shortSword",
@@ -68,8 +68,8 @@ var enemyData = [
     },
     {
         body:4,
-        HP:30,
-        speed:9,
+        HP:25,
+        speed:8,
         items:{
             rightArm:"longSword",
             leftArm:"woodenShield",
