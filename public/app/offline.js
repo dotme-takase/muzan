@@ -52,8 +52,7 @@ var enemyData = [
             leftArm:null,
             dropItems:{
                 fasterShortSword:1,
-                woodenShield:15,
-                aidBox:20
+                aidBox:5
             }
         }
     },
@@ -92,7 +91,7 @@ var enemyData = [
             rightArm:"longSword",
             leftArm:"woodenShield",
             dropItems:{
-                longSword:2,
+                longSword:3,
                 woodenShield:1,
                 aidBox:5
             }
@@ -106,8 +105,9 @@ var enemyData = [
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
-                fasterShortSword:3,
-                aidBox:5
+                katana: 1,
+                fasterShortSword:6,
+                aidBox:8
             }
         }
     },
@@ -530,7 +530,7 @@ $(function () {
                     player.clickDuration = true;
                     setTimeout(function () {
                         player.clickDuration = false;
-                    }, 60);
+                    }, 100);
                 }).on("mousemove touchmove",
                 function (e) {
                     onDrag(e);
