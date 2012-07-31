@@ -8,12 +8,18 @@ if (typeof exports == "undefined") {
 }
 
 var MapGenerator = exports.MapGenerator = {
-    generate:function () {
+    generate:function (_areaXSize, _areaYSize) {
         var result = [];
         var areaWidth = 5;
         var areaHeight = 5;
         var areaXSize = 5;
+        if (_areaXSize) {
+            areaXSize = _areaXSize;
+        }
         var areaYSize = 5;
+        if (_areaYSize) {
+            areaYSize = _areaYSize;
+        }
 
         var mapWidth = areaWidth * areaXSize;
         var mapHeight = areaHeight * areaYSize;

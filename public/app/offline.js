@@ -19,7 +19,10 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    scoreField.text = "B" + context.playData.floorNumber + "F: " + player.HP + " / 100";
+    if(context.playData){
+        scoreField.text = "B" + context.playData.floorNumber + "F: " + player.HP + " / 100";
+    }
+
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
@@ -48,14 +51,15 @@ var enemyData = [
             rightArm:"shortSword",
             leftArm:null,
             dropItems:{
-                woodenShield:3,
-                aidBox:5
+                fasterShortSword:1,
+                woodenShield:15,
+                aidBox:20
             }
         }
     },
     {
         body:1,
-        HP:20,
+        HP:10,
         speed:8,
         items:{
             rightArm:"shortSword",
@@ -68,28 +72,28 @@ var enemyData = [
     },
     {
         body:4,
-        HP:25,
-        speed:8,
+        HP:15,
+        speed:7,
         items:{
-            rightArm:"longSword",
-            leftArm:"woodenShield",
+            rightArm:"shortSword",
+            leftArm:"bronzeShield",
             dropItems:{
                 longSword:1,
-                woodenShield:5,
-                aidBox:10
+                bronzeShield:3,
+                aidBox:5
             }
         }
     },
     {
         body:2,
-        HP:60,
+        HP:40,
         speed:6,
         items:{
             rightArm:"longSword",
             leftArm:"woodenShield",
             dropItems:{
                 longSword:2,
-                woodenShield:3,
+                woodenShield:1,
                 aidBox:5
             }
         }
@@ -97,19 +101,19 @@ var enemyData = [
     {
         body:5,
         HP:20,
-        speed:14,
+        speed:12,
         items:{
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
                 fasterShortSword:3,
-                aidBox:10
+                aidBox:5
             }
         }
     },
     {
         body:1,
-        HP:60,
+        HP:40,
         speed:9,
         items:{
             rightArm:"longSword",
@@ -123,15 +127,14 @@ var enemyData = [
     },
     {
         body:4,
-        HP:60,
+        HP:40,
         speed:10,
         items:{
             rightArm:"ryuyotou",
             leftArm:"ironShield",
             dropItems:{
                 ryuyotou:2,
-                ironShield:1,
-                bronzeShield:3,
+                ironShield:3,
                 aidBox:3
             }
         }
@@ -292,10 +295,9 @@ $(function () {
                     var bitmap = new Bitmap(SpriteSheetUtils.extractFrame(spriteSheetTiles, name));
                     __tileBmps[name] = bitmap;
                 }
-                $.get("/g/init", function (data) {
-                    __blockMap = data.context.blockMap;
-                    initializeGame(null);
-                });
+
+                __blockMap = MapGenerator.generate(3, 3);
+                initializeGame(null);
 
             };
         }
@@ -456,7 +458,7 @@ $(function () {
             }
 
             var floorBonus = Math.floor(context.playData.floorNumber / 3);
-            var enemyNum = 10 + Math.min(floorBonus, 6);
+            var enemyNum = 6 + Math.min(floorBonus, 10);
             for (var i = 0; i < enemyNum; i++) {
                 var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
                 var _enemy = enemyData[index];
@@ -548,8 +550,24 @@ $(function () {
         init();
 
         $.resetStage = function () {
+            var floor = 0;
+            if(context.playData){
+                floor = context.playData.floorNumber;
+            }
             initializing = true;
-            __blockMap = MapGenerator.generate();
+
+            if (floor < 5) {
+                __blockMap = MapGenerator.generate(3, 3);
+            } else if (floor < 10) {
+                __blockMap = MapGenerator.generate(4, 3);
+            } else if (floor < 15) {
+                __blockMap = MapGenerator.generate(4, 4);
+            } else if (floor < 20) {
+                __blockMap = MapGenerator.generate(5, 4);
+            } else {
+                __blockMap = MapGenerator.generate(5, 5);
+            }
+
             initializeGame(context.playData);
         }
     }
