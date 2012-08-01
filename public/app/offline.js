@@ -52,7 +52,7 @@ var enemyData = [
             leftArm:null,
             dropItems:{
                 fasterShortSword:1,
-                aidBox:5
+                aidBox:3
             }
         }
     },
@@ -77,7 +77,7 @@ var enemyData = [
             rightArm:"shortSword",
             leftArm:"bronzeShield",
             dropItems:{
-                longSword:1,
+                fasterShortSword:1,
                 bronzeShield:3,
                 aidBox:5
             }
