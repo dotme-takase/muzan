@@ -19,7 +19,7 @@ function tick() {
     var point = context.getMapPoint(player);
     var floor = context.floorMap[point.y][point.x];
 
-    if(context.playData){
+    if (context.playData) {
         scoreField.text = "B" + context.playData.floorNumber + "F: " + player.HP + " / 100";
     }
 
@@ -44,19 +44,6 @@ var __tileBmps = {};
 var __blockMap = [];
 var enemyData = [
     {
-        body:5,
-        HP:10,
-        speed:10,
-        items:{
-            rightArm:"shortSword",
-            leftArm:null,
-            dropItems:{
-                fasterShortSword:1,
-                aidBox:3
-            }
-        }
-    },
-    {
         body:1,
         HP:10,
         speed:8,
@@ -66,6 +53,19 @@ var enemyData = [
             dropItems:{
                 woodenShield:3,
                 aidBox:5
+            }
+        }
+    },
+    {
+        body:5,
+        HP:10,
+        speed:10,
+        items:{
+            rightArm:"shortSword",
+            leftArm:null,
+            dropItems:{
+                fasterShortSword:1,
+                aidBox:3
             }
         }
     },
@@ -105,7 +105,7 @@ var enemyData = [
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
-                katana: 1,
+                katana:1,
                 fasterShortSword:6,
                 aidBox:8
             }
@@ -551,7 +551,7 @@ $(function () {
 
         $.resetStage = function () {
             var floor = 0;
-            if(context.playData){
+            if (context.playData) {
                 floor = context.playData.floorNumber;
             }
             initializing = true;
@@ -576,11 +576,11 @@ $(function () {
 
 window.onorientationchange = function () {
     if (typeof window.orientation == "undefined") {
-        canvas.height = 464;
+        canvas.height = 400;
     } else if (window.orientation == 0) {
-        canvas.height = 464;
+        canvas.height = 400;
     } else {
-        canvas.height = 256;
+        canvas.height = 240;
         setTimeout(scrollTo, 100, 0, 1);
     }
 };
