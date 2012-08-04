@@ -102,6 +102,7 @@ p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.context = context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
+    this.bodyAnim.reverseFrame = false;
     this.handMap = handMap;
     this.speed = 10;
     this.direction = 90;
@@ -299,30 +300,41 @@ p.updateFrame = function () {
             _this.context.removeFromStage(_this);
         } else if (_this.action == CharacterAction.ATTACK) {
             _this.attackFrame = _this.bodyAnim.currentAnimationFrame;
-            if (_this.bodyAnim.currentAnimation != "attack") {
-                _this.bodyAnim.gotoAndPlay("attack");
+            if ((_this.bodyAnim.currentAnimation == null)
+                || (_this.bodyAnim.currentAnimation.indexOf("attack") != 0)) {
+                var weaponSpeed = 2;
+                if (_this.rightArm) {
+                    if (_this.bodyAnim.currentFrame == 10) {
+                        weaponSpeed = 0;
+                    } else {
+                        weaponSpeed = _this.rightArm.speed;
+                    }
+                }
+                if (weaponSpeed >= 2) {
+                    _this.bodyAnim.gotoAndPlay("attack_2");
+                } else if (weaponSpeed == 1) {
+                    _this.bodyAnim.gotoAndPlay("attack_1");
+                } else if (weaponSpeed == -1) {
+                    _this.bodyAnim.gotoAndPlay("attack__1")
+                } else if (weaponSpeed <= -2) {
+                    _this.bodyAnim.gotoAndPlay("attack__2");
+                } else {
+                    _this.bodyAnim.gotoAndPlay("attack");
+                }
                 _this.bodyAnim.onAnimationEnd = function () {
                     _this.attackFrame = 0;
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.NONE;
                 };
             }
-            if (_this.bodyAnim.currentAnimationFrame > 3) {
+
+            if (_this.bodyAnim.currentFrame < 10) {
+                _this.vX = Math.cos(_this.direction * Math.PI / 180) * -2;
+                _this.vY = Math.sin(_this.direction * Math.PI / 180) * -2;
+            } else if (_this.bodyAnim.currentFrame > 13) {
                 _this.vX = Math.cos(_this.direction * Math.PI / 180) * -3;
                 _this.vY = Math.sin(_this.direction * Math.PI / 180) * -3;
-            } else if (_this.bodyAnim.currentAnimationFrame == 0) {
-                console.dir( _this.rightArm);
-                if (_this.rightArm && _this.rightArm.speed) {
-                    var speed = _this.rightArm.speed;
-                    for(var i = 0; i < speed; i++){
-                        _this.bodyAnim.advance();
-                    }
-                    _this.vX = Math.cos(_this.direction * Math.PI / 180) * 3 * speed;
-                    _this.vY = Math.sin(_this.direction * Math.PI / 180) * 3 * speed;
-                    _this.attackFrame = _this.bodyAnim.currentAnimationFrame;
-                }
-            }
-            else {
+            } else {
                 _this.vX = Math.cos(_this.direction * Math.PI / 180) * 3;
                 _this.vY = Math.sin(_this.direction * Math.PI / 180) * 3;
             }

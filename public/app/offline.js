@@ -193,7 +193,7 @@ var itemData = {
         type:BitmapItem.TYPE_SWORD,
         range:28,
         bonusPoint:8,
-        speed:1
+        speed:0
     },
     fasterShortSword:{
         type:BitmapItem.TYPE_SWORD,
@@ -204,26 +204,26 @@ var itemData = {
     handAxe:{
         type:BitmapItem.TYPE_SWORD,
         range:20,
-        bonusPoint:14,
-        speed:0
+        bonusPoint:16,
+        speed:-2
     },
     katana:{
         type:BitmapItem.TYPE_SWORD,
         range:28,
-        bonusPoint:8,
-        speed:2
+        bonusPoint:10,
+        speed:1
     },
     ryuyotou:{
         type:BitmapItem.TYPE_SWORD,
         range:24,
-        bonusPoint:10,
-        speed:0
+        bonusPoint:13,
+        speed:-1
     },
     broadSword:{
         type:BitmapItem.TYPE_SWORD,
         range:32,
         bonusPoint:12,
-        speed:1
+        speed:0
     },
     woodenShield:{
         type:BitmapItem.TYPE_SHIELD,
@@ -399,6 +399,10 @@ $(function () {
                 animations:{
                     walk:[0, 7],
                     attack:[10, 15],
+                    attack_1:[11, 15],
+                    attack_2:[12, 15],
+                    attack__1:[9, 15],
+                    attack__2:[8, 15],
                     defence:[8, 10],
                     damage:[0, 1],
                     parried:[0, 7]
@@ -438,6 +442,10 @@ $(function () {
                     animations:{
                         walk:[0, 7],
                         attack:[10, 15],
+                        attack_1:[11, 15],
+                        attack_2:[12, 15],
+                        attack__1:[9, 15],
+                        attack__2:[8, 15],
                         defence:[8, 10],
                         damage:[0, 1],
                         parried:[0, 7]
