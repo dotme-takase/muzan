@@ -588,7 +588,7 @@ window.onorientationchange = function () {
     } else if (window.orientation == 0) {
         canvas.height = 400;
     } else {
-        canvas.height = 240;
+        canvas.height = 265;
         setTimeout(scrollTo, 100, 0, 1);
     }
 };
