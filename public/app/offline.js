@@ -74,10 +74,10 @@ var enemyData = [
         HP:15,
         speed:7,
         items:{
-            rightArm:"shortSword",
+            rightArm:"handAxe",
             leftArm:"bronzeShield",
             dropItems:{
-                fasterShortSword:1,
+                handAxe:2,
                 bronzeShield:3,
                 aidBox:5
             }
@@ -197,13 +197,13 @@ var itemData = {
     },
     fasterShortSword:{
         type:BitmapItem.TYPE_SWORD,
-        range:18,
+        range:20,
         bonusPoint:5,
         speed:2
     },
     handAxe:{
         type:BitmapItem.TYPE_SWORD,
-        range:20,
+        range:22,
         bonusPoint:16,
         speed:-2
     },
