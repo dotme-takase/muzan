@@ -204,7 +204,7 @@ var AppContext = exports.AppContext = function (playData) {
                         // right
                         if ((other.isAction && (other.action == CharacterAction.DEFENCE)
                             && (other.leftArm != null && other.leftArm.type == BitmapItem.TYPE_SHIELD))
-                            && ((angleForObj > -30) && (angleForObj < 60))) {
+                            && ((angleForObj > -30) && (angleForObj < 30))) {
                             var kickBackRange = -1 * Math.random() * obj.width / 2 / 2;
                             obj.x -= Math.cos(theta) * kickBackRange;
                             obj.y -= Math.sin(theta) * kickBackRange;

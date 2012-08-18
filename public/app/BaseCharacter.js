@@ -270,6 +270,7 @@ p.updateFrame = function () {
                     _this.context.addEffect(_this.x, _this.y, "parried");
                 }
                 _this.bodyAnim.onAnimationEnd = function () {
+
                     if (_this.parriedCount <= 0) {
                         _this.vX = _this.vY = 0;
                         _this.action = CharacterAction.NONE;
@@ -322,6 +323,9 @@ p.updateFrame = function () {
                     _this.bodyAnim.gotoAndPlay("attack");
                 }
                 _this.bodyAnim.onAnimationEnd = function () {
+                    if (_this.action != CharacterAction.ATTACK) {
+                        return;
+                    }
                     _this.attackFrame = 0;
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.NONE;
