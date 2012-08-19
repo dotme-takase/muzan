@@ -259,6 +259,9 @@ var itemData = {
             character.context.addEffect(character.x,
                 character.y,
                 'heal');
+            if (SoundJS) {
+                SoundJS.play(4, SoundJS.INTERUPT_ANY);
+            }
             character.HP += Math.min(100 - character.HP,
                 aid);
         }
@@ -310,11 +313,13 @@ $(function () {
                     //ToDo show loader
                     var soundPath = "/app/se/";
                     var manifest = [
-                        {src:soundPath + "attack.mp3", id:1, data:1},
-                        {src:soundPath + "defeat.mp3", id:2, data:2},
-                        {src:soundPath + "downstair.mp3", id:3, data:3},
-                        {src:soundPath + "hit.mp3", id:4, data:4},
-                        {src:soundPath + "parried.mp3", id:5, data:5}
+                        {src:soundPath + "attack.ogg", id:1, data:1},
+                        {src:soundPath + "defeat.ogg", id:2, data:2},
+                        {src:soundPath + "downstair.ogg", id:3, data:3},
+                        {src:soundPath + "heal.ogg", id:4, data:4},
+                        {src:soundPath + "hit.ogg", id:5, data:5},
+                        {src:soundPath + "parried.ogg", id:6, data:6},
+                        {src:soundPath + "pickup.ogg", id:7, data:7}
                     ];
 
                     preload = new createjs.PreloadJS();

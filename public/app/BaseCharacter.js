@@ -281,7 +281,7 @@ p.updateFrame = function () {
                     }
                 };
                 if (SoundJS) {
-                    SoundJS.play(5, SoundJS.INTERUPT_ANY);
+                    SoundJS.play(6, SoundJS.INTERUPT_ANY);
                 }
             }
             _this.vX = Math.cos(_this.direction * Math.PI / 180) * -1;
@@ -295,7 +295,7 @@ p.updateFrame = function () {
                     _this.action = CharacterAction.NONE;
                 };
                 if (SoundJS) {
-                    SoundJS.play(4, SoundJS.INTERUPT_ANY);
+                    SoundJS.play(5, SoundJS.INTERUPT_ANY);
                 }
             }
             _this.alpha = 0.5;
