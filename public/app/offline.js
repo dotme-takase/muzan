@@ -1,5 +1,5 @@
 //function called by the Tick instance at a set interval
-var canvas, stage, context;
+var canvas, stage, context, preload;
 var scoreField;
 var initializing = true;
 function tick() {
@@ -33,6 +33,9 @@ function tick() {
                 }
             }, 1000);
         } else if (floor == "s1") {
+            if (SoundJS) {
+                SoundJS.play(3, SoundJS.INTERUPT_LATE);
+            }
             initializing = true;
             context.playData.floorNumber++;
             $.resetStage();
@@ -262,6 +265,7 @@ var itemData = {
     }
 };
 
+
 //initialize function, called when page loads.
 $(function () {
         function init() {
@@ -296,9 +300,39 @@ $(function () {
                     __tileBmps[name] = bitmap;
                 }
 
-                __blockMap = MapGenerator.generate(3, 3);
-                initializeGame(null);
+                //Sound
+                SoundJS.FlashPlugin.BASE_PATH = "/app" // Initialize the base path from this document to the Flash Plugin
+                if (!SoundJS.checkPlugin(true)) {
+                    SoundJS = false;
+                    __blockMap = MapGenerator.generate(3, 3);
+                    initializeGame(null);
+                } else {
+                    //ToDo show loader
+                    var soundPath = "/app/se/";
+                    var manifest = [
+                        {src:soundPath + "attack.mp3", id:1, data:1},
+                        {src:soundPath + "defeat.mp3", id:2, data:2},
+                        {src:soundPath + "downstair.mp3", id:3, data:3},
+                        {src:soundPath + "hit.mp3", id:4, data:4},
+                        {src:soundPath + "parried.mp3", id:5, data:5}
+                    ];
 
+                    preload = new createjs.PreloadJS();
+                    //Install SoundJS as a plugin, then PreloadJS will initialize it automatically.
+                    preload.installPlugin(SoundJS);
+
+                    //Available PreloadJS callbacks
+                    preload.onFileLoad = function (event) {
+
+                    };
+                    preload.onComplete = function (event) {
+                        __blockMap = MapGenerator.generate(3, 3);
+                        initializeGame(null);
+                    }
+
+                    //Load the manifest and pass 'true' to start loading immediately. Otherwise, you can call load() manually.
+                    preload.loadManifest(manifest, true);
+                }
             };
         }
 

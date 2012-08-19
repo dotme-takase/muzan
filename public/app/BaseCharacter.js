@@ -280,6 +280,9 @@ p.updateFrame = function () {
                         _this.bodyAnim.gotoAndPlay("parried");
                     }
                 };
+                if (SoundJS) {
+                    SoundJS.play(5, SoundJS.INTERUPT_ANY);
+                }
             }
             _this.vX = Math.cos(_this.direction * Math.PI / 180) * -1;
             _this.vY = Math.sin(_this.direction * Math.PI / 180) * -1;
@@ -291,12 +294,18 @@ p.updateFrame = function () {
                     _this.vX = _this.vY = 0;
                     _this.action = CharacterAction.NONE;
                 };
+                if (SoundJS) {
+                    SoundJS.play(4, SoundJS.INTERUPT_ANY);
+                }
             }
             _this.alpha = 0.5;
         } else if (_this.action == CharacterAction.DEAD) {
             delete _this.context.characters[_this.stateId];
             for (var i = 0; i < 4; i++) {
                 _this.context.addEffect(_this.x + Math.random() * 8 - 16, _this.y + Math.random() * 8 - 16, "dead");
+            }
+            if (SoundJS) {
+                SoundJS.play(2, SoundJS.INTERUPT_ANY);
             }
             _this.context.removeFromStage(_this);
         } else if (_this.action == CharacterAction.ATTACK) {
@@ -322,6 +331,11 @@ p.updateFrame = function () {
                 } else {
                     _this.bodyAnim.gotoAndPlay("attack");
                 }
+
+                if (SoundJS) {
+                    SoundJS.play(1, SoundJS.INTERUPT_LATE);
+                }
+
                 _this.bodyAnim.onAnimationEnd = function () {
                     if (_this.action != CharacterAction.ATTACK) {
                         return;
