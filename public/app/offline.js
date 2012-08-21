@@ -33,9 +33,7 @@ function tick() {
                 }
             }, 1000);
         } else if (floor == "s1") {
-            if (SoundJS) {
-                SoundJS.play(3, SoundJS.INTERUPT_LATE);
-            }
+            context.playSound("downstair");
             initializing = true;
             context.playData.floorNumber++;
             $.resetStage();
@@ -45,6 +43,7 @@ function tick() {
 }
 var __tileBmps = {};
 var __blockMap = [];
+var __sounds = null;
 var enemyData = [
     {
         body:1,
@@ -259,9 +258,7 @@ var itemData = {
             character.context.addEffect(character.x,
                 character.y,
                 'heal');
-            if (SoundJS) {
-                SoundJS.play(4, SoundJS.INTERUPT_ANY);
-            }
+            context.playSound("downstair");
             character.HP += Math.min(100 - character.HP,
                 aid);
         }
@@ -304,48 +301,55 @@ $(function () {
                 }
 
                 //Sound
-                SoundJS.FlashPlugin.BASE_PATH = "/app" // Initialize the base path from this document to the Flash Plugin
-                if (!SoundJS.checkPlugin(true)) {
-                    SoundJS = false;
-                    __blockMap = MapGenerator.generate(3, 3);
-                    initializeGame(null);
-                } else {
-                    //ToDo show loader
-                    var soundPath = "/app/se/";
-                    var manifest = [
-                        {src:soundPath + "attack.ogg", id:1, data:1},
-                        {src:soundPath + "defeat.ogg", id:2, data:2},
-                        {src:soundPath + "downstair.ogg", id:3, data:3},
-                        {src:soundPath + "heal.ogg", id:4, data:4},
-                        {src:soundPath + "hit.ogg", id:5, data:5},
-                        {src:soundPath + "parried.ogg", id:6, data:6},
-                        {src:soundPath + "pickup.ogg", id:7, data:7}
-                    ];
-
-                    preload = new createjs.PreloadJS();
-                    //Install SoundJS as a plugin, then PreloadJS will initialize it automatically.
-                    preload.installPlugin(SoundJS);
-
-                    //Available PreloadJS callbacks
-                    preload.onFileLoad = function (event) {
-
-                    };
-                    preload.onComplete = function (event) {
-                        __blockMap = MapGenerator.generate(3, 3);
-                        initializeGame(null);
+                function preloadNotSupported() {
+                    var agent = navigator.userAgent;
+                    if (agent.indexOf('Linux; U; Android ') != -1
+                        || agent.indexOf('iPhone; U') != -1
+                        || agent.indexOf('iPad; U') != -1) {
+                        return true;
                     }
-
-                    //Load the manifest and pass 'true' to start loading immediately. Otherwise, you can call load() manually.
-                    preload.loadManifest(manifest, true);
+                    return false;
                 }
-            };
+
+                function loadSound() {
+                    if (buzz.isSupported()) {
+                        var path = "/app/se";
+                        var sounds = [
+                            "attack",
+                            "defeat",
+                            "downstair",
+                            "heal",
+                            "hit",
+                            "parried",
+                            "pickup"
+                        ];
+                        __sounds = new Array();
+                        buzz.defaults.preload = true;
+                        if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
+                            for (var k in sounds) {
+                                var soundName = sounds[k];
+                                __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
+                            }
+                        } else {
+                            __sounds = null;
+                        }
+                    }
+                }
+
+                loadSound();
+                //Sound
+                __blockMap = MapGenerator.generate(3, 3);
+                initializeGame(null);
+            }
+
+            ;
         }
 
         function initializeGame(playData) {
             canvas = document.getElementById("stageCanvas");
             stage = new Stage(canvas);
             context = new AppContext(playData);
-            context.initializeStage(__blockMap, __tileBmps);
+            context.initializeStage(__blockMap, __tileBmps, __sounds);
             stage.addChild(context.view);
 
             scoreField = new Text("", "bold 12px Arial", "#FFFFFF");
@@ -619,7 +623,8 @@ $(function () {
         }
     }
 
-);
+)
+;
 
 window.onorientationchange = function () {
     if (typeof window.orientation == "undefined") {

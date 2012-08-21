@@ -23,15 +23,11 @@
         var context = character.context;
         switch (_this.type) {
             case BitmapItem.TYPE_SWORD:
-                if (SoundJS) {
-                    SoundJS.play(7, SoundJS.INTERUPT_ANY);
-                }
+                context.playSound("pickup");
                 character.equipRight(_this);
                 break;
             case BitmapItem.TYPE_SHIELD:
-                if (SoundJS) {
-                    SoundJS.play(7, SoundJS.INTERUPT_ANY);
-                }
+                context.playSound("pickup");
                 character.equipLeft(_this);
                 break;
             default:

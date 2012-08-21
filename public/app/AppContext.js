@@ -78,13 +78,13 @@ var AppContext = exports.AppContext = function (playData) {
     //_this.blockTree = null;
     _this.mapTips = null;
     _this.heavyTasks = [];
+    _this.sounds = null;
 
     if (playData) {
         _this.playData = playData;
     } else {
         _this.playData = {
-            floorNumber:1
-            ,
+            floorNumber:1,
             rightArm:"shortSword",
             leftArm:"woodenShield"
         };
@@ -109,6 +109,15 @@ var AppContext = exports.AppContext = function (playData) {
             _this.view.removeChild(newEffect);
         }
         _this.view.addChild(newEffect);
+    };
+
+    _this.playSound = function (name) {
+        if (_this.sounds && buzz) {
+            if (_this.sounds.hasOwnProperty(name)) {
+                var sound = _this.sounds[name];
+                sound.play();
+            }
+        }
     };
 
     _this.addCharacter = function (character, x, y) {
@@ -369,7 +378,7 @@ var AppContext = exports.AppContext = function (playData) {
             return _this.view.addChild(obj);
         }
     };
-    _this.initializeStage = function (blockMap, tileBmps) {
+    _this.initializeStage = function (blockMap, tileBmps, sounds) {
         _this.loadBlockMap(blockMap);
         _this.view = new Container();
         var lastChild = null;
@@ -416,6 +425,7 @@ var AppContext = exports.AppContext = function (playData) {
             }
         }
         _this.childIndex = _this.view.getChildIndex(lastChild) + 1;
+        _this.sounds = sounds;
     };
 
     _this.drawMap = function (point, stage) {
