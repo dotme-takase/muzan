@@ -1097,7 +1097,7 @@ var AppUtils = exports.AppUtils = {
             } else if (character.mode == EnemyMode.ATTACK_TO_TARGET) {
                 if (character.target.HP <= 0) {
                     character.mode = EnemyMode.RANDOM_WALK;
-                } else if (distance < range + character.rightArm.range) {
+                } else if (distance < range + Math.min(character.rightArm.range, 24)) {
                     var dice = Math.random() * 4;
                     if (!character.isAction) {
                         character.isWalk = false;

@@ -329,6 +329,7 @@ $.initializeFirst = function () {
                         for (var k in sounds) {
                             var soundName = sounds[k];
                             __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
+                            __sounds[soundName].setVolume(20);
                         }
                     } else {
                         __sounds = null;
