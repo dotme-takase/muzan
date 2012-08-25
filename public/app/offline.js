@@ -53,17 +53,18 @@ var enemyData = [
             rightArm:"shortSword",
             leftArm:"woodenShield",
             dropItems:{
+                fasterShortSword:1,
                 woodenShield:3,
                 aidBox:5
             }
         }
     },
     {
-        body:5,
+        body:1,
         HP:10,
         speed:10,
         items:{
-            rightArm:"shortSword",
+            rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
                 fasterShortSword:1,
@@ -72,29 +73,27 @@ var enemyData = [
         }
     },
     {
-        body:4,
+        body:1,
         HP:15,
         speed:7,
         items:{
-            rightArm:"handAxe",
+            rightArm:"shortSword",
             leftArm:"bronzeShield",
             dropItems:{
-                handAxe:2,
                 bronzeShield:3,
                 aidBox:5
             }
         }
     },
     {
-        body:2,
-        HP:40,
+        body:4,
+        HP:20,
         speed:6,
         items:{
             rightArm:"longSword",
-            leftArm:"woodenShield",
+            leftArm:null,
             dropItems:{
                 longSword:3,
-                woodenShield:1,
                 aidBox:5
             }
         }
@@ -107,21 +106,22 @@ var enemyData = [
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
-                katana:1,
-                fasterShortSword:6,
-                aidBox:8
+                katana:2,
+                fasterShortSword:3,
+                aidBox:4
             }
         }
     },
     {
-        body:1,
-        HP:40,
+        body:2,
+        HP:50,
         speed:9,
         items:{
-            rightArm:"longSword",
+            rightArm:"handAxe",
             leftArm:"bronzeShield",
             dropItems:{
-                longSword:5,
+                broadSword:1,
+                handAxe:3,
                 bronzeShield:3,
                 aidBox:5
             }
@@ -129,7 +129,7 @@ var enemyData = [
     },
     {
         body:4,
-        HP:40,
+        HP:30,
         speed:10,
         items:{
             rightArm:"ryuyotou",
@@ -143,7 +143,7 @@ var enemyData = [
     },
     {
         body:3,
-        HP:50,
+        HP:40,
         speed:12,
         items:{
             rightArm:"katana",
