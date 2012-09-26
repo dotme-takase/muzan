@@ -112,7 +112,13 @@ var AppContext = exports.AppContext = function (playData) {
     };
 
     _this.playSound = function (name) {
-        if (_this.sounds && buzz) {
+        if (typeof AppMobi != "undefined") {
+            var path = $.appPath + "/se";
+            try {
+                AppMobi.player.playSound(path + "/" + name + ".mp3");
+            } catch (e) {
+            }
+        } else if (_this.sounds && buzz) {
             if (_this.sounds.hasOwnProperty(name)) {
                 var sound = _this.sounds[name];
                 sound.play();
@@ -765,26 +771,22 @@ var AppUtils = exports.AppUtils = {
         }
 
         var _vectors = vectors;
-        var mapHeight = context.floorMap.length;
-        var mapWidth = context.floorMap[0].length;
-        var vectorsSize = vectors.length;
-        var mapPt = context.getMapPoint(character);
-        var _x = mapPt.x;
-        var _y = mapPt.y;
         for (var j = 0; j < 100; j++) {
+            var mapHeight = context.floorMap.length;
+            var mapWidth = context.floorMap[0].length;
+            var vectorsSize = vectors.length;
+            var mapPt = context.getMapPoint(character);
             for (var i = 0; i < vectorsSize; i++) {
                 var v = _vectors[i];
-                var x = _x + v[0];
-                var y = _y + v[1];
+                var x = mapPt.x + v[0];
+                var y = mapPt.y + v[1];
                 //マップが範囲外または壁(O)の場合はcontinue
                 if ((y < 0) || (y >= mapHeight)
                     || (x < 0) || (x >= mapWidth)
                     || (context.floorMap[y][x] == null)) {
                     continue;
                 }
-                _x = x;
-                _y = y;
-                result.push({x:_x, y:_y});
+                result.push({x:x, y:y});
                 _vectors = restart(_vectors, i);
                 break;
             }
@@ -1101,7 +1103,7 @@ var AppUtils = exports.AppUtils = {
             } else if (character.mode == EnemyMode.ATTACK_TO_TARGET) {
                 if (character.target.HP <= 0) {
                     character.mode = EnemyMode.RANDOM_WALK;
-                } else if (distance < range + Math.min(character.rightArm.range, 24)) {
+                } else if (distance < range + character.rightArm.range) {
                     var dice = Math.random() * 4;
                     if (!character.isAction) {
                         character.isWalk = false;

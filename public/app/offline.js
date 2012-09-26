@@ -53,18 +53,17 @@ var enemyData = [
             rightArm:"shortSword",
             leftArm:"woodenShield",
             dropItems:{
-                fasterShortSword:1,
                 woodenShield:3,
                 aidBox:5
             }
         }
     },
     {
-        body:1,
+        body:5,
         HP:10,
         speed:10,
         items:{
-            rightArm:"fasterShortSword",
+            rightArm:"shortSword",
             leftArm:null,
             dropItems:{
                 fasterShortSword:1,
@@ -73,27 +72,29 @@ var enemyData = [
         }
     },
     {
-        body:1,
+        body:4,
         HP:15,
         speed:7,
         items:{
-            rightArm:"shortSword",
+            rightArm:"handAxe",
             leftArm:"bronzeShield",
             dropItems:{
+                handAxe:2,
                 bronzeShield:3,
                 aidBox:5
             }
         }
     },
     {
-        body:4,
-        HP:20,
+        body:2,
+        HP:40,
         speed:6,
         items:{
             rightArm:"longSword",
-            leftArm:null,
+            leftArm:"woodenShield",
             dropItems:{
                 longSword:3,
+                woodenShield:1,
                 aidBox:5
             }
         }
@@ -106,22 +107,21 @@ var enemyData = [
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
-                katana:2,
-                fasterShortSword:3,
-                aidBox:4
+                katana:1,
+                fasterShortSword:6,
+                aidBox:8
             }
         }
     },
     {
-        body:2,
-        HP:50,
+        body:1,
+        HP:40,
         speed:9,
         items:{
-            rightArm:"handAxe",
+            rightArm:"longSword",
             leftArm:"bronzeShield",
             dropItems:{
-                broadSword:1,
-                handAxe:3,
+                longSword:5,
                 bronzeShield:3,
                 aidBox:5
             }
@@ -129,7 +129,7 @@ var enemyData = [
     },
     {
         body:4,
-        HP:30,
+        HP:40,
         speed:10,
         items:{
             rightArm:"ryuyotou",
@@ -143,7 +143,7 @@ var enemyData = [
     },
     {
         body:3,
-        HP:40,
+        HP:50,
         speed:12,
         items:{
             rightArm:"katana",
@@ -312,7 +312,8 @@ $.initializeFirst = function () {
             }
 
             function loadSound() {
-                if (buzz.isSupported()) {
+                if (typeof AppMobi != "undefined") {
+                } else if (buzz.isSupported()) {
                     var path = $.appPath + "/se";
                     var sounds = [
                         "attack",
@@ -329,7 +330,6 @@ $.initializeFirst = function () {
                         for (var k in sounds) {
                             var soundName = sounds[k];
                             __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
-                            __sounds[soundName].setVolume(20);
                         }
                     } else {
                         __sounds = null;
@@ -355,8 +355,8 @@ $.initializeFirst = function () {
 
         scoreField = new Text("", "bold 12px Arial", "#FFFFFF");
         scoreField.textAlign = "right";
-        scoreField.x = canvas.width - 10;
         scoreField.y = 22;
+        window.onorientationchange();
 
         var spriteSheetEffects = new SpriteSheet({
             images:[$.appPath + "/img/effect.png"],
@@ -595,7 +595,6 @@ $.initializeFirst = function () {
                 }
                 player.vX = player.vY = 0;
             });
-        window.onorientationchange();
         initializing = false;
     }
 
@@ -625,12 +624,14 @@ $.initializeFirst = function () {
 };
 
 window.onorientationchange = function () {
-    if (typeof window.orientation == "undefined") {
-        canvas.height = 400;
-    } else if (window.orientation == 0) {
-        canvas.height = 400;
-    } else {
-        canvas.height = 265;
-        setTimeout(scrollTo, 100, 0, 1);
+    $("#canvasWrapper").width(window.innerWidth);
+    $("#canvasWrapper").height(window.innerHeight);
+    if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        if (scoreField) {
+            scoreField.x = canvas.width - 10;
+        }
     }
+    setTimeout(scrollTo, 100, 0, 1);
 };
