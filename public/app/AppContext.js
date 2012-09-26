@@ -70,6 +70,7 @@ var AppContext = exports.AppContext = function (playData) {
     _this.childIndex = 0;
 
     _this.characters = {};
+    _this.characterPreviousPoints = {};
     _this.characterTree = null;
     _this.items = {};
     _this.dropItems = [];
@@ -368,6 +369,28 @@ var AppContext = exports.AppContext = function (playData) {
         for (var k in _this.characters) {
             var character = _this.characters[k];
             _this.collideBlocks(character);
+        }
+
+        for (var k in _this.characters) {
+            var character = _this.characters[k];
+            var mapPoint = _this.getMapPoint(character);
+            var floor = context.floorMap[mapPoint.y][mapPoint.x];
+            if (_this.characterPreviousPoints.hasOwnProperty(character.stateId)) {
+                var prev = _this.characterPreviousPoints[character.stateId];
+                var prevMapPoint = _this.getMapPoint(prev);
+                var dX = Math.abs(mapPoint.x - prevMapPoint.x);
+                var dY = Math.abs(mapPoint.y - prevMapPoint.y);
+                if (!floor) {
+                    character.x = prev.x;
+                    character.y = prev.y
+                } else if ((dX > 1) || (dY > 1)) {
+                    character.x = prev.x;
+                    character.y = prev.y
+                }
+            }
+            if (floor) {
+                _this.characterPreviousPoints[character.stateId] = {'x':character.x, 'y':character.y};
+            }
         }
     };
 
