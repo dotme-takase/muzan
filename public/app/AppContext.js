@@ -157,6 +157,9 @@ var AppContext = exports.AppContext = function (playData) {
         var point = arr[Math.max(0, (Math.floor(Math.random() * arr.length) - 1))];
         character.x = point.x;
         character.y = point.y;
+        if (_this.characterPreviousPoints.hasOwnProperty(characher.stateId)) {
+            delete _this.characterPreviousPoints[characher.stateId];
+        }
     };
 
     _this.getRandomPoint = function () {
