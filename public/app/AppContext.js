@@ -239,6 +239,9 @@ var AppContext = exports.AppContext = function (playData) {
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
                             other.HP -= Math.ceil(weaponPoint * (Math.random() * 0.20 + 1));
+                            if((player.context.playData != null) && (other == player)){
+                                player.context.playData.enemy = obj;
+                            }
                         }
                     }
                 }
@@ -374,25 +377,27 @@ var AppContext = exports.AppContext = function (playData) {
             _this.collideBlocks(character);
         }
 
-        for (var k in _this.characters) {
-            var character = _this.characters[k];
-            var mapPoint = _this.getMapPoint(character);
-            var floor = context.floorMap[mapPoint.y][mapPoint.x];
-            if (_this.characterPreviousPoints.hasOwnProperty(character.stateId)) {
-                var prev = _this.characterPreviousPoints[character.stateId];
-                var prevMapPoint = _this.getMapPoint(prev);
-                var dX = Math.abs(mapPoint.x - prevMapPoint.x);
-                var dY = Math.abs(mapPoint.y - prevMapPoint.y);
-                if (!floor) {
-                    character.x = prev.x;
-                    character.y = prev.y
-                } else if ((dX > 1) || (dY > 1)) {
-                    character.x = prev.x;
-                    character.y = prev.y
+        if (_this.floorMap) {
+            for (var k in _this.characters) {
+                var character = _this.characters[k];
+                var mapPoint = _this.getMapPoint(character);
+                var floor = _this.floorMap[mapPoint.y][mapPoint.x];
+                if (_this.characterPreviousPoints.hasOwnProperty(character.stateId)) {
+                    var prev = _this.characterPreviousPoints[character.stateId];
+                    var prevMapPoint = _this.getMapPoint(prev);
+                    var dX = Math.abs(mapPoint.x - prevMapPoint.x);
+                    var dY = Math.abs(mapPoint.y - prevMapPoint.y);
+                    if (!floor) {
+                        character.x = prev.x;
+                        character.y = prev.y
+                    } else if ((dX > 1) || (dY > 1)) {
+                        character.x = prev.x;
+                        character.y = prev.y
+                    }
                 }
-            }
-            if (floor) {
-                _this.characterPreviousPoints[character.stateId] = {'x':character.x, 'y':character.y};
+                if (floor) {
+                    _this.characterPreviousPoints[character.stateId] = {'x':character.x, 'y':character.y};
+                }
             }
         }
     };

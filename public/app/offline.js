@@ -27,10 +27,23 @@ function tick() {
         if (player.HP <= 0) {
             initializing = true;
             setTimeout(function () {
-                if (window.confirm('Retry?')) {
-                    context.playData = null;
-                    $.resetStage();
+                if (context.playData.hasOwnProperty('enemy')) {
+                    var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
+                    var record = {
+                        enemy:context.playData.enemy.name,
+                        floor:context.playData.floorNumber,
+                        date:date
+                    }
+                    var rank = $.localRanking.insert(context.playData.floorNumber, record);
+                    if (rank == null) {
+                        rank = "out";
+                    }
+                    $('#stageCanvas').fadeOut("slow", function () {
+                        location.href = $.appPath + "/../ranking.html#" + rank;
+                    });
                 }
+
+
             }, 1000);
         } else if (floor == "s1") {
             context.playSound("downstair");
@@ -47,6 +60,7 @@ var __sounds = null;
 var enemyData = [
     {
         body:1,
+        name:'Zakoyarou',
         HP:10,
         speed:8,
         items:{
@@ -60,6 +74,7 @@ var enemyData = [
     },
     {
         body:5,
+        name:'Thief',
         HP:10,
         speed:10,
         items:{
@@ -73,6 +88,7 @@ var enemyData = [
     },
     {
         body:4,
+        name:'Bushwacker',
         HP:15,
         speed:7,
         items:{
@@ -87,6 +103,7 @@ var enemyData = [
     },
     {
         body:2,
+        name:'Fighter',
         HP:40,
         speed:6,
         items:{
@@ -101,6 +118,7 @@ var enemyData = [
     },
     {
         body:5,
+        name:'Onmitsu',
         HP:20,
         speed:12,
         items:{
@@ -115,6 +133,7 @@ var enemyData = [
     },
     {
         body:1,
+        name:'Rogue',
         HP:40,
         speed:9,
         items:{
@@ -129,6 +148,7 @@ var enemyData = [
     },
     {
         body:4,
+        name:'Highwayman',
         HP:40,
         speed:10,
         items:{
@@ -143,6 +163,7 @@ var enemyData = [
     },
     {
         body:3,
+        name:'Red Samurai',
         HP:50,
         speed:12,
         items:{
@@ -156,6 +177,7 @@ var enemyData = [
     },
     {
         body:5,
+        name:'Shinobi',
         HP:40,
         speed:14,
         items:{
@@ -170,6 +192,7 @@ var enemyData = [
     },
     {
         body:2,
+        name:'Iron Fighter',
         HP:80,
         speed:7,
         items:{
@@ -269,30 +292,28 @@ var itemData = {
 //initialize function, called when page loads.
 $.initializeFirst = function () {
     function init() {
-        var imageTiles = new Image();
-        imageTiles.src = $.appPath + "/img/tiles" + Math.ceil(Math.random() * 3) + ".png";
-        imageTiles.onload = function () {
-            var spriteSheetTiles = new SpriteSheet({
-                images:[imageTiles.src],
-                frames:{width:__tileSize, height:__tileSize},
-                animations:{
-                    w1:[9, 9],
-                    w1_tl1:[0, 0],
-                    w1_t1:[1, 1],
-                    w1_tr1:[2, 2],
-                    w1_l1:[5, 5],
-                    w1_r1:[7, 7],
-                    w1_bl1:[10, 10],
-                    w1_b1:[11, 11],
-                    w1_br1:[12, 12],
-                    w1_br2:[3, 3],
-                    w1_bl2:[4, 4],
-                    w1_tr2:[8, 8],
-                    w1_tl2:[9, 9],
-                    f1:[16, 16],
-                    s1:[21, 21]
-                }
-            });
+        var spriteSheetTiles = new SpriteSheet({
+            images:[$.appPath + "/img/tiles" + Math.ceil(Math.random() * 3) + ".png"],
+            frames:{width:__tileSize, height:__tileSize},
+            animations:{
+                w1:[9, 9],
+                w1_tl1:[0, 0],
+                w1_t1:[1, 1],
+                w1_tr1:[2, 2],
+                w1_l1:[5, 5],
+                w1_r1:[7, 7],
+                w1_bl1:[10, 10],
+                w1_b1:[11, 11],
+                w1_br1:[12, 12],
+                w1_br2:[3, 3],
+                w1_bl2:[4, 4],
+                w1_tr2:[8, 8],
+                w1_tl2:[9, 9],
+                f1:[16, 16],
+                s1:[21, 21]
+            }
+        });
+        spriteSheetTiles.onComplete = function () {
             var names = spriteSheetTiles.getAnimations();
             for (var k in names) {
                 var name = names[k];
@@ -342,8 +363,6 @@ $.initializeFirst = function () {
             __blockMap = MapGenerator.generate(3, 3);
             initializeGame(null);
         }
-
-        ;
     }
 
     function initializeGame(playData) {
@@ -596,6 +615,10 @@ $.initializeFirst = function () {
                 player.vX = player.vY = 0;
             });
         initializing = false;
+        if (typeof $.mobile != "undefined") {
+            $.mobile.hidePageLoadingMsg();
+            $('#stageCanvas').fadeIn();
+        }
     }
 
     init();

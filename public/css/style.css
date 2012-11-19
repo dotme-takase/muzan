@@ -3,11 +3,11 @@ html {
     overflow: auto;
     position: relative;
     z-index: 1;
-    background: #fff;
+    background: #000;
 }
 
-body {
-    min-height: 100%;
+body.screen {
+    min-hight: 100%;
     margin: 0;
     padding: 0;
     overflow: auto;
@@ -15,7 +15,7 @@ body {
     z-index: 1;
 }
 
-body > #wrapper {
+body.screen > #wrapper {
     height: auto;
     overflow: auto;
     position: fixed;
@@ -29,4 +29,11 @@ canvas {
     background: #000;
     z-index: 1;
     position: fixed;
+}
+
+.top .ui-content {
+    background-image: url("../app/img/title.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    min-height: 320px;
 }

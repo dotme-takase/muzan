@@ -1,14 +1,14 @@
 if (typeof exports == "undefined") {
     exports = {
-        error:function(sMessage) {
+        error:function (sMessage) {
         },
-        inspect:function(o) {
+        inspect:function (o) {
         }
     };
 }
 
-var escapeHTML = exports.escapeHTML = function(value) {
-    var replaceChars = function(ch) {
+var escapeHTML = exports.escapeHTML = function (value) {
+    var replaceChars = function (ch) {
         switch (ch) {
             case "<":
                 return "&lt;";
@@ -28,7 +28,7 @@ var escapeHTML = exports.escapeHTML = function(value) {
 };
 
 
-var unescapeHTML = exports.unescapeHTML = function(value) {
+var unescapeHTML = exports.unescapeHTML = function (value) {
     return value.replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
         .replace(/&amp;/g, '&')
@@ -37,7 +37,7 @@ var unescapeHTML = exports.unescapeHTML = function(value) {
         .replace(/&quot;/g, '\"');
 };
 
-var simpleHTML = exports.simpleHTML = function(value) {
+var simpleHTML = exports.simpleHTML = function (value) {
     var html = "";
     var re = /((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g;
     var htmlTemp = escapeHTML(value)
@@ -63,7 +63,7 @@ var simpleHTML = exports.simpleHTML = function(value) {
     return html;
 };
 
-var wrapLongText = exports.wrapLongText = function(str, step) {
+var wrapLongText = exports.wrapLongText = function (str, step) {
     if (typeof str !== "string") {
         return "";
     }
@@ -87,14 +87,15 @@ var wrapLongText = exports.wrapLongText = function(str, step) {
 };
 
 
-var formatDate = exports.formatDate = function(date, format) {
+var formatDate = exports.formatDate = function (date, format) {
 
     var result = format;
 
     var f;
     var rep;
 
-    var yobi = new Array('日', '月', '火', '水', '木', '金', '土');
+    var yobi = new Array('&#26085;', '&#26376;', '&#28779;', '&#27700;',
+        '&#26408;', '&#37329;', '&#22303;');
 
     f = 'yyyy';
     if (result.indexOf(f) > -1) {
@@ -208,7 +209,78 @@ var parseDate = exports.parseDate = function (date, format) {
 
 }
 
-var comPadZero = exports.comPadZero = function(value, length) {
+var comPadZero = exports.comPadZero = function (value, length) {
     return new Array(length - ('' + value).length + 1).join('0') + value;
 }
 
+//////////////////////////
+$(document).ready(function () {
+    $.dataStore = {
+        put:function (name, value) {
+            if ((typeof AppMobi != "undefined")
+                && (typeof AppMobi.cache != "undefined")) {
+                AppMobi.cache.setCookie(name, JSON.stringify(value), -1);
+            } else {
+                $.cookie(name, JSON.stringify(value));
+            }
+        },
+        get:function (name, defaultValue) {
+            var value = null;
+            if ((typeof AppMobi != "undefined")
+                && (typeof AppMobi.cache != "undefined")) {
+                value = AppMobi.cache.getCookie(name);
+            } else {
+                value = $.cookie(name);
+            }
+            if ((typeof value !== "undefined") && (value != null)) {
+                try {
+                    var pValue = JSON.parse(value);
+                    return pValue;
+                } catch (e) {
+
+                }
+            }
+            return defaultValue;
+        }
+    };
+
+    $.localRanking = {
+        dataKey:"localRanking",
+        maxRank:10,
+        insert:function (point, record) {
+            var data = $.localRanking.load();
+            if (data == null) {
+                data = new Array();
+            }
+            record.point = point;
+            var rankedIn = false;
+            for (var i = 0; i < $.localRanking.maxRank; i++) {
+                if (i + 1 > data.length) {
+                    rankedIn = true;
+                    data[i] = record;
+                    break;
+                } else if (data.hasOwnProperty(i)) {
+                    var oldRecord = data[i];
+                    if (point >= oldRecord.point) {
+                        rankedIn = true;
+                        for (var j = $.localRanking.maxRank - 1; j > i; j--) {
+                            data[j] = data[j - 1];
+                        }
+                        data[i] = record;
+                        break;
+                    }
+                }
+            }
+            if (rankedIn) {
+                $.dataStore.put($.localRanking.dataKey, data);
+                return i;
+            }
+            return null;
+        },
+        load:function () {
+            return $.dataStore.get($.localRanking.dataKey, null);
+        }
+    };
+
+    $.locale = navigator.userLanguage || navigator.browserLanguage || navigator.language;
+});
