@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="width=300 user-scalable=no" name="viewport"/>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.mobile-1.2.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/ICanHaz.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.tap-1.0.3.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.autoresize.1.14.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.ba-hashchange.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <title>muzan</title>
+    <script type="text/javascript">
+        var deviceReady = false;
+        document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+        $(function () {
+            $(document).tap(function () {
+                location.href = "index.html";
+            });
+            $.appPath = "app";
+            $.mobile.showPageLoadingMsg();
+            $.loadRanking = function () {
+                var ranking = $.localRanking.load();
+                if (ranking != null) {
+                    for (var i = 0; i < $.localRanking.maxRank; i++) {
+                        if (i < ranking.length) {
+                            var record = ranking[i];
+                            if (record != null) {
+                                record.rank = (i + 1) + '. ';
+                                var rankContent = ich.rankByEnemy(record);
+                                if (location.hash == '#' + i) {
+                                    rankContent.addClass('blink');
+                                }
+                                $('#ranking').append(rankContent);
+                            }
+                        }
+                    }
+                    if (location.hash == "#out") {
+                        $('#title').text('Out of rank ...');
+                    } else {
+                        $('.blink').fadeOut(500, function () {
+                            $(this).fadeIn(500)
+                        });
+                        setInterval(function () {
+                            $('.blink').fadeOut(500, function () {
+                                $(this).fadeIn(500)
+                            });
+                        }, 1000);
+                    }
+                } else {
+                    $('#ranking').html('<li class="ui-li ui-li-static ui-btn-up-c">No record</li>');
+                }
+                $('#ranking').listview('refresh');
+                $.mobile.hidePageLoadingMsg();
+            };
+
+            if (typeof AppMobi != "undefined") {
+                var initialize = function () {
+                    if (deviceReady) {
+                        AppMobi.device.hideSplashScreen();
+                        $.loadRanking();
+                    } else {
+                        setTimeout(initialize, 200);
+                    }
+                };
+                $.initializer = setTimeout(initialize, 1);
+            } else {
+                $.loadRanking();
+            }
+        });
+        function onDeviceReady() {
+            deviceReady = true;
+        }
+    </script>
+</head>
+<body>
+<div data-theme="a" data-role="page">
+    <!-- /header -->
+    <div data-role="content">
+        <ul data-theme="a" data-role="listview" id="ranking" data-position="static" class="edit-data c2">
+
+        </ul>
+        <script id="rankByEnemy" type="text/html">
+            <li data-theme="a" class="ui-li ui-li-static ui-btn-up-c" style="opacity:0.9 ;padding-right: 100px;">
+                <p style="white-space: normal;">
+                    <strong>{{rank}}</strong>Defeated by <strong>{{enemy}}</strong> at <strong>B{{floor}}F</strong>
+                </p><span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{date}}</span>
+            </li>
+        </script>
+    </div>
+</div>
+<!-- /page -->
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="width=420 user-scalable=no" name="viewport"/>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.mobile-1.2.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/ICanHaz.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="app/easel.js"></script>
+    <script type="text/javascript" src="app/buzz.js"></script>
+    <script type="text/javascript" src="app/AppContext.js"></script>
+    <script type="text/javascript" src="app/QuadTree.js"></script>
+    <script type="text/javascript" src="app/BaseCharacter.js"></script>
+    <script type="text/javascript" src="app/BitmapItem.js"></script>
+    <script type="text/javascript" src="app/MapGenerator.js"></script>
+    <script type="text/javascript" src="app/offline.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
+    <title></title>
+</head>
+<body class="screen">
+<div id="canvasWrapper" class="center" data-role="page" data-theme="a">
+    <canvas id="stageCanvas" style="background-color:#000000;"></canvas>
+</div>
+<script type="text/javascript">
+    var deviceReady = false;
+    document.addEventListener("appMobi.device.ready", onDeviceReady, false);
+    $(function () {
+        $.appPath = "app";
+        if (typeof $.mobile != "undefined") {
+            $('#stageCanvas').hide();
+            $.mobile.showPageLoadingMsg();
+        }
+        if (typeof AppMobi != "undefined") {
+            var initialize = function () {
+                if (deviceReady) {
+                    window.onorientationchange();
+                    AppMobi.device.hideSplashScreen();
+                    $.initializeFirst();
+                } else {
+                    setTimeout(initialize, 200);
+                }
+            };
+            $.initializer = setTimeout(initialize, 1);
+        } else {
+            $.initializeFirst();
+        }
+    });
+    function onDeviceReady() {
+        deviceReady = true;
+    }
+</script>
+</body>
+</html>
