@@ -283,4 +283,22 @@ $(document).ready(function () {
     };
 
     $.locale = navigator.userLanguage || navigator.browserLanguage || navigator.language;
+
+    $.i18nLoaded = null;
+    $.i18nLoadedCalled = false;
+    $.i18nLoadedCallback = function () {
+        if (!$.i18nLoadedCalled && (typeof $.i18nLoaded == "function")) {
+            $.i18nLoaded();
+            $.i18nLoadedCalled = true;
+        } else {
+            setTimeout($.i18nLoadedCallback, 200);
+        }
+    };
+    $.i18n.properties({
+        name:'Messages',
+        path:'js/plugins/bundle/',
+        mode:'both',
+        language:'ja',
+        callback:$.i18nLoadedCallback
+    });
 });

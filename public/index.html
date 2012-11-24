@@ -28,9 +28,9 @@
     <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/plugins/ICanHaz.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.i18n.properties-min-1.0.9.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>muzan</title>
@@ -39,6 +39,19 @@
         document.addEventListener("appMobi.device.ready", onDeviceReady, false);
         $(function () {
             $.appPath = "app";
+            $.initialize = function () {
+                $.i18nLoaded = function () {
+                    $('#menuStartGame span').text($.i18n.prop('menuStartGame'));
+                    $('#menuRanking span').text($.i18n.prop('menuRanking'));
+                    $('#menu').fadeIn();
+                };
+            };
+
+            if(deviceReady){
+                $.initialize();
+            } else {
+                setTimeout($.initialize, 200);
+            }
         });
         function onDeviceReady() {
             deviceReady = true;
@@ -51,9 +64,9 @@
 <body>
 <div data-theme="a" data-role="page" class="top">
     <div data-role="content">
-        <div style="margin-top: 300px;">
-            <a data-role="button" data-ajax="false" href="screen.html">Start Game</a>
-            <a data-role="button" data-ajax="false" href="ranking.html">Ranking</a>
+        <div id="menu" style="display:none; margin-top: 300px;">
+            <a id="menuStartGame" data-role="button" data-ajax="false" href="screen.html">&nbsp;</a>
+            <a id="menuRanking" data-role="button" data-ajax="false" href="ranking.html">&nbsp;</a>
         </div>
     </div>
 </div>

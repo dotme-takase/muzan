@@ -31,9 +31,9 @@
     <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.cookie.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.autoresize.1.14.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.ba-hashchange.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.i18n.properties-min-1.0.9.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/xhr.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>muzan</title>
@@ -47,38 +47,41 @@
             $.appPath = "app";
             $.mobile.showPageLoadingMsg();
             $.loadRanking = function () {
-                var ranking = $.localRanking.load();
-                if (ranking != null) {
-                    for (var i = 0; i < $.localRanking.maxRank; i++) {
-                        if (i < ranking.length) {
-                            var record = ranking[i];
-                            if (record != null) {
-                                record.rank = (i + 1) + '. ';
-                                var rankContent = ich.rankByEnemy(record);
-                                if (location.hash == '#' + i) {
-                                    rankContent.addClass('blink');
+                $.i18nLoaded = function () {
+                    var ranking = $.localRanking.load();
+                    if (ranking != null) {
+                        for (var i = 0; i < $.localRanking.maxRank; i++) {
+                            if (i < ranking.length) {
+                                var record = ranking[i];
+                                if (record != null) {
+                                    record.rank = (i + 1);
+                                    record.recordHtml = $.i18n.prop('htmlRecordDefeated',
+                                            record.floor, $.i18n.prop('npc' + record.enemy), record.rank);
+                                    var rankContent = ich.rankByEnemy(record);
+                                    if (location.hash == '#' + i) {
+                                        rankContent.addClass('blink');
+                                    }
+                                    $('#ranking').append(rankContent);
                                 }
-                                $('#ranking').append(rankContent);
                             }
                         }
-                    }
-                    if (location.hash == "#out") {
-                        $('#title').text('Out of rank ...');
-                    } else {
-                        $('.blink').fadeOut(500, function () {
-                            $(this).fadeIn(500)
-                        });
-                        setInterval(function () {
+                        if (location.hash == "#out") {
+                        } else {
                             $('.blink').fadeOut(500, function () {
                                 $(this).fadeIn(500)
                             });
-                        }, 1000);
+                            setInterval(function () {
+                                $('.blink').fadeOut(500, function () {
+                                    $(this).fadeIn(500)
+                                });
+                            }, 1000);
+                        }
+                    } else {
+                        $('#ranking').html('<li class="ui-li ui-li-static ui-btn-up-c">No record</li>');
                     }
-                } else {
-                    $('#ranking').html('<li class="ui-li ui-li-static ui-btn-up-c">No record</li>');
+                    $('#ranking').listview('refresh');
+                    $.mobile.hidePageLoadingMsg();
                 }
-                $('#ranking').listview('refresh');
-                $.mobile.hidePageLoadingMsg();
             };
 
             if (typeof AppMobi != "undefined") {
@@ -109,9 +112,8 @@
         </ul>
         <script id="rankByEnemy" type="text/html">
             <li data-theme="a" class="ui-li ui-li-static ui-btn-up-c" style="opacity:0.9 ;padding-right: 100px;">
-                <p style="white-space: normal;">
-                    <strong>{{rank}}</strong>Defeated by <strong>{{enemy}}</strong> at <strong>B{{floor}}F</strong>
-                </p><span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{date}}</span>
+                <p style="white-space: normal;">{{{recordHtml}}}</p>
+                <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{date}}</span>
             </li>
         </script>
     </div>

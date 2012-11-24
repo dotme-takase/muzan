@@ -60,7 +60,7 @@ var __sounds = null;
 var enemyData = [
     {
         body:1,
-        name:'Zakoyarou',
+        name:'Militia',
         HP:10,
         speed:8,
         items:{
@@ -88,14 +88,13 @@ var enemyData = [
     },
     {
         body:4,
-        name:'Bushwacker',
+        name:'Soldier',
         HP:15,
         speed:7,
         items:{
-            rightArm:"handAxe",
+            rightArm:"shortSword",
             leftArm:"bronzeShield",
             dropItems:{
-                handAxe:2,
                 bronzeShield:3,
                 aidBox:5
             }
@@ -103,29 +102,28 @@ var enemyData = [
     },
     {
         body:2,
-        name:'Fighter',
+        name:'IronNight',
         HP:40,
         speed:6,
         items:{
             rightArm:"longSword",
-            leftArm:"woodenShield",
+            leftArm:null,
             dropItems:{
                 longSword:3,
-                woodenShield:1,
                 aidBox:5
             }
         }
     },
     {
         body:5,
-        name:'Onmitsu',
+        name:'Thief',
         HP:20,
         speed:12,
         items:{
             rightArm:"fasterShortSword",
             leftArm:null,
             dropItems:{
-                katana:1,
+                katana:2,
                 fasterShortSword:6,
                 aidBox:8
             }
@@ -133,14 +131,14 @@ var enemyData = [
     },
     {
         body:1,
-        name:'Rogue',
+        name:'Militia',
         HP:40,
-        speed:9,
+        speed:7,
         items:{
-            rightArm:"longSword",
+            rightArm:"handAxe",
             leftArm:"bronzeShield",
             dropItems:{
-                longSword:5,
+                handAxe:5,
                 bronzeShield:3,
                 aidBox:5
             }
@@ -148,7 +146,7 @@ var enemyData = [
     },
     {
         body:4,
-        name:'Highwayman',
+        name:'Soldier',
         HP:40,
         speed:10,
         items:{
@@ -163,7 +161,7 @@ var enemyData = [
     },
     {
         body:3,
-        name:'Red Samurai',
+        name:'RedSamurai',
         HP:50,
         speed:12,
         items:{
@@ -177,7 +175,7 @@ var enemyData = [
     },
     {
         body:5,
-        name:'Shinobi',
+        name:'Thief',
         HP:40,
         speed:14,
         items:{
@@ -192,7 +190,7 @@ var enemyData = [
     },
     {
         body:2,
-        name:'Iron Fighter',
+        name:'IronNight',
         HP:80,
         speed:7,
         items:{
