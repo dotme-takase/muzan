@@ -416,6 +416,7 @@ var AppContext = exports.AppContext = function (playData) {
         }
     };
     _this.initializeStage = function (blockMap, tileBmps, sounds) {
+        var tileNumber =  (Math.floor((_this.playData.floorNumber - 1) / 3) % 3) + 1;
         _this.loadBlockMap(blockMap);
         _this.view = new Container();
         var lastChild = null;
@@ -430,9 +431,9 @@ var AppContext = exports.AppContext = function (playData) {
                 if ((block == null)
                     || (block.substring(0, 1) != "w")) {
                     if (j == goal.x && i == goal.y) {
-                        floorName = "s1";
+                        floorName = "s1_" + tileNumber;
                     } else {
-                        floorName = "f1";
+                        floorName = "f1_" + tileNumber;
                     }
                     var tileBmp1 = tileBmps[floorName].clone();
                     tileBmp1.x = j * _this.tileSize;
@@ -449,7 +450,8 @@ var AppContext = exports.AppContext = function (playData) {
             for (var j = 0; j < _this.blockMap[0].length; j++) {
                 var block = _this.blockMap[i][j];
                 if (block && (block != "w1")) {
-                    var tileBmp2 = tileBmps[block].clone();
+                    var blockName = block + "_" + tileNumber;
+                    var tileBmp2 = tileBmps[blockName].clone();
                     tileBmp2.x = j * _this.tileSize;
                     tileBmp2.y = i * _this.tileSize;
                     tileBmp2.width = _this.tileSize;
@@ -477,10 +479,10 @@ var AppContext = exports.AppContext = function (playData) {
                         var floor = _this.floorMap[i][j];
                         var _x = j * tipSize;
                         var _y = i * tipSize;
-                        if (floor == "f1") {
+                        if ((floor != null) && (floor.indexOf("f1") === 0)) {
                             g.beginFill(Graphics.getRGB(128, 160, 255, 0.7));
                             g.drawRect(_x, _y, tipSize, tipSize);
-                        } else if (floor == "s1") {
+                        } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
                             g.beginFill(Graphics.getRGB(255, 255, 128, 0.7));
                             g.drawRect(_x, _y, tipSize, tipSize);
                         }
