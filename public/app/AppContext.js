@@ -431,9 +431,9 @@ var AppContext = exports.AppContext = function (playData) {
                 if ((block == null)
                     || (block.substring(0, 1) != "w")) {
                     if (j == goal.x && i == goal.y) {
-                        floorName = "s1_" + tileNumber;
+                        floorName = "s1";
                     } else {
-                        floorName = "f1_" + tileNumber;
+                        floorName = "f1";
                     }
                     var tileBmp1 = tileBmps[floorName].clone();
                     tileBmp1.x = j * _this.tileSize;
@@ -450,7 +450,7 @@ var AppContext = exports.AppContext = function (playData) {
             for (var j = 0; j < _this.blockMap[0].length; j++) {
                 var block = _this.blockMap[i][j];
                 if (block && (block != "w1")) {
-                    var blockName = block + "_" + tileNumber;
+                    var blockName = block;
                     var tileBmp2 = tileBmps[blockName].clone();
                     tileBmp2.x = j * _this.tileSize;
                     tileBmp2.y = i * _this.tileSize;

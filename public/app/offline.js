@@ -288,109 +288,94 @@ var itemData = {
 
 
 //initialize function, called when page loads.
+$.loadTiles = function (filename, callback) {
+    $.mobile.showPageLoadingMsg();
+    $('#stageCanvas').hide();
+    delete $.spriteSheetTiles;
+    for (var name in __tileBmps) {
+        delete __tileBmps[name];
+    }
+    delete __tileBmps;
+
+    $.spriteSheetTiles = new SpriteSheet({
+        images:[$.appPath + "/img/" + filename + ".png"],
+        frames:{width:__tileSize, height:__tileSize},
+        animations:{
+            w1:[9, 9],
+            w1_tl1:[0, 0],
+            w1_t1:[1, 1],
+            w1_tr1:[2, 2],
+            w1_l1:[5, 5],
+            w1_r1:[7, 7],
+            w1_bl1:[10, 10],
+            w1_b1:[11, 11],
+            w1_br1:[12, 12],
+            w1_br2:[3, 3],
+            w1_bl2:[4, 4],
+            w1_tr2:[8, 8],
+            w1_tl2:[9, 9],
+            f1:[16, 16],
+            s1:[21, 21]
+        }
+    });
+    $.spriteSheetTiles.onComplete = function () {
+        var names = $.spriteSheetTiles.getAnimations();
+        for (var k in names) {
+            var name = names[k];
+            var bitmap = new Bitmap(SpriteSheetUtils.extractFrame($.spriteSheetTiles, name));
+            __tileBmps[name] = bitmap;
+        }
+        $.mobile.hidePageLoadingMsg();
+        $('#stageCanvas').fadeIn();
+        callback.call(this);
+    }
+};
+
 $.initializeFirst = function () {
     function init() {
-        var spriteSheetTiles = new SpriteSheet({
-            images:[$.appPath + "/img/tiles1.png", $.appPath + "/img/tiles2.png", $.appPath + "/img/tiles3.png"],
-            frames:{width:__tileSize, height:__tileSize},
-            animations:{
-                w1_1:[9, 9],
-                w1_tl1_1:[0, 0],
-                w1_t1_1:[1, 1],
-                w1_tr1_1:[2, 2],
-                w1_l1_1:[5, 5],
-                w1_r1_1:[7, 7],
-                w1_bl1_1:[10, 10],
-                w1_b1_1:[11, 11],
-                w1_br1_1:[12, 12],
-                w1_br2_1:[3, 3],
-                w1_bl2_1:[4, 4],
-                w1_tr2_1:[8, 8],
-                w1_tl2_1:[9, 9],
-                f1_1:[16, 16],
-                s1_1:[21, 21],
-                w1_2:[9 + 25, 9 + 25],
-                w1_tl1_2:[0 + 25, 0 + 25],
-                w1_t1_2:[1 + 25, 1 + 25],
-                w1_tr1_2:[2 + 25, 2 + 25],
-                w1_l1_2:[5 + 25, 5 + 25],
-                w1_r1_2:[7 + 25, 7 + 25],
-                w1_bl1_2:[10 + 25, 10 + 25],
-                w1_b1_2:[11 + 25, 11 + 25],
-                w1_br1_2:[12 + 25, 12 + 25],
-                w1_br2_2:[3 + 25, 3 + 25],
-                w1_bl2_2:[4 + 25, 4 + 25],
-                w1_tr2_2:[8 + 25, 8 + 25],
-                w1_tl2_2:[9 + 25, 9 + 25],
-                f1_2:[16 + 25, 16 + 25],
-                s1_2:[21 + 25, 21 + 25],
-                w1_3:[9 + 25, 9 + 25],
-                w1_tl1_3:[0 + 50, 0 + 50],
-                w1_t1_3:[1 + 50, 1 + 50],
-                w1_tr1_3:[2 + 50, 2 + 50],
-                w1_l1_3:[5 + 50, 5 + 50],
-                w1_r1_3:[7 + 50, 7 + 50],
-                w1_bl1_3:[10 + 50, 10 + 50],
-                w1_b1_3:[11 + 50, 11 + 50],
-                w1_br1_3:[12 + 50, 12 + 50],
-                w1_br2_3:[3 + 50, 3 + 50],
-                w1_bl2_3:[4 + 50, 4 + 50],
-                w1_tr2_3:[8 + 50, 8 + 50],
-                w1_tl2_3:[9 + 50, 9 + 50],
-                f1_3:[16 + 50, 16 + 50],
-                s1_3:[21 + 50, 21 + 50]
+        //Sound
+        function preloadNotSupported() {
+            var agent = navigator.userAgent;
+            if (agent.indexOf('Linux; U; Android ') != -1
+                || agent.indexOf('iPhone; U') != -1
+                || agent.indexOf('iPad; U') != -1) {
+                return true;
             }
-        });
-        spriteSheetTiles.onComplete = function () {
-            var names = spriteSheetTiles.getAnimations();
-            for (var k in names) {
-                var name = names[k];
-                var bitmap = new Bitmap(SpriteSheetUtils.extractFrame(spriteSheetTiles, name));
-                __tileBmps[name] = bitmap;
-            }
+            return false;
+        }
 
-            //Sound
-            function preloadNotSupported() {
-                var agent = navigator.userAgent;
-                if (agent.indexOf('Linux; U; Android ') != -1
-                    || agent.indexOf('iPhone; U') != -1
-                    || agent.indexOf('iPad; U') != -1) {
-                    return true;
-                }
-                return false;
-            }
-
-            function loadSound() {
-                if (typeof AppMobi != "undefined") {
-                } else if (buzz.isSupported()) {
-                    var path = $.appPath + "/se";
-                    var sounds = [
-                        "attack",
-                        "defeat",
-                        "downstair",
-                        "heal",
-                        "hit",
-                        "parried",
-                        "pickup"
-                    ];
-                    __sounds = new Array();
-                    buzz.defaults.preload = true;
-                    if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
-                        for (var k in sounds) {
-                            var soundName = sounds[k];
-                            __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
-                        }
-                    } else {
-                        __sounds = null;
+        function loadSound() {
+            if (typeof AppMobi != "undefined") {
+            } else if (buzz.isSupported()) {
+                var path = $.appPath + "/se";
+                var sounds = [
+                    "attack",
+                    "defeat",
+                    "downstair",
+                    "heal",
+                    "hit",
+                    "parried",
+                    "pickup"
+                ];
+                __sounds = new Array();
+                buzz.defaults.preload = true;
+                if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
+                    for (var k in sounds) {
+                        var soundName = sounds[k];
+                        __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
                     }
+                } else {
+                    __sounds = null;
                 }
             }
+        }
 
-            loadSound();
-            //Sound
+        loadSound();
+        //Sound
+        $.loadTiles("tiles1", function () {
             __blockMap = MapGenerator.generate(3, 3);
             initializeGame(null);
-        }
+        });
     }
 
     function initializeGame(playData) {
@@ -642,11 +627,11 @@ $.initializeFirst = function () {
                 }
                 player.vX = player.vY = 0;
             });
-        initializing = false;
         if (typeof $.mobile != "undefined") {
             $.mobile.hidePageLoadingMsg();
             $('#stageCanvas').fadeIn();
         }
+        initializing = false;
     }
 
     init();
@@ -658,19 +643,20 @@ $.initializeFirst = function () {
         }
         initializing = true;
 
-        if (floor < 5) {
-            __blockMap = MapGenerator.generate(3, 3);
-        } else if (floor < 10) {
-            __blockMap = MapGenerator.generate(4, 3);
-        } else if (floor < 15) {
-            __blockMap = MapGenerator.generate(4, 4);
-        } else if (floor < 20) {
-            __blockMap = MapGenerator.generate(5, 4);
-        } else {
-            __blockMap = MapGenerator.generate(5, 5);
-        }
-
-        initializeGame(context.playData);
+        $.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
+            if (floor < 5) {
+                __blockMap = MapGenerator.generate(3, 3);
+            } else if (floor < 10) {
+                __blockMap = MapGenerator.generate(4, 3);
+            } else if (floor < 15) {
+                __blockMap = MapGenerator.generate(4, 4);
+            } else if (floor < 20) {
+                __blockMap = MapGenerator.generate(5, 4);
+            } else {
+                __blockMap = MapGenerator.generate(5, 5);
+            }
+            initializeGame(context.playData);
+        });
     }
 };
 
