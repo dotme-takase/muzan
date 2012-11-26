@@ -26,6 +26,7 @@ function tick() {
     if (!initializing) {
         if (player.HP <= 0) {
             initializing = true;
+            $.dataStore.put('playData', null);
             setTimeout(function () {
                 if (context.playData.hasOwnProperty('enemy')) {
                     var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
@@ -42,16 +43,21 @@ function tick() {
                         location.href = $.appPath + "/../ranking.html#" + rank;
                     });
                 }
-
-
             }, 1000);
         } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
-            context.playSound("downstair");
             initializing = true;
+            context.playData.enemy = null;
             context.playData.floorNumber++;
-            $.resetStage();
+            context.playData.id = uuid();
+            $.dataStore.put('playData', context.playData);
+            context.playSound("downstair");
+            $('#stageCanvas').fadeOut('normal', function () {
+                location.href = "screen.html?pdid=" + context.playData.id;
+            });
+            $.showLoading();
+        } else {
+            context.drawMap(point, stage);
         }
-        context.drawMap(point, stage);
     }
 }
 var __tileBmps = {};
@@ -289,7 +295,7 @@ var itemData = {
 
 //initialize function, called when page loads.
 $.loadTiles = function (filename, callback) {
-    $.mobile.showPageLoadingMsg();
+    $.showLoading();
     $('#stageCanvas').hide();
     delete $.spriteSheetTiles;
     for (var name in __tileBmps) {
@@ -325,59 +331,13 @@ $.loadTiles = function (filename, callback) {
             var bitmap = new Bitmap(SpriteSheetUtils.extractFrame($.spriteSheetTiles, name));
             __tileBmps[name] = bitmap;
         }
-        $.mobile.hidePageLoadingMsg();
+        $.hideLoading();
         $('#stageCanvas').fadeIn();
         callback.call(this);
     }
 };
 
 $.initializeFirst = function () {
-    function init() {
-        //Sound
-        function preloadNotSupported() {
-            var agent = navigator.userAgent;
-            if (agent.indexOf('Linux; U; Android ') != -1
-                || agent.indexOf('iPhone; U') != -1
-                || agent.indexOf('iPad; U') != -1) {
-                return true;
-            }
-            return false;
-        }
-
-        function loadSound() {
-            if (typeof AppMobi != "undefined") {
-            } else if (buzz.isSupported()) {
-                var path = $.appPath + "/se";
-                var sounds = [
-                    "attack",
-                    "defeat",
-                    "downstair",
-                    "heal",
-                    "hit",
-                    "parried",
-                    "pickup"
-                ];
-                __sounds = new Array();
-                buzz.defaults.preload = true;
-                if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
-                    for (var k in sounds) {
-                        var soundName = sounds[k];
-                        __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
-                    }
-                } else {
-                    __sounds = null;
-                }
-            }
-        }
-
-        loadSound();
-        //Sound
-        $.loadTiles("tiles1", function () {
-            __blockMap = MapGenerator.generate(3, 3);
-            initializeGame(null);
-        });
-    }
-
     function initializeGame(playData) {
         canvas = document.getElementById("stageCanvas");
         stage = new Stage(canvas);
@@ -628,20 +588,65 @@ $.initializeFirst = function () {
                 player.vX = player.vY = 0;
             });
         if (typeof $.mobile != "undefined") {
-            $.mobile.hidePageLoadingMsg();
+            $.hideLoading();
             $('#stageCanvas').fadeIn();
         }
         initializing = false;
     }
 
-    init();
-
-    $.resetStage = function () {
-        var floor = 0;
-        if (context.playData) {
-            floor = context.playData.floorNumber;
+    function init() {
+        //Sound
+        function preloadNotSupported() {
+            var agent = navigator.userAgent;
+            if (agent.indexOf('Linux; U; Android ') != -1
+                || agent.indexOf('iPhone; U') != -1
+                || agent.indexOf('iPad; U') != -1) {
+                return true;
+            }
+            return false;
         }
-        initializing = true;
+
+        function loadSound() {
+            if (typeof AppMobi != "undefined") {
+            } else if (buzz.isSupported()) {
+                var path = $.appPath + "/se";
+                var sounds = [
+                    "attack",
+                    "defeat",
+                    "downstair",
+                    "heal",
+                    "hit",
+                    "parried",
+                    "pickup"
+                ];
+                __sounds = new Array();
+                buzz.defaults.preload = true;
+                if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
+                    for (var k in sounds) {
+                        var soundName = sounds[k];
+                        __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
+                    }
+                } else {
+                    __sounds = null;
+                }
+            }
+        }
+
+        loadSound();
+        //Sound
+
+        //blockMap
+        var floor = 0;
+        var playData = $.dataStore.get('playData', null);
+        var urlParams = getUrlParams();
+        if ((playData != null)
+            && (urlParams != null)
+            && (playData.id == urlParams['pdid'])) {
+            floor = playData.floorNumber;
+        } else {
+            playData = null;
+        }
+        $.dataStore.put('playData', null);
 
         $.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
             if (floor < 5) {
@@ -655,8 +660,23 @@ $.initializeFirst = function () {
             } else {
                 __blockMap = MapGenerator.generate(5, 5);
             }
-            initializeGame(context.playData);
+            initializeGame(playData);
         });
+        //blockMap
+    }
+
+    init();
+};
+
+$.hideLoading = function () {
+    if ($.hasOwnProperty('mobile')) {
+        $.mobile.hidePageLoadingMsg();
+    }
+};
+
+$.showLoading = function () {
+    if ($.hasOwnProperty('mobile')) {
+        $.mobile.showPageLoadingMsg();
     }
 };
 

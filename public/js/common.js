@@ -7,6 +7,27 @@ if (typeof exports == "undefined") {
     };
 }
 
+
+var uuid = exports.uuid = function () {
+    function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+};
+
+var getUrlParams = exports.getUrlParams = function () {
+    var url = location.href;
+    var result = {};
+    url = url.replace(/.*\?(.*?)/, "$1");
+    var keyValueList = url.split("&");
+    for (var i = 0; i < keyValueList.length; i++) {
+        var keyValue = keyValueList[i].split("=");
+        result[keyValue[0]] = keyValue[1];
+    }
+    return result;
+};
+
 var escapeHTML = exports.escapeHTML = function (value) {
     var replaceChars = function (ch) {
         switch (ch) {

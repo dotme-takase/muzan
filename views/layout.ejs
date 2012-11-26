@@ -27,12 +27,13 @@
     <script type="text/javascript" src="/js/plugins/bootstrap.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.autoresize.1.14.js"></script>
     <script type="text/javascript" src="/js/plugins/jquery.ba-hashchange.min.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="/js/excanvas.compiled.js"></script><![endif]-->
+    <script type="text/javascript" src="/js/plugins/jquery.cookie.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/plugins/jquery.i18n.properties-min-1.0.9.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <!--[if IE]><script type="text/javascript" src="/js/excanvas.compiled.js"></script><![endif]-->
     <script type="text/javascript" src="/app/easel.js"></script>
-
-   	<script type="text/javascript" src="/app/buzz.js"></script>
-
+    <script type="text/javascript" src="/app/buzz.js"></script>
     <script type="text/javascript" src="/app/AppContext.js"></script>
     <script type="text/javascript" src="/app/QuadTree.js"></script>
     <script type="text/javascript" src="/app/BaseCharacter.js"></script>
@@ -51,7 +52,7 @@
 </div>
 <!-- /container -->
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $.appPath = "/app";
         $.initializeFirst();
     });

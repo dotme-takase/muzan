@@ -85,6 +85,7 @@ var AppContext = exports.AppContext = function (playData) {
         _this.playData = playData;
     } else {
         _this.playData = {
+            id: null,
             floorNumber:1,
             rightArm:"shortSword",
             leftArm:"woodenShield"
