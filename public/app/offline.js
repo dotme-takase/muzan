@@ -93,7 +93,7 @@ var enemyData = [
         }
     },
     {
-        body:4,
+        body:"1_128",
         name:'Soldier',
         HP:15,
         speed:7,
@@ -136,8 +136,8 @@ var enemyData = [
         }
     },
     {
-        body:1,
-        name:'Militia',
+        body:6,
+        name:'Barbarian',
         HP:40,
         speed:7,
         items:{
@@ -432,17 +432,7 @@ $.initializeFirst = function () {
         var spriteSheetPlayer = new SpriteSheet({
             images:[$.appPath + "/img/player.png"],
             frames:{width:64, height:64, regX:32, regY:32},
-            animations:{
-                walk:[0, 7],
-                attack:[10, 15],
-                attack_1:[11, 15],
-                attack_2:[12, 15],
-                attack__1:[9, 15],
-                attack__2:[8, 15],
-                defence:[8, 10],
-                damage:[0, 1],
-                parried:[0, 7]
-            }
+            animations:BaseCharacter.BODY_ANIMATION
         });
 
         var playerAnim = new BitmapAnimation(spriteSheetPlayer);
@@ -450,7 +440,7 @@ $.initializeFirst = function () {
         playerAnim.gotoAndPlay("walk");     //animate
         playerAnim.currentFrame = 0;
 
-        player = new BaseCharacter(context, playerAnim, _basicHandMap,
+        player = new BaseCharacter(context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
             context.itemMaster[context.playData.rightArm],
             context.itemMaster[context.playData.leftArm]);
         player.isPlayer = true;
@@ -472,20 +462,15 @@ $.initializeFirst = function () {
 
         for (var i = 0; i < enemyData.length; i++) {
             var _enemyData = enemyData[i];
+            var _enemySize = 64;
+            var _bodyName = _enemyData.body.toString();
+            if (_bodyName.match(/.*_/)) {
+                _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
+            }
             var spriteSheetEnemy = new SpriteSheet({
-                images:[$.appPath + "/img/enemy" + _enemyData.body + ".png"],
-                frames:{width:64, height:64, regX:32, regY:32},
-                animations:{
-                    walk:[0, 7],
-                    attack:[10, 15],
-                    attack_1:[11, 15],
-                    attack_2:[12, 15],
-                    attack__1:[9, 15],
-                    attack__2:[8, 15],
-                    defence:[8, 10],
-                    damage:[0, 1],
-                    parried:[0, 7]
-                }
+                images:[$.appPath + "/img/enemy" + _bodyName + ".png"],
+                frames:{width:_enemySize, height:_enemySize, regX:_enemySize / 2, regY:_enemySize / 2},
+                animations:BaseCharacter.BODY_ANIMATION
             });
             var enemyAnim = new BitmapAnimation(spriteSheetEnemy);
             enemyAnim.name = "enemy";
@@ -507,7 +492,7 @@ $.initializeFirst = function () {
             var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
             var _enemy = enemyData[index];
             var _enemyAnim = _enemy.anim.clone();
-            var enemy = new BaseCharacter(context, _enemyAnim, _basicHandMap,
+            var enemy = new BaseCharacter(context, _enemyAnim, BaseCharacter.HANDMAP_STANDARD,
                 context.itemMaster[_enemy.items['rightArm']],
                 context.itemMaster[_enemy.items['leftArm']]);
             for (var k in _enemy) {

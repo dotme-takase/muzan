@@ -1,5 +1,12 @@
 // BaseCharacter
-var _basicHandMap = [
+var BaseCharacter = function (context, bodyAnim, handMap, rightArm, leftArm) {
+    this.initialize(context, bodyAnim, handMap, rightArm, leftArm);
+};
+var p = BaseCharacter.prototype = new Container();
+
+p.Container_initialize = p.initialize;
+
+BaseCharacter.HANDMAP_STANDARD = [
     [
         [0, 26, 90, false],
         [-13, 26, 105, false],
@@ -38,13 +45,17 @@ var _basicHandMap = [
     ]
 ];
 
-var BaseCharacter = function (context, bodyAnim, handMap, rightArm, leftArm) {
-    this.initialize(context, bodyAnim, handMap, rightArm, leftArm);
+BaseCharacter.BODY_ANIMATION = {
+    walk:[0, 7],
+    attack:[10, 15],
+    attack_1:[11, 15],
+    attack_2:[12, 15],
+    attack__1:[9, 15],
+    attack__2:[8, 15],
+    defence:[8, 10],
+    damage:[0, 1],
+    parried:[0, 7]
 };
-var p = BaseCharacter.prototype = new Container();
-
-
-p.Container_initialize = p.initialize;
 
 p.stateToJson = function () {
     var json = {};
@@ -102,6 +113,7 @@ p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.context = context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
+    this.legAnim = bodyAnim.clone();
     this.bodyAnim.reverseFrame = false;
     this.handMap = handMap;
     this.speed = 10;
@@ -121,6 +133,9 @@ p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.dropList = [];
     this.isPlayer = false;
 
+
+    this.legAnim.gotoAndStop(this.bodyAnim.currentFrame + 16);
+    this.addChild(this.legAnim);
     if (rightArm) {
         this.equipRight(rightArm);
     }
@@ -161,7 +176,7 @@ p.equipRight = function (item) {
         _this.rightArm.gotoAndStop(_this.rightArm.currentAnimation.chop());
     }
 
-    _this.addChildAt(_this.rightArm, 0);
+    _this.addChildAt(_this.rightArm, 1);
 
     var handMapPos = _this.handMap[0][_this.bodyAnim.currentFrame];
     _this.rightArm.x = handMapPos[0];
@@ -362,6 +377,8 @@ p.updateFrame = function () {
     }
 
     _this.rotation = _this.direction;
+
+    _this.legAnim.gotoAndStop( _this.bodyAnim.currentFrame + 16);
     if (_this.rightArm) {
         var handMapPos = _this.handMap[0][_this.bodyAnim.currentFrame];
         _this.rightArm.x = handMapPos[0];
