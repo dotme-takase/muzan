@@ -208,6 +208,20 @@ var enemyData = [
                 aidBox:5
             }
         }
+    },
+    {
+        body:"1_128",
+        name:'IronNight',
+        HP:80,
+        speed:7,
+        items:{
+            rightArm:"broadSword",
+            leftArm:null,
+            dropItems:{
+                broadSword:1,
+                aidBox:5
+            }
+        }
     }
 ];
 
