@@ -93,7 +93,7 @@ var enemyData = [
         }
     },
     {
-        body:"1_128",
+        body:4,
         name:'Soldier',
         HP:15,
         speed:7,
@@ -205,20 +205,6 @@ var enemyData = [
             dropItems:{
                 broadSword:1,
                 blueShield:2,
-                aidBox:5
-            }
-        }
-    },
-    {
-        body:"1_128",
-        name:'IronNight',
-        HP:80,
-        speed:7,
-        items:{
-            rightArm:"broadSword",
-            leftArm:null,
-            dropItems:{
-                broadSword:1,
                 aidBox:5
             }
         }
