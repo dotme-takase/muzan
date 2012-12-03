@@ -592,18 +592,19 @@ $.initializeFirst = function () {
         }
 
         function loadSound() {
+            var sounds = [
+                "attack",
+                "defeat",
+                "downstair",
+                "heal",
+                "hit",
+                "parried",
+                "pickup"
+            ];
+            var path = $.appPath + "/se";
             if (typeof AppMobi != "undefined") {
+
             } else if (buzz.isSupported()) {
-                var path = $.appPath + "/se";
-                var sounds = [
-                    "attack",
-                    "defeat",
-                    "downstair",
-                    "heal",
-                    "hit",
-                    "parried",
-                    "pickup"
-                ];
                 __sounds = new Array();
                 buzz.defaults.preload = true;
                 if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
