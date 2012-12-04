@@ -378,7 +378,10 @@ p.updateFrame = function () {
 
     _this.rotation = _this.direction;
 
-    _this.legAnim.gotoAndStop( _this.bodyAnim.currentFrame + 16);
+    if (_this.bodyAnim.currentFrame >= 16) {
+        _this.bodyAnim.gotoAndStop(16 - 1);
+    }
+    _this.legAnim.gotoAndStop(_this.bodyAnim.currentFrame + 16);
     if (_this.rightArm) {
         var handMapPos = _this.handMap[0][_this.bodyAnim.currentFrame];
         _this.rightArm.x = handMapPos[0];
