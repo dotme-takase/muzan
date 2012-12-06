@@ -259,6 +259,9 @@ p.updateFrame = function () {
             _this.bodyAnim.currentAnimationFrame = 0;
             _this.bodyAnim.gotoAndPlay("walk");     //animate
         };
+        if (!_this.bodyAnim.currentAnimation) {
+            _this.bodyAnim.onAnimationEnd();
+        }
         _this.vX = Math.cos(_this.direction * Math.PI / 180) * _this.speed;
         _this.vY = Math.sin(_this.direction * Math.PI / 180) * _this.speed;
     } else if (_this.isAction) {
