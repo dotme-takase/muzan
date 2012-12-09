@@ -364,7 +364,7 @@ $.initializeFirst = function () {
         context.effectsAnim = new BitmapAnimation(spriteSheetEffects);
         var spriteSheetSwords = new SpriteSheet({
             images:[$.appPath + "/img/swords.png"],
-            frames:{width:32, height:64, regX:15, regY:55},
+            frames:{width:24, height:48, regX:11, regY:41},
             animations:{
                 shortSword:0,
                 shortSword_:0,
@@ -385,7 +385,7 @@ $.initializeFirst = function () {
 
         var spriteSheetShields = new SpriteSheet({
             images:[$.appPath + "/img/shields.png"],
-            frames:{width:32, height:32, regX:16, regY:20},
+            frames:{width:24, height:24, regX:12, regY:15},
             animations:{
                 woodenShield:0,
                 woodenShield_:16,
@@ -431,7 +431,7 @@ $.initializeFirst = function () {
 
         var spriteSheetPlayer = new SpriteSheet({
             images:[$.appPath + "/img/player.png"],
-            frames:{width:64, height:64, regX:32, regY:32},
+            frames:{width:48, height:48, regX:24, regY:24},
             animations:BaseCharacter.BODY_ANIMATION
         });
 
@@ -462,7 +462,7 @@ $.initializeFirst = function () {
 
         for (var i = 0; i < enemyData.length; i++) {
             var _enemyData = enemyData[i];
-            var _enemySize = 64;
+            var _enemySize = 48;
             var _bodyName = _enemyData.body.toString();
             if (_bodyName.match(/.*_/)) {
                 _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
@@ -491,8 +491,11 @@ $.initializeFirst = function () {
         for (var i = 0; i < enemyNum; i++) {
             var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
             var _enemy = enemyData[index];
+            if (!_enemy.hasOwnProperty('handMap')) {
+                _enemy.handMap = BaseCharacter.HANDMAP_STANDARD;
+            }
             var _enemyAnim = _enemy.anim.clone();
-            var enemy = new BaseCharacter(context, _enemyAnim, BaseCharacter.HANDMAP_STANDARD,
+            var enemy = new BaseCharacter(context, _enemyAnim, _enemy.handMap,
                 context.itemMaster[_enemy.items['rightArm']],
                 context.itemMaster[_enemy.items['leftArm']]);
             for (var k in _enemy) {

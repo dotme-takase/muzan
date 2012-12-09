@@ -6,42 +6,94 @@ var p = BaseCharacter.prototype = new Container();
 
 p.Container_initialize = p.initialize;
 
+BaseCharacter.scaleHandmap = function (arr, scale) {
+    var arr2 = [];
+    for (var i in arr) {
+        var a2 = arr[i];
+        var a3 = [];
+        for (var j in a2) {
+            a3[j] = [Math.floor(a2[j][0] * scale), Math.floor(a2[j][1] * scale), a2[j][2], a2[j][3]]
+        }
+        arr2[i] = a3;
+    }
+    return JSON.stringify(arr2);
+};
+
 BaseCharacter.HANDMAP_STANDARD = [
     [
-        [0, 26, 90, false],
-        [-13, 26, 105, false],
-        [-21, 19, 130, false],
-        [-13, 26, 105, false],
-        [0, 26, 90, false],
-        [17, 19, 75, false],
-        [23, 10, 50, false],
-        [17, 19, 75, false],
-        [0, 26, 260, false],
-        [-23, 16, 290, false],
-        [-24, -3, 310, false],
-        [-13, 26, 180, false],
-        [0, 26, 160, false],
-        [23, 16, 115, false],
-        [28, -7, 60, false],
-        [17, 19, 75, false]
+        [0, 19, 90, false],
+        [-10, 19, 105, false],
+        [-16, 14, 130, false],
+        [-10, 19, 105, false],
+        [0, 19, 90, false],
+        [12, 14, 75, false],
+        [17, 7, 50, false],
+        [12, 14, 75, false],
+        [0, 19, 260, false],
+        [-18, 12, 290, false],
+        [-18, -3, 310, false],
+        [-10, 19, 180, false],
+        [0, 19, 160, false],
+        [17, 12, 115, false],
+        [21, -6, 60, false],
+        [12, 14, 75, false]
     ],
     [
-        [3, -27, 0, false],
-        [17, -19, 15, false],
-        [23, -10, 30, false],
-        [17, -19, 15, false],
-        [3, -27, 0, false],
-        [-13, -26, -25, false],
-        [-21, -19, -40, false],
-        [-13, -26, -25, false],
-        [3, -27, 0, false],
-        [23, -19, 50, false],
-        [28, 7, 90, false],
-        [17, -19, 0, false],
-        [3, -27, -15, false],
-        [-23, -19, -30, false],
-        [-24, 3, -65, false],
-        [-13, -26, -75, false]
+        [2, -21, 0, false],
+        [12, -15, 15, false],
+        [17, -8, 30, false],
+        [12, -15, 15, false],
+        [2, -21, 0, false],
+        [-10, -20, -25, false],
+        [-16, -15, -40, false],
+        [-10, -20, -25, false],
+        [2, -21, 0, false],
+        [17, -15, 50, false],
+        [21, 5, 90, false],
+        [12, -15, 0, false],
+        [2, -21, -15, false],
+        [-18, -15, -30, false],
+        [-18, 2, -65, false],
+        [-10, -20, -75, false]
+    ]
+];
+
+BaseCharacter.HANDMAP_2X = [
+    [
+        [0, 38, 90, false],
+        [-20, 38, 105, false],
+        [-32, 28, 130, false],
+        [-20, 38, 105, false],
+        [0, 38, 90, false],
+        [24, 28, 75, false],
+        [34, 14, 50, false],
+        [24, 28, 75, false],
+        [0, 38, 260, false],
+        [-36, 24, 290, false],
+        [-36, -6, 310, false],
+        [-20, 38, 180, false],
+        [0, 38, 160, false],
+        [34, 24, 115, false],
+        [42, -12, 60, false],
+        [24, 28, 75, false]
+    ],
+    [
+        [4, -42, 0, false],
+        [24, -30, 15, false],
+        [34, -16, 30, false],
+        [24, -30, 15, false],
+        [4, -42, 0, false],
+        [-20, -40, -25, false],
+        [-32, -30, -40, false],
+        [-20, -40, -25, false],
+        [4, -42, 0, false],
+        [34, -30, 50, false],
+        [42, 10, 90, false],
+        [24, -30, 0, false],
+        [4, -42, -15, false],
+        [-36, -30, -30, false],
+        [-36, 4, -65, false],
+        [-20, -40, -75, false]
     ]
 ];
 
