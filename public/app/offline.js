@@ -364,7 +364,7 @@ $.initializeFirst = function () {
         context.effectsAnim = new BitmapAnimation(spriteSheetEffects);
         var spriteSheetSwords = new SpriteSheet({
             images:[$.appPath + "/img/swords.png"],
-            frames:{width:24, height:48, regX:11, regY:41},
+            frames:{width:32, height:64, regX:15, regY:55},
             animations:{
                 shortSword:0,
                 shortSword_:0,
@@ -385,7 +385,7 @@ $.initializeFirst = function () {
 
         var spriteSheetShields = new SpriteSheet({
             images:[$.appPath + "/img/shields.png"],
-            frames:{width:24, height:24, regX:12, regY:15},
+            frames:{width:32, height:32, regX:16, regY:20},
             animations:{
                 woodenShield:0,
                 woodenShield_:16,
@@ -431,7 +431,7 @@ $.initializeFirst = function () {
 
         var spriteSheetPlayer = new SpriteSheet({
             images:[$.appPath + "/img/player.png"],
-            frames:{width:48, height:48, regX:24, regY:24},
+            frames:{width:64, height:64, regX:32, regY:32},
             animations:BaseCharacter.BODY_ANIMATION
         });
 
@@ -462,7 +462,7 @@ $.initializeFirst = function () {
 
         for (var i = 0; i < enemyData.length; i++) {
             var _enemyData = enemyData[i];
-            var _enemySize = 48;
+            var _enemySize = 64;
             var _bodyName = _enemyData.body.toString();
             if (_bodyName.match(/.*_/)) {
                 _enemySize = parseInt(_bodyName.replace(/.*_/, ''));

@@ -56,7 +56,7 @@ var CharacterAction = exports.CharacterAction = {
     DEAD:6
 };
 var __maxDiffClientTime = 20;
-var __tileSize = 96;
+var __tileSize = 128;
 exports.currentContext = null;
 var AppContext = exports.AppContext = function (playData) {
     var _this = this;
