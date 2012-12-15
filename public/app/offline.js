@@ -65,6 +65,35 @@ var __blockMap = [];
 var __sounds = null;
 var enemyData = [
     {
+        body:'1_128',
+        name:'Militia',
+        HP:10,
+        speed:8,
+        items:{
+            rightArm:"shortSword",
+            leftArm:"woodenShield",
+            dropItems:{
+                woodenShield:3,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:'2_128',
+        name:'Militia',
+        HP:10,
+        speed:8,
+        items:{
+            rightArm:"shortSword",
+            leftArm:"woodenShield",
+            dropItems:{
+                woodenShield:3,
+                aidBox:5
+            }
+        },
+        handMap:BaseCharacter.HANDMAP_2X
+    },
+    {
         body:1,
         name:'Militia',
         HP:10,
@@ -303,7 +332,7 @@ $.loadTiles = function (filename, callback) {
     }
     delete __tileBmps;
 
-    $.spriteSheetTiles = new SpriteSheet({
+    $.spriteSheetTiles = new createjs.SpriteSheet({
         images:[$.appPath + "/img/" + filename + ".png"],
         frames:{width:__tileSize, height:__tileSize},
         animations:{
@@ -328,7 +357,7 @@ $.loadTiles = function (filename, callback) {
         var names = $.spriteSheetTiles.getAnimations();
         for (var k in names) {
             var name = names[k];
-            var bitmap = new Bitmap(SpriteSheetUtils.extractFrame($.spriteSheetTiles, name));
+            var bitmap = new createjs.Bitmap(createjs.SpriteSheetUtils.extractFrame($.spriteSheetTiles, name));
             __tileBmps[name] = bitmap;
         }
         $.hideLoading();
@@ -340,17 +369,17 @@ $.loadTiles = function (filename, callback) {
 $.initializeFirst = function () {
     function initializeGame(playData) {
         canvas = document.getElementById("stageCanvas");
-        stage = new Stage(canvas);
+        stage = new createjs.Stage(canvas);
         context = new AppContext(playData);
         context.initializeStage(__blockMap, __tileBmps, __sounds);
         stage.addChild(context.view);
 
-        scoreField = new Text("", "bold 12px Arial", "#FFFFFF");
+        scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
         scoreField.textAlign = "right";
         scoreField.y = 22;
         window.onorientationchange();
 
-        var spriteSheetEffects = new SpriteSheet({
+        var spriteSheetEffects = new createjs.SpriteSheet({
             images:[$.appPath + "/img/effect.png"],
             frames:{width:128, height:128, regX:64, regY:64},
             animations:{
@@ -360,9 +389,9 @@ $.initializeFirst = function () {
                 dead:[25, 39]
             }
         });
+        context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
 
-        context.effectsAnim = new BitmapAnimation(spriteSheetEffects);
-        var spriteSheetSwords = new SpriteSheet({
+        var spriteSheetSwords = new createjs.SpriteSheet({
             images:[$.appPath + "/img/swords.png"],
             frames:{width:32, height:64, regX:15, regY:55},
             animations:{
@@ -383,7 +412,7 @@ $.initializeFirst = function () {
             }
         });
 
-        var spriteSheetShields = new SpriteSheet({
+        var spriteSheetShields = new createjs.SpriteSheet({
             images:[$.appPath + "/img/shields.png"],
             frames:{width:32, height:32, regX:16, regY:20},
             animations:{
@@ -400,7 +429,7 @@ $.initializeFirst = function () {
             }
         });
 
-        var spriteSheetItems = new SpriteSheet({
+        var spriteSheetItems = new createjs.SpriteSheet({
             images:[$.appPath + "/img/items.png"],
             frames:{width:32, height:32, regX:16, regY:20},
             animations:{
@@ -429,13 +458,13 @@ $.initializeFirst = function () {
             }
         }
 
-        var spriteSheetPlayer = new SpriteSheet({
+        var spriteSheetPlayer = new createjs.SpriteSheet({
             images:[$.appPath + "/img/player.png"],
             frames:{width:64, height:64, regX:32, regY:32},
             animations:BaseCharacter.BODY_ANIMATION
         });
 
-        var playerAnim = new BitmapAnimation(spriteSheetPlayer);
+        var playerAnim = new createjs.BitmapAnimation(spriteSheetPlayer);
         playerAnim.name = "player";
         playerAnim.gotoAndPlay("walk");     //animate
         playerAnim.currentFrame = 0;
@@ -467,12 +496,12 @@ $.initializeFirst = function () {
             if (_bodyName.match(/.*_/)) {
                 _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
             }
-            var spriteSheetEnemy = new SpriteSheet({
+            var spriteSheetEnemy = new createjs.SpriteSheet({
                 images:[$.appPath + "/img/enemy" + _bodyName + ".png"],
                 frames:{width:_enemySize, height:_enemySize, regX:_enemySize / 2, regY:_enemySize / 2},
                 animations:BaseCharacter.BODY_ANIMATION
             });
-            var enemyAnim = new BitmapAnimation(spriteSheetEnemy);
+            var enemyAnim = new createjs.BitmapAnimation(spriteSheetEnemy);
             enemyAnim.name = "enemy";
             enemyAnim.gotoAndPlay("walk");     //animate
             enemyAnim.currentFrame = 0;
@@ -525,10 +554,10 @@ $.initializeFirst = function () {
         }
 
         stage.addChild(scoreField);
-        Ticker.init();
-        Ticker.useRAF = true;
-        Ticker.setFPS(16);
-        Ticker.addListener(window);
+        createjs.Ticker.init();
+        createjs.Ticker.useRAF = true;
+        createjs.Ticker.setFPS(16);
+        createjs.Ticker.addListener(window);
 
         //////
         var onDrag = function (e) {

@@ -2,7 +2,7 @@
 var BaseCharacter = function (context, bodyAnim, handMap, rightArm, leftArm) {
     this.initialize(context, bodyAnim, handMap, rightArm, leftArm);
 };
-var p = BaseCharacter.prototype = new Container();
+var p = BaseCharacter.prototype = new createjs.Container();
 
 p.Container_initialize = p.initialize;
 
@@ -368,8 +368,10 @@ p.updateFrame = function () {
             _this.alpha = 0.5;
         } else if (_this.action == CharacterAction.DEAD) {
             delete _this.context.characters[_this.stateId];
+            var size = _this.width / 4;
+            var half = size / 2;
             for (var i = 0; i < 4; i++) {
-                _this.context.addEffect(_this.x + Math.random() * 8 - 16, _this.y + Math.random() * 8 - 16, "dead");
+                _this.context.addEffect(_this.x + Math.random() * size - half, _this.y + Math.random() * size - half, "dead");
             }
             _this.context.playSound("defeat");
             _this.context.removeFromStage(_this);

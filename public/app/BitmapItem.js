@@ -13,7 +13,7 @@
     BitmapItem.TYPE_SHIELD = "shield";
     BitmapItem.TYPE_MISC = "misc";
 
-    var p = BitmapItem.prototype = new BitmapAnimation();
+    var p = BitmapItem.prototype = new createjs.BitmapAnimation();
 
     p.BitmapAnimation_initialize = p.initialize;
     p.BitmapAnimation_clone = p.clone;

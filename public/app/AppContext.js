@@ -56,6 +56,7 @@ var CharacterAction = exports.CharacterAction = {
     DEAD:6
 };
 var __maxDiffClientTime = 20;
+var __maxEffectSize = 20;
 var __tileSize = 128;
 exports.currentContext = null;
 var AppContext = exports.AppContext = function (playData) {
@@ -80,6 +81,7 @@ var AppContext = exports.AppContext = function (playData) {
     _this.mapTips = null;
     _this.heavyTasks = [];
     _this.sounds = null;
+    _this.effectsAnimList;
 
     if (playData) {
         _this.playData = playData;
@@ -100,10 +102,15 @@ var AppContext = exports.AppContext = function (playData) {
         }
     };
 
+    _this.initializeEffectList = function(effect){
+        _this.effectsAnimList = new Array();
+        for(var i = 0; i < __maxEffectSize; i++){
+            _this.effectsAnimList.push(effect.clone());
+        }
+    };
 
-    _this.effectsAnim;
     _this.addEffect = function (x, y, name) {
-        var newEffect = _this.effectsAnim.clone();
+        var newEffect = _this.effectsAnimList.shift();
         newEffect.x = x;
         newEffect.y = y;
         newEffect.gotoAndPlay(name);
@@ -111,6 +118,7 @@ var AppContext = exports.AppContext = function (playData) {
             _this.view.removeChild(newEffect);
         }
         _this.view.addChild(newEffect);
+        _this.effectsAnimList.push(newEffect);
     };
 
     _this.playSound = function (name) {
@@ -178,8 +186,7 @@ var AppContext = exports.AppContext = function (playData) {
 
     _this.loadBlockMap = function (blockMap) {
         _this.blockMap = blockMap;
-        _this.mapBounds = new Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
-        //_this.blockTree = new QuadTree(_this.mapBounds, false);
+        _this.mapBounds = new createjs.Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
         _this.characterTree = new QuadTree(_this.mapBounds, false);
         _this.mapTips = null;
     };
@@ -419,7 +426,7 @@ var AppContext = exports.AppContext = function (playData) {
     _this.initializeStage = function (blockMap, tileBmps, sounds) {
         var tileNumber =  (Math.floor((_this.playData.floorNumber - 1) / 3) % 3) + 1;
         _this.loadBlockMap(blockMap);
-        _this.view = new Container();
+        _this.view = new createjs.Container();
         var lastChild = null;
         var goal = _this.getRandomPoint();
         _this.floorMap = [];
@@ -473,7 +480,7 @@ var AppContext = exports.AppContext = function (playData) {
         var range = 2;
 
         function drawAutoMap() {
-            var g = new Graphics();
+            var g = new createjs.Graphics();
             for (var i = 0; i < _this.floorMap.length; i++) {
                 for (var j = 0; j < _this.floorMap[0].length; j++) {
                     if (_this.autoMap[i][j] == 1) {
@@ -481,10 +488,10 @@ var AppContext = exports.AppContext = function (playData) {
                         var _x = j * tipSize;
                         var _y = i * tipSize;
                         if ((floor != null) && (floor.indexOf("f1") === 0)) {
-                            g.beginFill(Graphics.getRGB(128, 160, 255, 0.7));
+                            g.beginFill(createjs.Graphics.getRGB(128, 160, 255, 0.7));
                             g.drawRect(_x, _y, tipSize, tipSize);
                         } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
-                            g.beginFill(Graphics.getRGB(255, 255, 128, 0.7));
+                            g.beginFill(createjs.Graphics.getRGB(255, 255, 128, 0.7));
                             g.drawRect(_x, _y, tipSize, tipSize);
                         }
                     }
@@ -518,13 +525,13 @@ var AppContext = exports.AppContext = function (playData) {
             }
 
             updateAutoMap();
-            var g2 = new Graphics();
-            g2.beginFill(Graphics.getRGB(64, 255, 64, 0.7));
+            var g2 = new createjs.Graphics();
+            g2.beginFill(createjs.Graphics.getRGB(64, 255, 64, 0.7));
             g2.drawRect(0, 0, 6, 6);
 
             _this.mapTips = {
-                background:new Shape(drawAutoMap()),
-                player:new Shape(g2)
+                background:new createjs.Shape(drawAutoMap()),
+                player:new createjs.Shape(g2)
             }
             _this.mapTips.background.cache(0, 0, 300, 300);
             _this.mapTips.player.cache(0, 0, 6, 6);
@@ -534,7 +541,7 @@ var AppContext = exports.AppContext = function (playData) {
             if (updateAutoMap()) {
                 stage.removeChild(_this.mapTips.player);
                 stage.removeChild(_this.mapTips.background);
-                _this.mapTips.background = new Shape(drawAutoMap());
+                _this.mapTips.background = new createjs.Shape(drawAutoMap());
                 _this.mapTips.background.cache(0, 0, 300, 300);
                 stage.addChild(_this.mapTips.background);
                 stage.addChild(_this.mapTips.player);
