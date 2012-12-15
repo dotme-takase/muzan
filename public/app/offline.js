@@ -1,41 +1,40 @@
 //function called by the Tick instance at a set interval
-var canvas, stage, context, preload;
-var scoreField;
-var initializing = true;
+var _ = new Object();
+_.initializing = true;
 function tick() {
-    context.updateTree();
+    _.context.updateTree();
 
-    for (var k in context.characters) {
-        var character = context.characters[k];
+    for (var k in _.context.characters) {
+        var character = _.context.characters[k];
         AppUtils.updatePosition(character);
-        context.collideBlocks(character);
+        _.context.collideBlocks(character);
     }
 
-    context.afterCharactersUpdate();
-    context.view.x = canvas.width / 2 - player.x;
-    context.view.y = canvas.height / 2 - player.y;
-    stage.update();
+    _.context.afterCharactersUpdate();
+    _.context.view.x = _.canvas.width / 2 - player.x;
+    _.context.view.y = _.canvas.height / 2 - player.y;
+    _.stage.update();
 
-    var point = context.getMapPoint(player);
-    var floor = context.floorMap[point.y][point.x];
+    var point = _.context.getMapPoint(player);
+    var floor = _.context.floorMap[point.y][point.x];
 
-    if (context.playData) {
-        scoreField.text = "B" + context.playData.floorNumber + "F: " + player.HP + " / 100";
+    if (_.context.playData) {
+        _.scoreField.text = "B" + _.context.playData.floorNumber + "F: " + player.HP + " / 100";
     }
 
-    if (!initializing) {
+    if (!_.initializing) {
         if (player.HP <= 0) {
-            initializing = true;
+            _.initializing = true;
             $.dataStore.put('playData', null);
             setTimeout(function () {
-                if (context.playData.hasOwnProperty('enemy')) {
+                if (_.context.playData.hasOwnProperty('enemy')) {
                     var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
                     var record = {
-                        enemy:context.playData.enemy.name,
-                        floor:context.playData.floorNumber,
+                        enemy:_.context.playData.enemy.name,
+                        floor:_.context.playData.floorNumber,
                         date:date
                     }
-                    var rank = $.localRanking.insert(context.playData.floorNumber, record);
+                    var rank = $.localRanking.insert(_.context.playData.floorNumber, record);
                     if (rank == null) {
                         rank = "out";
                     }
@@ -45,18 +44,18 @@ function tick() {
                 }
             }, 1000);
         } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
-            initializing = true;
-            context.playData.enemy = null;
-            context.playData.floorNumber++;
-            context.playData.id = uuid();
-            $.dataStore.put('playData', context.playData);
-            context.playSound("downstair");
+            _.initializing = true;
+            _.context.playData.enemy = null;
+            _.context.playData.floorNumber++;
+            _.context.playData.id = uuid();
+            $.dataStore.put('playData', _.context.playData);
+            _.context.playSound("downstair");
             $('#stageCanvas').fadeOut('normal', function () {
-                location.href = "screen.html?pdid=" + context.playData.id;
+                location.href = "screen.html?pdid=" + _.context.playData.id;
             });
             $.showLoading();
         } else {
-            context.drawMap(point, stage);
+            _.context.drawMap(point, _.stage);
         }
     }
 }
@@ -311,10 +310,10 @@ var itemData = {
         type:BitmapItem.TYPE_MISC,
         onUse:function (character, target) {
             var aid = 50;
-            character.context.addEffect(character.x,
+            character._.context.addEffect(character.x,
                 character.y,
                 'heal');
-            context.playSound("heal");
+            _.context.playSound("heal");
             character.HP += Math.min(100 - character.HP,
                 aid);
         }
@@ -368,15 +367,15 @@ $.loadTiles = function (filename, callback) {
 
 $.initializeFirst = function () {
     function initializeGame(playData) {
-        canvas = document.getElementById("stageCanvas");
-        stage = new createjs.Stage(canvas);
-        context = new AppContext(playData);
-        context.initializeStage(__blockMap, __tileBmps, __sounds);
-        stage.addChild(context.view);
+        _.canvas = document.getElementById("stageCanvas");
+        _.stage = new createjs.Stage(_.canvas);
+        _.context = new AppContext(playData);
+        _.context.initializeStage(__blockMap, __tileBmps, __sounds);
+        _.stage.addChild(_.context.view);
 
-        scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
-        scoreField.textAlign = "right";
-        scoreField.y = 22;
+        _.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
+        _.scoreField.textAlign = "right";
+        _.scoreField.y = 22;
         window.onorientationchange();
 
         var spriteSheetEffects = new createjs.SpriteSheet({
@@ -389,7 +388,7 @@ $.initializeFirst = function () {
                 dead:[25, 39]
             }
         });
-        context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
+        _.context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
 
         var spriteSheetSwords = new createjs.SpriteSheet({
             images:[$.appPath + "/img/swords.png"],
@@ -442,16 +441,16 @@ $.initializeFirst = function () {
                 var item = itemData[i];
                 switch (item.type) {
                     case BitmapItem.TYPE_SWORD:
-                        context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
-                        context.itemMaster[i].gotoAndStop(i);
+                        _.context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
+                        _.context.itemMaster[i].gotoAndStop(i);
                         break;
                     case BitmapItem.TYPE_SHIELD:
-                        context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
-                        context.itemMaster[i].gotoAndStop(i);
+                        _.context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
+                        _.context.itemMaster[i].gotoAndStop(i);
                         break;
                     case BitmapItem.TYPE_MISC:
-                        context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
-                        context.itemMaster[i].gotoAndStop(i);
+                        _.context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
+                        _.context.itemMaster[i].gotoAndStop(i);
                         break;
                     default:
                 }
@@ -469,11 +468,11 @@ $.initializeFirst = function () {
         playerAnim.gotoAndPlay("walk");     //animate
         playerAnim.currentFrame = 0;
 
-        player = new BaseCharacter(context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
-            context.itemMaster[context.playData.rightArm],
-            context.itemMaster[context.playData.leftArm]);
+        player = new BaseCharacter(_.context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
+            _.context.itemMaster[_.context.playData.rightArm],
+            _.context.itemMaster[_.context.playData.leftArm]);
         player.isPlayer = true;
-        player.onUpdate = context.collideBlocks;
+        player.onUpdate = _.context.collideBlocks;
         player.x = 384;
         player.y = 384;
         player.HP = 100;
@@ -485,8 +484,8 @@ $.initializeFirst = function () {
         }
 
 
-        context.addCharacter(player);
-        context.addToStage(player);
+        _.context.addCharacter(player);
+        _.context.addToStage(player);
 
 
         for (var i = 0; i < enemyData.length; i++) {
@@ -510,12 +509,12 @@ $.initializeFirst = function () {
 
         function enemyTickFunction(enemy) {
             return function () {
-                AppUtils.simpleAction(enemy, context);
+                AppUtils.simpleAction(enemy, _.context);
                 enemy.updateFrame();
             }
         }
 
-        var floorBonus = Math.floor(context.playData.floorNumber / 3);
+        var floorBonus = Math.floor(_.context.playData.floorNumber / 3);
         var enemyNum = 6 + Math.min(floorBonus, 10);
         for (var i = 0; i < enemyNum; i++) {
             var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
@@ -524,16 +523,16 @@ $.initializeFirst = function () {
                 _enemy.handMap = BaseCharacter.HANDMAP_STANDARD;
             }
             var _enemyAnim = _enemy.anim.clone();
-            var enemy = new BaseCharacter(context, _enemyAnim, _enemy.handMap,
-                context.itemMaster[_enemy.items['rightArm']],
-                context.itemMaster[_enemy.items['leftArm']]);
+            var enemy = new BaseCharacter(_.context, _enemyAnim, _enemy.handMap,
+                _.context.itemMaster[_enemy.items['rightArm']],
+                _.context.itemMaster[_enemy.items['leftArm']]);
             for (var k in _enemy) {
                 if (k != "anim") {
                     enemy[k] = _enemy[k];
                 }
             }
 
-            enemy.onUpdate = context.collideBlocks;
+            enemy.onUpdate = _.context.collideBlocks;
             enemy.x = Math.random() * 2048;
             enemy.y = Math.random() * 2048;
             enemy.frame = 0;
@@ -543,17 +542,17 @@ $.initializeFirst = function () {
             if (_enemy.hasOwnProperty("items")
                 && _enemy.items.hasOwnProperty("dropItems")) {
                 for (var j in _enemy.items.dropItems) {
-                    if (context.itemMaster.hasOwnProperty(j)) {
-                        enemy.addToDropList(context.itemMaster[j], _enemy.items.dropItems[j]);
+                    if (_.context.itemMaster.hasOwnProperty(j)) {
+                        enemy.addToDropList(_.context.itemMaster[j], _enemy.items.dropItems[j]);
                     }
                 }
             }
-            context.addCharacter(enemy);
-            context.addToStage(enemy);
+            _.context.addCharacter(enemy);
+            _.context.addToStage(enemy);
 
         }
 
-        stage.addChild(scoreField);
+        _.stage.addChild(_.scoreField);
         createjs.Ticker.init();
         createjs.Ticker.useRAF = true;
         createjs.Ticker.setFPS(16);
@@ -561,16 +560,16 @@ $.initializeFirst = function () {
 
         //////
         var onDrag = function (e) {
-            var CANVAS_LEFT = $(canvas).offset().left;
-            var CANVAS_TOP = $(canvas).offset().top;
+            var CANVAS_LEFT = $(_.canvas).offset().left;
+            var CANVAS_TOP = $(_.canvas).offset().top;
             var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
             if (touchEnable && event.touches[0]) {
-                player.axisX = event.touches[0].pageX - CANVAS_LEFT - canvas.width / 2;
-                player.axisY = event.touches[0].pageY - CANVAS_TOP - canvas.height / 2;
+                player.axisX = event.touches[0].pageX - CANVAS_LEFT - _.canvas.width / 2;
+                player.axisY = event.touches[0].pageY - CANVAS_TOP - _.canvas.height / 2;
                 e.preventDefault();
             } else {
-                player.axisX = e.pageX - CANVAS_LEFT - canvas.width / 2;
-                player.axisY = e.pageY - CANVAS_TOP - canvas.height / 2;
+                player.axisX = e.pageX - CANVAS_LEFT - _.canvas.width / 2;
+                player.axisY = e.pageY - CANVAS_TOP - _.canvas.height / 2;
                 e.preventDefault();
             }
         }
@@ -581,7 +580,7 @@ $.initializeFirst = function () {
         player.isCursor = false;
         player.axisX = 0;
         player.axisY = 0;
-        $(canvas).on("mousedown touchstart",
+        $(_.canvas).on("mousedown touchstart",
             function (e) {
                 player.isMouseDown = true;
                 onDrag(e);
@@ -608,7 +607,7 @@ $.initializeFirst = function () {
             $.hideLoading();
             $('#stageCanvas').fadeIn();
         }
-        initializing = false;
+        _.initializing = false;
     }
 
     function init() {
@@ -701,11 +700,11 @@ $.showLoading = function () {
 window.onorientationchange = function () {
     $("#canvasWrapper").width(window.innerWidth);
     $("#canvasWrapper").height(window.innerHeight);
-    if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        if (scoreField) {
-            scoreField.x = canvas.width - 10;
+    if (_.canvas) {
+        _.canvas.width = window.innerWidth;
+        _.canvas.height = window.innerHeight;
+        if (_.scoreField) {
+            _.scoreField.x = _.canvas.width - 10;
         }
     }
     setTimeout(scrollTo, 100, 0, 1);
