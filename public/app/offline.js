@@ -310,7 +310,7 @@ var itemData = {
         type:BitmapItem.TYPE_MISC,
         onUse:function (character, target) {
             var aid = 50;
-            character._.context.addEffect(character.x,
+            character.context.addEffect(character.x,
                 character.y,
                 'heal');
             _.context.playSound("heal");
@@ -367,7 +367,6 @@ $.loadTiles = function (filename, callback) {
 
 $.initializeFirst = function () {
     function initializeGame(playData) {
-        _.canvas = document.getElementById("stageCanvas");
         _.stage = new createjs.Stage(_.canvas);
         _.context = new AppContext(playData);
         _.context.initializeStage(__blockMap, __tileBmps, __sounds);

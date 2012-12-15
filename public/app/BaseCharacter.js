@@ -163,7 +163,7 @@ p.jsonToState = function (json) {
 };
 
 p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
-    this.context = context;
+    this.context = _.context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
     this.legAnim = bodyAnim.clone();
