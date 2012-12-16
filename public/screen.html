@@ -57,7 +57,7 @@
             $.mobile.showPageLoadingMsg();
         }
         if (typeof AppMobi != "undefined") {
-            _.canvas = document.getElementById("stageCanvas");
+            app.canvas = document.getElementById("stageCanvas");
             var initialize = function () {
                 if (deviceReady) {
                     window.onorientationchange();
@@ -69,7 +69,7 @@
             };
             $.initializer = setTimeout(initialize, 1);
         } else {
-            _.canvas = document.getElementById("stageCanvas");
+            app.canvas = document.getElementById("stageCanvas");
             $.initializeFirst();
         }
     });

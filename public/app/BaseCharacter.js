@@ -163,7 +163,7 @@ p.jsonToState = function (json) {
 };
 
 p.initialize = function (context, bodyAnim, handMap, rightArm, leftArm) {
-    this.context = _.context;
+    this.context = context;
     this.Container_initialize();
     this.bodyAnim = bodyAnim;
     this.legAnim = bodyAnim.clone();
@@ -217,7 +217,7 @@ p.equipLeft = function (item) {
     _this.leftArm.rotation = handMapPos[2];
 
     if (_this.isPlayer) {
-        context.playData.leftArm = _this.leftArm.currentAnimation;
+        _this.context.playData.leftArm = _this.leftArm.currentAnimation;
     }
 };
 
@@ -237,7 +237,7 @@ p.equipRight = function (item) {
     _this.rightArm.rotation = handMapPos[2];
 
     if (_this.isPlayer) {
-        context.playData.rightArm = _this.rightArm.currentAnimation;
+        _this.context.playData.rightArm = _this.rightArm.currentAnimation;
     }
 };
 
@@ -247,7 +247,7 @@ p.ejectLeft = function () {
         _this.removeChild(_this.leftArm);
         _this.leftArm = null;
         if (_this.isPlayer) {
-            context.playData.leftArm = null;
+            _this.context.playData.leftArm = null;
         }
     }
 };
@@ -258,7 +258,7 @@ p.ejectRight = function () {
         _this.removeChild(_this.rightArm);
         _this.rightArm = null;
         if (_this.isPlayer) {
-            context.playData.rightArm = null;
+            _this.context.playData.rightArm = null;
         }
     }
 };

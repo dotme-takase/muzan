@@ -1,40 +1,40 @@
 //function called by the Tick instance at a set interval
-var _ = new Object();
-_.initializing = true;
+var app = new Object();
+app.initializing = true;
 function tick() {
-    _.context.updateTree();
+    app.context.updateTree();
 
-    for (var k in _.context.characters) {
-        var character = _.context.characters[k];
+    for (var k in app.context.characters) {
+        var character = app.context.characters[k];
         AppUtils.updatePosition(character);
-        _.context.collideBlocks(character);
+        app.context.collideBlocks(character);
     }
 
-    _.context.afterCharactersUpdate();
-    _.context.view.x = _.canvas.width / 2 - player.x;
-    _.context.view.y = _.canvas.height / 2 - player.y;
-    _.stage.update();
+    app.context.afterCharactersUpdate();
+    app.context.view.x = app.canvas.width / 2 - player.x;
+    app.context.view.y = app.canvas.height / 2 - player.y;
+    app.stage.update();
 
-    var point = _.context.getMapPoint(player);
-    var floor = _.context.floorMap[point.y][point.x];
+    var point = app.context.getMapPoint(player);
+    var floor = app.context.floorMap[point.y][point.x];
 
-    if (_.context.playData) {
-        _.scoreField.text = "B" + _.context.playData.floorNumber + "F: " + player.HP + " / 100";
+    if (app.context.playData) {
+        app.scoreField.text = "B" + app.context.playData.floorNumber + "F: " + player.HP + " / 100";
     }
 
-    if (!_.initializing) {
+    if (!app.initializing) {
         if (player.HP <= 0) {
-            _.initializing = true;
+            app.initializing = true;
             $.dataStore.put('playData', null);
             setTimeout(function () {
-                if (_.context.playData.hasOwnProperty('enemy')) {
+                if (app.context.playData.hasOwnProperty('enemy')) {
                     var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
                     var record = {
-                        enemy:_.context.playData.enemy.name,
-                        floor:_.context.playData.floorNumber,
+                        enemy:app.context.playData.enemy.name,
+                        floor:app.context.playData.floorNumber,
                         date:date
                     }
-                    var rank = $.localRanking.insert(_.context.playData.floorNumber, record);
+                    var rank = $.localRanking.insert(app.context.playData.floorNumber, record);
                     if (rank == null) {
                         rank = "out";
                     }
@@ -44,18 +44,18 @@ function tick() {
                 }
             }, 1000);
         } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
-            _.initializing = true;
-            _.context.playData.enemy = null;
-            _.context.playData.floorNumber++;
-            _.context.playData.id = uuid();
-            $.dataStore.put('playData', _.context.playData);
-            _.context.playSound("downstair");
+            app.initializing = true;
+            app.context.playData.enemy = null;
+            app.context.playData.floorNumber++;
+            app.context.playData.id = uuid();
+            $.dataStore.put('playData', app.context.playData);
+            app.context.playSound("downstair");
             $('#stageCanvas').fadeOut('normal', function () {
-                location.href = "screen.html?pdid=" + _.context.playData.id;
+                location.href = "screen.html?pdid=" + app.context.playData.id;
             });
             $.showLoading();
         } else {
-            _.context.drawMap(point, _.stage);
+            app.context.drawMap(point, app.stage);
         }
     }
 }
@@ -313,7 +313,7 @@ var itemData = {
             character.context.addEffect(character.x,
                 character.y,
                 'heal');
-            _.context.playSound("heal");
+            app.context.playSound("heal");
             character.HP += Math.min(100 - character.HP,
                 aid);
         }
@@ -367,14 +367,14 @@ $.loadTiles = function (filename, callback) {
 
 $.initializeFirst = function () {
     function initializeGame(playData) {
-        _.stage = new createjs.Stage(_.canvas);
-        _.context = new AppContext(playData);
-        _.context.initializeStage(__blockMap, __tileBmps, __sounds);
-        _.stage.addChild(_.context.view);
+        app.stage = new createjs.Stage(app.canvas);
+        app.context = new AppContext(playData);
+        app.context.initializeStage(__blockMap, __tileBmps, __sounds);
+        app.stage.addChild(app.context.view);
 
-        _.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
-        _.scoreField.textAlign = "right";
-        _.scoreField.y = 22;
+        app.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
+        app.scoreField.textAlign = "right";
+        app.scoreField.y = 22;
         window.onorientationchange();
 
         var spriteSheetEffects = new createjs.SpriteSheet({
@@ -387,7 +387,7 @@ $.initializeFirst = function () {
                 dead:[25, 39]
             }
         });
-        _.context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
+        app.context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
 
         var spriteSheetSwords = new createjs.SpriteSheet({
             images:[$.appPath + "/img/swords.png"],
@@ -440,16 +440,16 @@ $.initializeFirst = function () {
                 var item = itemData[i];
                 switch (item.type) {
                     case BitmapItem.TYPE_SWORD:
-                        _.context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
-                        _.context.itemMaster[i].gotoAndStop(i);
+                        app.context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
+                        app.context.itemMaster[i].gotoAndStop(i);
                         break;
                     case BitmapItem.TYPE_SHIELD:
-                        _.context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
-                        _.context.itemMaster[i].gotoAndStop(i);
+                        app.context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
+                        app.context.itemMaster[i].gotoAndStop(i);
                         break;
                     case BitmapItem.TYPE_MISC:
-                        _.context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
-                        _.context.itemMaster[i].gotoAndStop(i);
+                        app.context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
+                        app.context.itemMaster[i].gotoAndStop(i);
                         break;
                     default:
                 }
@@ -467,11 +467,11 @@ $.initializeFirst = function () {
         playerAnim.gotoAndPlay("walk");     //animate
         playerAnim.currentFrame = 0;
 
-        player = new BaseCharacter(_.context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
-            _.context.itemMaster[_.context.playData.rightArm],
-            _.context.itemMaster[_.context.playData.leftArm]);
+        player = new BaseCharacter(app.context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
+            app.context.itemMaster[app.context.playData.rightArm],
+            app.context.itemMaster[app.context.playData.leftArm]);
         player.isPlayer = true;
-        player.onUpdate = _.context.collideBlocks;
+        player.onUpdate = app.context.collideBlocks;
         player.x = 384;
         player.y = 384;
         player.HP = 100;
@@ -483,8 +483,8 @@ $.initializeFirst = function () {
         }
 
 
-        _.context.addCharacter(player);
-        _.context.addToStage(player);
+        app.context.addCharacter(player);
+        app.context.addToStage(player);
 
 
         for (var i = 0; i < enemyData.length; i++) {
@@ -508,12 +508,12 @@ $.initializeFirst = function () {
 
         function enemyTickFunction(enemy) {
             return function () {
-                AppUtils.simpleAction(enemy, _.context);
+                AppUtils.simpleAction(enemy, app.context);
                 enemy.updateFrame();
             }
         }
 
-        var floorBonus = Math.floor(_.context.playData.floorNumber / 3);
+        var floorBonus = Math.floor(app.context.playData.floorNumber / 3);
         var enemyNum = 6 + Math.min(floorBonus, 10);
         for (var i = 0; i < enemyNum; i++) {
             var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
@@ -522,16 +522,16 @@ $.initializeFirst = function () {
                 _enemy.handMap = BaseCharacter.HANDMAP_STANDARD;
             }
             var _enemyAnim = _enemy.anim.clone();
-            var enemy = new BaseCharacter(_.context, _enemyAnim, _enemy.handMap,
-                _.context.itemMaster[_enemy.items['rightArm']],
-                _.context.itemMaster[_enemy.items['leftArm']]);
+            var enemy = new BaseCharacter(app.context, _enemyAnim, _enemy.handMap,
+                app.context.itemMaster[_enemy.items['rightArm']],
+                app.context.itemMaster[_enemy.items['leftArm']]);
             for (var k in _enemy) {
                 if (k != "anim") {
                     enemy[k] = _enemy[k];
                 }
             }
 
-            enemy.onUpdate = _.context.collideBlocks;
+            enemy.onUpdate = app.context.collideBlocks;
             enemy.x = Math.random() * 2048;
             enemy.y = Math.random() * 2048;
             enemy.frame = 0;
@@ -541,17 +541,17 @@ $.initializeFirst = function () {
             if (_enemy.hasOwnProperty("items")
                 && _enemy.items.hasOwnProperty("dropItems")) {
                 for (var j in _enemy.items.dropItems) {
-                    if (_.context.itemMaster.hasOwnProperty(j)) {
-                        enemy.addToDropList(_.context.itemMaster[j], _enemy.items.dropItems[j]);
+                    if (app.context.itemMaster.hasOwnProperty(j)) {
+                        enemy.addToDropList(app.context.itemMaster[j], _enemy.items.dropItems[j]);
                     }
                 }
             }
-            _.context.addCharacter(enemy);
-            _.context.addToStage(enemy);
+            app.context.addCharacter(enemy);
+            app.context.addToStage(enemy);
 
         }
 
-        _.stage.addChild(_.scoreField);
+        app.stage.addChild(app.scoreField);
         createjs.Ticker.init();
         createjs.Ticker.useRAF = true;
         createjs.Ticker.setFPS(16);
@@ -559,16 +559,16 @@ $.initializeFirst = function () {
 
         //////
         var onDrag = function (e) {
-            var CANVAS_LEFT = $(_.canvas).offset().left;
-            var CANVAS_TOP = $(_.canvas).offset().top;
+            var CANVAS_LEFT = $(app.canvas).offset().left;
+            var CANVAS_TOP = $(app.canvas).offset().top;
             var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
             if (touchEnable && event.touches[0]) {
-                player.axisX = event.touches[0].pageX - CANVAS_LEFT - _.canvas.width / 2;
-                player.axisY = event.touches[0].pageY - CANVAS_TOP - _.canvas.height / 2;
+                player.axisX = event.touches[0].pageX - CANVAS_LEFT - app.canvas.width / 2;
+                player.axisY = event.touches[0].pageY - CANVAS_TOP - app.canvas.height / 2;
                 e.preventDefault();
             } else {
-                player.axisX = e.pageX - CANVAS_LEFT - _.canvas.width / 2;
-                player.axisY = e.pageY - CANVAS_TOP - _.canvas.height / 2;
+                player.axisX = e.pageX - CANVAS_LEFT - app.canvas.width / 2;
+                player.axisY = e.pageY - CANVAS_TOP - app.canvas.height / 2;
                 e.preventDefault();
             }
         }
@@ -579,7 +579,7 @@ $.initializeFirst = function () {
         player.isCursor = false;
         player.axisX = 0;
         player.axisY = 0;
-        $(_.canvas).on("mousedown touchstart",
+        $(app.canvas).on("mousedown touchstart",
             function (e) {
                 player.isMouseDown = true;
                 onDrag(e);
@@ -606,7 +606,7 @@ $.initializeFirst = function () {
             $.hideLoading();
             $('#stageCanvas').fadeIn();
         }
-        _.initializing = false;
+        app.initializing = false;
     }
 
     function init() {
@@ -699,11 +699,11 @@ $.showLoading = function () {
 window.onorientationchange = function () {
     $("#canvasWrapper").width(window.innerWidth);
     $("#canvasWrapper").height(window.innerHeight);
-    if (_.canvas) {
-        _.canvas.width = window.innerWidth;
-        _.canvas.height = window.innerHeight;
-        if (_.scoreField) {
-            _.scoreField.x = _.canvas.width - 10;
+    if (app.canvas) {
+        app.canvas.width = window.innerWidth;
+        app.canvas.height = window.innerHeight;
+        if (app.scoreField) {
+            app.scoreField.x = app.canvas.width - 10;
         }
     }
     setTimeout(scrollTo, 100, 0, 1);
