@@ -44,13 +44,12 @@
             $(document).tap(function () {
                 location.href = "index.html";
             });
-            app.rootPath = "app";
             $.mobile.showPageLoadingMsg();
             $.loadRanking = function () {
                 $.i18nLoaded = function () {
-                    var ranking = $.localRanking.load();
+                    var ranking = LocalRanking.load();
                     if (ranking != null) {
-                        for (var i = 0; i < $.localRanking.maxRank; i++) {
+                        for (var i = 0; i < LocalRanking.maxRank; i++) {
                             if (i < ranking.length) {
                                 var record = ranking[i];
                                 if (record != null) {

@@ -25,7 +25,7 @@ function tick() {
     if (!app.initializing) {
         if (player.HP <= 0) {
             app.initializing = true;
-            $.dataStore.put('playData', null);
+            LocalData.put('playData', null);
             setTimeout(function () {
                 if (app.context.playData.hasOwnProperty('enemy')) {
                     var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
@@ -34,7 +34,7 @@ function tick() {
                         floor:app.context.playData.floorNumber,
                         date:date
                     }
-                    var rank = $.localRanking.insert(app.context.playData.floorNumber, record);
+                    var rank = app.localRanking.insert(app.context.playData.floorNumber, record);
                     if (rank == null) {
                         rank = "out";
                     }
@@ -48,12 +48,12 @@ function tick() {
             app.context.playData.enemy = null;
             app.context.playData.floorNumber++;
             app.context.playData.id = uuid();
-            $.dataStore.put('playData', app.context.playData);
+            LocalData.put('playData', app.context.playData);
             app.context.playSound("downstair");
             $('#stageCanvas').fadeOut('normal', function () {
                 location.href = "screen.html?pdid=" + app.context.playData.id;
             });
-            $.showLoading();
+            app.showLoading();
         } else {
             app.context.drawMap(point, app.stage);
         }
@@ -322,16 +322,16 @@ var itemData = {
 
 
 //initialize function, called when page loads.
-$.loadTiles = function (filename, callback) {
-    $.showLoading();
+app.loadTiles = function (filename, callback) {
+    app.showLoading();
     $('#stageCanvas').hide();
-    delete $.spriteSheetTiles;
+    delete app.spriteSheetTiles;
     for (var name in __tileBmps) {
         delete __tileBmps[name];
     }
     delete __tileBmps;
 
-    $.spriteSheetTiles = new createjs.SpriteSheet({
+    app.spriteSheetTiles = new createjs.SpriteSheet({
         images:[app.rootPath + "/img/" + filename + ".png"],
         frames:{width:__tileSize, height:__tileSize},
         animations:{
@@ -352,20 +352,20 @@ $.loadTiles = function (filename, callback) {
             s1:[21, 21]
         }
     });
-    $.spriteSheetTiles.onComplete = function () {
-        var names = $.spriteSheetTiles.getAnimations();
+    app.spriteSheetTiles.onComplete = function () {
+        var names = app.spriteSheetTiles.getAnimations();
         for (var k in names) {
             var name = names[k];
-            var bitmap = new createjs.Bitmap(createjs.SpriteSheetUtils.extractFrame($.spriteSheetTiles, name));
+            var bitmap = new createjs.Bitmap(createjs.SpriteSheetUtils.extractFrame(app.spriteSheetTiles, name));
             __tileBmps[name] = bitmap;
         }
-        $.hideLoading();
+        app.hideLoading();
         $('#stageCanvas').fadeIn();
         callback.call(this);
     }
 };
 
-$.initializeFirst = function () {
+app.initializeFirst = function () {
     function initializeGame(playData) {
         app.stage = new createjs.Stage(app.canvas);
         app.context = new AppContext(playData);
@@ -604,7 +604,7 @@ $.initializeFirst = function () {
                 player.vX = player.vY = 0;
             });
         if (typeof $.mobile != "undefined") {
-            $.hideLoading();
+            app.hideLoading();
             $('#stageCanvas').fadeIn();
         }
         app.initializing = false;
@@ -654,7 +654,7 @@ $.initializeFirst = function () {
 
         //blockMap
         var floor = 0;
-        var playData = $.dataStore.get('playData', null);
+        var playData = LocalData.get('playData', null);
         var urlParams = getUrlParams();
         if ((playData != null)
             && (urlParams != null)
@@ -663,9 +663,9 @@ $.initializeFirst = function () {
         } else {
             playData = null;
         }
-        $.dataStore.put('playData', null);
+        LocalData.put('playData', null);
 
-        $.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
+        app.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
             if (floor < 5) {
                 __blockMap = MapGenerator.generate(3, 3);
             } else if (floor < 10) {
@@ -685,13 +685,13 @@ $.initializeFirst = function () {
     init();
 };
 
-$.hideLoading = function () {
+app.hideLoading = function () {
     if ($.hasOwnProperty('mobile')) {
         $.mobile.hidePageLoadingMsg();
     }
 };
 
-$.showLoading = function () {
+app.showLoading = function () {
     if ($.hasOwnProperty('mobile')) {
         $.mobile.showPageLoadingMsg();
     }
