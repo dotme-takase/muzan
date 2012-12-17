@@ -61,6 +61,7 @@ var __tileSize = 128;
 exports.currentContext = null;
 var AppContext = exports.AppContext = function (playData) {
     var _this = this;
+    _this.rootPath = "";
     _this.tileSize = __tileSize;
     _this.currentHostId = -1;
     _this.view = null;
@@ -123,7 +124,7 @@ var AppContext = exports.AppContext = function (playData) {
 
     _this.playSound = function (name) {
         if (typeof AppMobi != "undefined") {
-            var path = $.appPath + "/se";
+            var path = _this.rootPath + "/se";
             try {
                 AppMobi.player.playSound(path + "/" + name + ".mp3");
             } catch (e) {

@@ -51,7 +51,7 @@
     var deviceReady = false;
     document.addEventListener("appMobi.device.ready", onDeviceReady, false);
     $(function () {
-        $.appPath = "app";
+        app.rootPath = "app";
         if (typeof $.mobile != "undefined") {
             $('#stageCanvas').hide();
             $.mobile.showPageLoadingMsg();

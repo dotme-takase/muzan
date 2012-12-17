@@ -38,7 +38,7 @@
         var deviceReady = false;
         document.addEventListener("appMobi.device.ready", onDeviceReady, false);
         $(function () {
-            $.appPath = "app";
+            app.rootPath = "app";
             $.initialize = function () {
                 $.i18nLoaded = function () {
                     $('#menuStartGame span').text($.i18n.prop('menuStartGame'));

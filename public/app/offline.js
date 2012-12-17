@@ -39,7 +39,7 @@ function tick() {
                         rank = "out";
                     }
                     $('#stageCanvas').fadeOut("slow", function () {
-                        location.href = $.appPath + "/../ranking.html#" + rank;
+                        location.href = app.rootPath + "/../ranking.html#" + rank;
                     });
                 }
             }, 1000);
@@ -332,7 +332,7 @@ $.loadTiles = function (filename, callback) {
     delete __tileBmps;
 
     $.spriteSheetTiles = new createjs.SpriteSheet({
-        images:[$.appPath + "/img/" + filename + ".png"],
+        images:[app.rootPath + "/img/" + filename + ".png"],
         frames:{width:__tileSize, height:__tileSize},
         animations:{
             w1:[9, 9],
@@ -369,6 +369,7 @@ $.initializeFirst = function () {
     function initializeGame(playData) {
         app.stage = new createjs.Stage(app.canvas);
         app.context = new AppContext(playData);
+        app.context.rootPath = app.rootPath;
         app.context.initializeStage(__blockMap, __tileBmps, __sounds);
         app.stage.addChild(app.context.view);
 
@@ -378,7 +379,7 @@ $.initializeFirst = function () {
         window.onorientationchange();
 
         var spriteSheetEffects = new createjs.SpriteSheet({
-            images:[$.appPath + "/img/effect.png"],
+            images:[app.rootPath + "/img/effect.png"],
             frames:{width:128, height:128, regX:64, regY:64},
             animations:{
                 damage:[0, 4],
@@ -390,7 +391,7 @@ $.initializeFirst = function () {
         app.context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
 
         var spriteSheetSwords = new createjs.SpriteSheet({
-            images:[$.appPath + "/img/swords.png"],
+            images:[app.rootPath + "/img/swords.png"],
             frames:{width:32, height:64, regX:15, regY:55},
             animations:{
                 shortSword:0,
@@ -411,7 +412,7 @@ $.initializeFirst = function () {
         });
 
         var spriteSheetShields = new createjs.SpriteSheet({
-            images:[$.appPath + "/img/shields.png"],
+            images:[app.rootPath + "/img/shields.png"],
             frames:{width:32, height:32, regX:16, regY:20},
             animations:{
                 woodenShield:0,
@@ -428,7 +429,7 @@ $.initializeFirst = function () {
         });
 
         var spriteSheetItems = new createjs.SpriteSheet({
-            images:[$.appPath + "/img/items.png"],
+            images:[app.rootPath + "/img/items.png"],
             frames:{width:32, height:32, regX:16, regY:20},
             animations:{
                 aidBox:0
@@ -457,7 +458,7 @@ $.initializeFirst = function () {
         }
 
         var spriteSheetPlayer = new createjs.SpriteSheet({
-            images:[$.appPath + "/img/player.png"],
+            images:[app.rootPath + "/img/player.png"],
             frames:{width:64, height:64, regX:32, regY:32},
             animations:BaseCharacter.BODY_ANIMATION
         });
@@ -495,7 +496,7 @@ $.initializeFirst = function () {
                 _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
             }
             var spriteSheetEnemy = new createjs.SpriteSheet({
-                images:[$.appPath + "/img/enemy" + _bodyName + ".png"],
+                images:[app.rootPath + "/img/enemy" + _bodyName + ".png"],
                 frames:{width:_enemySize, height:_enemySize, regX:_enemySize / 2, regY:_enemySize / 2},
                 animations:BaseCharacter.BODY_ANIMATION
             });
@@ -631,7 +632,7 @@ $.initializeFirst = function () {
                 "parried",
                 "pickup"
             ];
-            var path = $.appPath + "/se";
+            var path = app.rootPath + "/se";
             if (typeof AppMobi != "undefined") {
 
             } else if (buzz.isSupported()) {
