@@ -34,7 +34,7 @@ function tick() {
                         floor:app.context.playData.floorNumber,
                         date:date
                     }
-                    var rank = app.localRanking.insert(app.context.playData.floorNumber, record);
+                    var rank = LocalRanking.insert(app.context.playData.floorNumber, record);
                     if (rank == null) {
                         rank = "out";
                     }
@@ -698,8 +698,6 @@ app.showLoading = function () {
 };
 
 window.onorientationchange = function () {
-    $("#canvasWrapper").width(window.innerWidth);
-    $("#canvasWrapper").height(window.innerHeight);
     if (app.canvas) {
         app.canvas.width = window.innerWidth;
         app.canvas.height = window.innerHeight;

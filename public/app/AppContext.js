@@ -88,7 +88,7 @@ var AppContext = exports.AppContext = function (playData) {
         _this.playData = playData;
     } else {
         _this.playData = {
-            id: null,
+            id:null,
             floorNumber:1,
             rightArm:"shortSword",
             leftArm:"woodenShield"
@@ -103,9 +103,9 @@ var AppContext = exports.AppContext = function (playData) {
         }
     };
 
-    _this.initializeEffectList = function(effect){
+    _this.initializeEffectList = function (effect) {
         _this.effectsAnimList = new Array();
-        for(var i = 0; i < __maxEffectSize; i++){
+        for (var i = 0; i < __maxEffectSize; i++) {
             _this.effectsAnimList.push(effect.clone());
         }
     };
@@ -248,7 +248,7 @@ var AppContext = exports.AppContext = function (playData) {
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
                             other.HP -= Math.ceil(weaponPoint * (Math.random() * 0.20 + 1));
-                            if((player.context.playData != null) && (other == player)){
+                            if ((player.context.playData != null) && (other == player)) {
                                 player.context.playData.enemy = obj;
                             }
                         }
@@ -425,7 +425,7 @@ var AppContext = exports.AppContext = function (playData) {
         }
     };
     _this.initializeStage = function (blockMap, tileBmps, sounds) {
-        var tileNumber =  (Math.floor((_this.playData.floorNumber - 1) / 3) % 3) + 1;
+        var tileNumber = (Math.floor((_this.playData.floorNumber - 1) / 3) % 3) + 1;
         _this.loadBlockMap(blockMap);
         _this.view = new createjs.Container();
         var lastChild = null;
@@ -1270,6 +1270,76 @@ exports.createStateJson = function (stateId) {
     return json;
 };
 
+var LocalData = {
+    put:function (name, value) {
+        if ((typeof AppMobi != "undefined")
+            && (typeof AppMobi.cache != "undefined")) {
+            AppMobi.cache.setCookie(name, JSON.stringify(value), -1);
+        } else if (typeof localStorage != "undefined") {
+            localStorage.setItem(name, JSON.stringify(value));
+        } else {
+            $.cookie(name, JSON.stringify(value));
+        }
+    },
+    get:function (name, defaultValue) {
+        var value = null;
+        if ((typeof AppMobi != "undefined")
+            && (typeof AppMobi.cache != "undefined")) {
+            value = AppMobi.cache.getCookie(name);
+        } else if (typeof localStorage != "undefined") {
+            value = localStorage.getItem(name);
+        } else {
+            value = $.cookie(name);
+        }
+        if ((typeof value !== "undefined") && (value != null)) {
+            try {
+                var pValue = JSON.parse(value);
+                return pValue;
+            } catch (e) {
+
+            }
+        }
+        return defaultValue;
+    }
+};
+
+var LocalRanking = {
+    dataKey:"localRanking",
+    maxRank:10,
+    insert:function (point, record) {
+        var data = LocalRanking.load();
+        if (data == null) {
+            data = new Array();
+        }
+        record.point = point;
+        var rankedIn = false;
+        for (var i = 0; i < LocalRanking.maxRank; i++) {
+            if (i + 1 > data.length) {
+                rankedIn = true;
+                data[i] = record;
+                break;
+            } else if (data.hasOwnProperty(i)) {
+                var oldRecord = data[i];
+                if (point >= oldRecord.point) {
+                    rankedIn = true;
+                    for (var j = LocalRanking.maxRank - 1; j > i; j--) {
+                        data[j] = data[j - 1];
+                    }
+                    data[i] = record;
+                    break;
+                }
+            }
+        }
+        if (rankedIn) {
+            LocalData.put(LocalRanking.dataKey, data);
+            return i;
+        }
+        return null;
+    },
+    load:function () {
+        return LocalData.get(LocalRanking.dataKey, null);
+    }
+};
 
 String.prototype.startsWith = function (prefix, toffset) {
     var i = 0;
