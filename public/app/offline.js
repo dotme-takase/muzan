@@ -649,7 +649,7 @@ app.initializeGameDelegete = function (playData) {
 
     createjs.Ticker.addListener(window);
     createjs.Ticker.useRAF = true;
-    createjs.Ticker.setFPS(18);
+    createjs.Ticker.setFPS(20);
 
     for (var i in app.context.characters)(function (i) {
         var character = app.context.characters[i];
