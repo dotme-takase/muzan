@@ -71,35 +71,6 @@ var __blockMap = [];
 var __sounds = null;
 var enemyData = [
     {
-        body:'1_128',
-        name:'Militia',
-        HP:10,
-        speed:8,
-        items:{
-            rightArm:"shortSword",
-            leftArm:"woodenShield",
-            dropItems:{
-                woodenShield:3,
-                aidBox:5
-            }
-        }
-    },
-    {
-        body:'2_128',
-        name:'Militia',
-        HP:10,
-        speed:8,
-        items:{
-            rightArm:"shortSword",
-            leftArm:"woodenShield",
-            dropItems:{
-                woodenShield:3,
-                aidBox:5
-            }
-        },
-        handMap:BaseCharacter.HANDMAP_2X
-    },
-    {
         body:1,
         name:'Militia',
         HP:10,
