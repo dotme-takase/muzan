@@ -1,6 +1,5 @@
 var _canvas = document.getElementById("canvas");
 
-
 ///
 var LoadingIcon = function () {
     this.initialize.apply(this, arguments)
@@ -86,6 +85,31 @@ __.i18n.properties({
     callback:__.i18nLoadedCallback
 });
 
+__.rankingTextObj = new Array();
+function refreshRanking() {
+    var ranking = LocalRanking.load();
+    var rank = 1;
+    for (var i in __.rankingTextObj) {
+        var textObj = __.rankingTextObj[i].textObj;
+        var rectObj = __.rankingTextObj[i].rectObj;
+        if ((ranking != null) && (i < ranking.length)) {
+            var record = ranking[i];
+            if (record != null) {
+                textObj.text = __.i18n.prop('textRecordDefeated',
+                    record.floor, __.i18n.prop('npc' + record.enemy), rank);
+                if(rank == app.currentRank){
+                    rectObj.alpha = 1;
+                    app.currentRank = null;
+                } else {
+                    rectObj.alpha = 0.5;
+                }
+                rank++
+            }
+        } else {
+            textObj.text = "";
+        }
+    }
+}
 __.i18nLoaded = function () {
     app.canvas = _canvas;
     app.rootPath = ".";
@@ -150,17 +174,9 @@ __.i18nLoaded = function () {
         __.ranking.alpha = 0;
         var rankHeight = 32;
         var rankNum = Math.floor(app.canvas.height / (rankHeight + 2));
+        var ranking = LocalRanking.load();
         for (var i = 0; i < rankNum; i++) {
-            var ranking = LocalRanking.load();
-            var text = "";
-            if ((ranking != null) && (i < ranking.length)) {
-                var record = ranking[i];
-                if (record != null) {
-                    text = __.i18n.prop('textRecordDefeated',
-                        record.floor, __.i18n.prop('npc' + record.enemy), i + 1);
-                }
-            }
-            new TextLink(
+            __.rankingTextObj.push(new TextLink(
                 __.ranking,
                 {
                     x:4,
@@ -168,18 +184,20 @@ __.i18nLoaded = function () {
                     width:app.canvas.width - 8,
                     height:rankHeight
                 },
-                text,
+                "",
                 "#FFFFFF",
                 "#333333",
                 function () {
                     createjs.Tween.get(__.ranking).to({alpha:0}, 200, createjs.Ease.circIn);
                     createjs.Tween.get(__.mainMenu).to({alpha:1.0}, 200, createjs.Ease.circIn);
                 }
-            );
+            ));
         }
+        refreshRanking();
         app.viewApp.addChild(__.ranking);
     };
     app.onGameover = function () {
+        refreshRanking();
         createjs.Tween.get(__.ranking).to({alpha:1}, 300, createjs.Ease.circIn);
         createjs.Tween.get(app.viewApp).to({alpha:1}, 200, createjs.Ease.circIn);
         app.initializeGame(null);
