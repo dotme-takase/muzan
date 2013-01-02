@@ -31,6 +31,7 @@
     <script type="text/javascript" charset="utf-8" src="js/plugins/jquery.i18n.properties-min-1.0.9.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="app/easeljs-0.5.0.min.js"></script>
+    <script type="text/javascript" src="app/tweenjs-0.3.0.min.js"></script>
     <script type="text/javascript" src="app/buzz.js"></script>
     <script type="text/javascript" src="app/AppContext.js"></script>
     <script type="text/javascript" src="app/QuadTree.js"></script>
@@ -40,7 +41,6 @@
     <script type="text/javascript" src="app/offline.js"></script>
     <script type="text/javascript" charset="utf-8" src="http://localhost:58888/_appMobi/appmobi.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css"/>
     <title></title>
 </head>
 <body class="screen">
@@ -53,8 +53,8 @@
     $(function () {
         app.rootPath = "app";
         if (typeof $.mobile != "undefined") {
-            $('#stageCanvas').hide();
-            $.mobile.showPageLoadingMsg();
+            //$('#stageCanvas').hide();
+            //$.mobile.showPageLoadingMsg();
         }
         if (typeof AppMobi != "undefined") {
             app.canvas = document.getElementById("stageCanvas");
@@ -63,6 +63,7 @@
                     window.onorientationchange();
                     AppMobi.device.hideSplashScreen();
                     app.initializeFirst();
+                    app.pause = false;
                 } else {
                     setTimeout(initialize, 200);
                 }
@@ -71,6 +72,16 @@
         } else {
             app.canvas = document.getElementById("stageCanvas");
             app.initializeFirst();
+            app.onInitialized = function () {
+
+            }
+            app.onGameover = function () {
+                $('#stageCanvas').fadeOut("slow", function () {
+                    location.href = app.rootPath + "/../ranking.html#" + app.currentRank;
+                });
+            }
+
+            app.pause = false;
         }
     });
     function onDeviceReady() {

@@ -1,62 +1,69 @@
 //function called by the Tick instance at a set interval
 var app = new Object();
+app.pause = true;
 app.initializing = true;
+app.onInitialized = null;
+app.onGameover = null;
+app.viewApp = null;
+app.currentRank = "";
 function tick() {
-    app.context.updateTree();
+    if (!app.pause) {
+        try {
+            app.context.updateTree();
+            for (var k in app.context.characters) {
+                var character = app.context.characters[k];
+                AppUtils.updatePosition(character);
+                app.context.collideBlocks(character);
+            }
 
-    for (var k in app.context.characters) {
-        var character = app.context.characters[k];
-        AppUtils.updatePosition(character);
-        app.context.collideBlocks(character);
-    }
+            app.context.afterCharactersUpdate();
+            app.context.view.x = app.canvas.width / 2 - player.x;
+            app.context.view.y = app.canvas.height / 2 - player.y;
+            app.stage.update();
 
-    app.context.afterCharactersUpdate();
-    app.context.view.x = app.canvas.width / 2 - player.x;
-    app.context.view.y = app.canvas.height / 2 - player.y;
-    app.stage.update();
+            var point = app.context.getMapPoint(player);
+            var floor = app.context.floorMap[point.y][point.x];
 
-    var point = app.context.getMapPoint(player);
-    var floor = app.context.floorMap[point.y][point.x];
-
-    if (app.context.playData) {
-        app.scoreField.text = "B" + app.context.playData.floorNumber + "F: " + player.HP + " / 100";
-    }
-
-    if (!app.initializing) {
-        if (player.HP <= 0) {
-            app.initializing = true;
-            LocalData.put('playData', null);
-            setTimeout(function () {
-                if (app.context.playData.hasOwnProperty('enemy')) {
-                    var date = formatDate(new Date(), 'yyyy/MM/dd HH:mm');
-                    var record = {
-                        enemy:app.context.playData.enemy.name,
-                        floor:app.context.playData.floorNumber,
-                        date:date
-                    }
-                    var rank = LocalRanking.insert(app.context.playData.floorNumber, record);
-                    if (rank == null) {
-                        rank = "out";
-                    }
-                    $('#stageCanvas').fadeOut("slow", function () {
-                        location.href = app.rootPath + "/../ranking.html#" + rank;
-                    });
+            if (!app.initializing) {
+                if (player.HP <= 0) {
+                    app.initializing = true;
+                    LocalData.put('playData', null);
+                    setTimeout(function () {
+                        if (app.context.playData.hasOwnProperty('enemy')) {
+                            var date = AppUtils.formatDate(new Date(), 'yyyy/MM/dd HH:mm');
+                            var record = {
+                                enemy:app.context.playData.enemy.name,
+                                floor:app.context.playData.floorNumber,
+                                date:date
+                            }
+                            var rank = LocalRanking.insert(app.context.playData.floorNumber, record);
+                            if (rank == null) {
+                                rank = "out";
+                            }
+                            if (app.onGameover) {
+                                app.currentRank = rank;
+                                app.onGameover();
+                            }
+                        }
+                    }, 1000);
+                } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
+                    app.initializing = true;
+                    app.context.playData.enemy = null;
+                    app.context.playData.floorNumber++;
+                    app.context.playData.id = AppUtils.uuid();
+                    LocalData.put('playData', app.context.playData);
+                    app.context.playSound("downstair");
+                    app.initializeGame(app.context.playData);
+                    app.showLoading();
+                } else {
+                    app.context.drawMap(point);
                 }
-            }, 1000);
-        } else if ((floor != null) && (floor.indexOf("s1") === 0)) {
-            app.initializing = true;
-            app.context.playData.enemy = null;
-            app.context.playData.floorNumber++;
-            app.context.playData.id = uuid();
-            LocalData.put('playData', app.context.playData);
-            app.context.playSound("downstair");
-            $('#stageCanvas').fadeOut('normal', function () {
-                location.href = "screen.html?pdid=" + app.context.playData.id;
-            });
-            app.showLoading();
-        } else {
-            app.context.drawMap(point, app.stage);
+            }
+        } catch (e) {
+            console.log(e);
         }
+    } else {
+        app.stage.update();
     }
 }
 var __tileBmps = {};
@@ -323,8 +330,6 @@ var itemData = {
 
 //initialize function, called when page loads.
 app.loadTiles = function (filename, callback) {
-    app.showLoading();
-    $('#stageCanvas').hide();
     delete app.spriteSheetTiles;
     for (var name in __tileBmps) {
         delete __tileBmps[name];
@@ -354,356 +359,414 @@ app.loadTiles = function (filename, callback) {
     });
     app.spriteSheetTiles.onComplete = function () {
         var names = app.spriteSheetTiles.getAnimations();
+        var hasDataURL = false;
+        try {
+            var _canvas = createjs.SpriteSheetUtils._workingContext.canvas;
+            hasDataURL = typeof _canvas.toDataURL !== 'undefined';
+        } catch (ignore) {
+        }
         for (var k in names) {
             var name = names[k];
-            var bitmap = new createjs.Bitmap(createjs.SpriteSheetUtils.extractFrame(app.spriteSheetTiles, name));
-            __tileBmps[name] = bitmap;
+            if (hasDataURL) {
+                var bitmap = new createjs.Bitmap(createjs.SpriteSheetUtils.extractFrame(app.spriteSheetTiles, name));
+                __tileBmps[name] = bitmap;
+            } else {
+                var bitmapAnim = new createjs.BitmapAnimation(app.spriteSheetTiles);
+                bitmapAnim.gotoAndPlay(name);
+                __tileBmps[name] = bitmapAnim;
+            }
         }
         app.hideLoading();
-        $('#stageCanvas').fadeIn();
         callback.call(this);
-    }
+    };
 };
 
 app.initializeFirst = function () {
-    function initializeGame(playData) {
-        app.stage = new createjs.Stage(app.canvas);
-        app.context = new AppContext(playData);
-        app.context.rootPath = app.rootPath;
-        app.context.initializeStage(__blockMap, __tileBmps, __sounds);
-        app.stage.addChild(app.context.view);
+    if (app.stage) {
+        app.stage.removeAllChildren();
+    }
+    app.stage = new createjs.Stage(app.canvas);
+    app.contextView = new createjs.Container();
+    app.stage.addChild(app.contextView);
+    app.contextViewUI = new createjs.Container();
+    app.stage.addChild(app.contextViewUI);
+    app.viewApp = new createjs.Container();
+    app.stage.addChild(app.viewApp);
+    app.viewLoading = new createjs.Container();
+    app.stage.addChild(app.viewLoading);
 
-        app.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
-        app.scoreField.textAlign = "right";
-        app.scoreField.y = 22;
-        window.onorientationchange();
+    app.viewLoading.addChild(new createjs.Shape((new createjs.Graphics())
+        .beginFill('#000000')
+        .drawRect(0, 0, app.canvas.width, app.canvas.height)
+    ));
+    var loadingText = new createjs.Text("", "italic bold 24px Arial", "#FFFFFF");
+    loadingText.text = "LOADING";
+    loadingText.textAlign = "center";
+    loadingText.x = app.canvas.width / 2;
+    loadingText.y = (app.canvas.height / 2) - 24;
+    createjs.Tween.get(loadingText, {repeat:true}).to({alpha:0.2}, 500).to({alpha:1.0}, 500);
+    app.viewLoading.addChild(loadingText);
 
-        var spriteSheetEffects = new createjs.SpriteSheet({
-            images:[app.rootPath + "/img/effect.png"],
-            frames:{width:128, height:128, regX:64, regY:64},
-            animations:{
-                damage:[0, 4],
-                parried:[5, 9],
-                heal:[10, 24],
-                dead:[25, 39]
-            }
-        });
-        app.context.initializeEffectList(new createjs.BitmapAnimation(spriteSheetEffects));
+    if (app.onInitialized) {
+        app.onInitialized();
+    }
 
-        var spriteSheetSwords = new createjs.SpriteSheet({
-            images:[app.rootPath + "/img/swords.png"],
-            frames:{width:32, height:64, regX:15, regY:55},
-            animations:{
-                shortSword:0,
-                shortSword_:0,
-                longSword:1,
-                longSword_:1,
-                fasterShortSword:2,
-                fasterShortSword_:2,
-                handAxe:3,
-                handAxe_:3,
-                katana:4,
-                katana_:4,
-                ryuyotou:5,
-                ryuyotou_:5,
-                broadSword:6,
-                broadSword_:6
-            }
-        });
-
-        var spriteSheetShields = new createjs.SpriteSheet({
-            images:[app.rootPath + "/img/shields.png"],
-            frames:{width:32, height:32, regX:16, regY:20},
-            animations:{
-                woodenShield:0,
-                woodenShield_:16,
-                bronzeShield:1,
-                bronzeShield_:17,
-                ironShield:2,
-                ironShield_:18,
-                blueShield:3,
-                blueShield_:19,
-                redShield:4,
-                redShield_:20
-            }
-        });
-
-        var spriteSheetItems = new createjs.SpriteSheet({
-            images:[app.rootPath + "/img/items.png"],
-            frames:{width:32, height:32, regX:16, regY:20},
-            animations:{
-                aidBox:0
-            }
-        });
-
-        for (var i in itemData) {
-            if (itemData.hasOwnProperty(i)) {
-                var item = itemData[i];
-                switch (item.type) {
-                    case BitmapItem.TYPE_SWORD:
-                        app.context.itemMaster[i] = new BitmapItem(spriteSheetSwords, item);
-                        app.context.itemMaster[i].gotoAndStop(i);
-                        break;
-                    case BitmapItem.TYPE_SHIELD:
-                        app.context.itemMaster[i] = new BitmapItem(spriteSheetShields, item);
-                        app.context.itemMaster[i].gotoAndStop(i);
-                        break;
-                    case BitmapItem.TYPE_MISC:
-                        app.context.itemMaster[i] = new BitmapItem(spriteSheetItems, item);
-                        app.context.itemMaster[i].gotoAndStop(i);
-                        break;
-                    default:
-                }
-            }
+    app.spriteSheetEffects = new createjs.SpriteSheet({
+        images:[app.rootPath + "/img/effect.png"],
+        frames:{width:128, height:128, regX:64, regY:64},
+        animations:{
+            damage:[0, 4],
+            parried:[5, 9],
+            heal:[10, 24],
+            dead:[25, 39]
         }
+    });
 
-        var spriteSheetPlayer = new createjs.SpriteSheet({
-            images:[app.rootPath + "/img/player.png"],
-            frames:{width:64, height:64, regX:32, regY:32},
+    app.spriteSheetSwords = new createjs.SpriteSheet({
+        images:[app.rootPath + "/img/swords.png"],
+        frames:{width:32, height:64, regX:15, regY:55},
+        animations:{
+            shortSword:0,
+            shortSword_:0,
+            longSword:1,
+            longSword_:1,
+            fasterShortSword:2,
+            fasterShortSword_:2,
+            handAxe:3,
+            handAxe_:3,
+            katana:4,
+            katana_:4,
+            ryuyotou:5,
+            ryuyotou_:5,
+            broadSword:6,
+            broadSword_:6
+        }
+    });
+
+    app.spriteSheetShields = new createjs.SpriteSheet({
+        images:[app.rootPath + "/img/shields.png"],
+        frames:{width:32, height:32, regX:16, regY:20},
+        animations:{
+            woodenShield:0,
+            woodenShield_:16,
+            bronzeShield:1,
+            bronzeShield_:17,
+            ironShield:2,
+            ironShield_:18,
+            blueShield:3,
+            blueShield_:19,
+            redShield:4,
+            redShield_:20
+        }
+    });
+
+    app.spriteSheetItems = new createjs.SpriteSheet({
+        images:[app.rootPath + "/img/items.png"],
+        frames:{width:32, height:32, regX:16, regY:20},
+        animations:{
+            aidBox:0
+        }
+    });
+
+    app.spriteSheetPlayer = new createjs.SpriteSheet({
+        images:[app.rootPath + "/img/player.png"],
+        frames:{width:64, height:64, regX:32, regY:32},
+        animations:BaseCharacter.BODY_ANIMATION
+    });
+
+    for (var i = 0; i < enemyData.length; i++) {
+        var _enemyData = enemyData[i];
+        var _enemySize = 64;
+        var _bodyName = _enemyData.body.toString();
+        if (_bodyName.match(/.*_/)) {
+            _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
+        }
+        var spriteSheetEnemy = new createjs.SpriteSheet({
+            images:[app.rootPath + "/img/enemy" + _bodyName + ".png"],
+            frames:{width:_enemySize, height:_enemySize, regX:_enemySize / 2, regY:_enemySize / 2},
             animations:BaseCharacter.BODY_ANIMATION
         });
-
-        var playerAnim = new createjs.BitmapAnimation(spriteSheetPlayer);
-        playerAnim.name = "player";
-        playerAnim.gotoAndPlay("walk");     //animate
-        playerAnim.currentFrame = 0;
-
-        player = new BaseCharacter(app.context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
-            app.context.itemMaster[app.context.playData.rightArm],
-            app.context.itemMaster[app.context.playData.leftArm]);
-        player.isPlayer = true;
-        player.onUpdate = app.context.collideBlocks;
-        player.x = 384;
-        player.y = 384;
-        player.HP = 100;
-        player.teamNumber = 1;
-        player.onTick = function () {
-            AppUtils.inputAction(player);
-            player.updateFrame();
-            player.checkDropItem();
-        }
-
-
-        app.context.addCharacter(player);
-        app.context.addToStage(player);
-
-
-        for (var i = 0; i < enemyData.length; i++) {
-            var _enemyData = enemyData[i];
-            var _enemySize = 64;
-            var _bodyName = _enemyData.body.toString();
-            if (_bodyName.match(/.*_/)) {
-                _enemySize = parseInt(_bodyName.replace(/.*_/, ''));
-            }
-            var spriteSheetEnemy = new createjs.SpriteSheet({
-                images:[app.rootPath + "/img/enemy" + _bodyName + ".png"],
-                frames:{width:_enemySize, height:_enemySize, regX:_enemySize / 2, regY:_enemySize / 2},
-                animations:BaseCharacter.BODY_ANIMATION
-            });
-            var enemyAnim = new createjs.BitmapAnimation(spriteSheetEnemy);
-            enemyAnim.name = "enemy";
-            enemyAnim.gotoAndPlay("walk");     //animate
-            enemyAnim.currentFrame = 0;
-            _enemyData["anim"] = enemyAnim;
-        }
-
-        function enemyTickFunction(enemy) {
-            return function () {
-                AppUtils.simpleAction(enemy, app.context);
-                enemy.updateFrame();
-            }
-        }
-
-        var floorBonus = Math.floor(app.context.playData.floorNumber / 3);
-        var enemyNum = 6 + Math.min(floorBonus, 10);
-        for (var i = 0; i < enemyNum; i++) {
-            var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
-            var _enemy = enemyData[index];
-            if (!_enemy.hasOwnProperty('handMap')) {
-                _enemy.handMap = BaseCharacter.HANDMAP_STANDARD;
-            }
-            var _enemyAnim = _enemy.anim.clone();
-            var enemy = new BaseCharacter(app.context, _enemyAnim, _enemy.handMap,
-                app.context.itemMaster[_enemy.items['rightArm']],
-                app.context.itemMaster[_enemy.items['leftArm']]);
-            for (var k in _enemy) {
-                if (k != "anim") {
-                    enemy[k] = _enemy[k];
-                }
-            }
-
-            enemy.onUpdate = app.context.collideBlocks;
-            enemy.x = Math.random() * 2048;
-            enemy.y = Math.random() * 2048;
-            enemy.frame = 0;
-            enemy.mode = EnemyMode.RANDOM_WALK;
-            enemy.onTick = enemyTickFunction(enemy);
-
-            if (_enemy.hasOwnProperty("items")
-                && _enemy.items.hasOwnProperty("dropItems")) {
-                for (var j in _enemy.items.dropItems) {
-                    if (app.context.itemMaster.hasOwnProperty(j)) {
-                        enemy.addToDropList(app.context.itemMaster[j], _enemy.items.dropItems[j]);
-                    }
-                }
-            }
-            app.context.addCharacter(enemy);
-            app.context.addToStage(enemy);
-
-        }
-
-        app.stage.addChild(app.scoreField);
-        createjs.Ticker.init();
-        createjs.Ticker.useRAF = true;
-        createjs.Ticker.setFPS(16);
-        createjs.Ticker.addListener(window);
-
-        //////
-        var onDrag = function (e) {
-            var CANVAS_LEFT = $(app.canvas).offset().left;
-            var CANVAS_TOP = $(app.canvas).offset().top;
-            var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
-            if (touchEnable && event.touches[0]) {
-                player.axisX = event.touches[0].pageX - CANVAS_LEFT - app.canvas.width / 2;
-                player.axisY = event.touches[0].pageY - CANVAS_TOP - app.canvas.height / 2;
-                e.preventDefault();
-            } else {
-                player.axisX = e.pageX - CANVAS_LEFT - app.canvas.width / 2;
-                player.axisY = e.pageY - CANVAS_TOP - app.canvas.height / 2;
-                e.preventDefault();
-            }
-        }
-
-        player.isMouseDown = false;
-        player.clickDuration = false;
-        player.isMouseClick = false;
-        player.isCursor = false;
-        player.axisX = 0;
-        player.axisY = 0;
-        $(app.canvas).on("mousedown touchstart",
-            function (e) {
-                player.isMouseDown = true;
-                onDrag(e);
-                if (Math.pow(player.axisX, 2) + Math.pow(player.axisY, 2) < Math.pow(32, 2)) {
-                    player.isCursor = true;
-                }
-                player.clickDuration = true;
-                setTimeout(function () {
-                    player.clickDuration = false;
-                }, 100);
-            }).on("mousemove touchmove",
-            function (e) {
-                onDrag(e);
-            }).on("mouseup touchend mouseleave touchleave", function (e) {
-                player.isCursor = player.isMouseDown = false;
-                if (player.clickDuration) {
-                    player.isMouseClick = true;
-                } else {
-                    player.axisX = player.axisY = 0;
-                }
-                player.vX = player.vY = 0;
-            });
-        if (typeof $.mobile != "undefined") {
-            app.hideLoading();
-            $('#stageCanvas').fadeIn();
-        }
-        app.initializing = false;
+        var enemyAnim = new createjs.BitmapAnimation(spriteSheetEnemy);
+        enemyAnim.name = "enemy";
+        enemyAnim.gotoAndPlay("walk");     //animate
+        enemyAnim.currentFrame = 0;
+        _enemyData["anim"] = enemyAnim;
     }
 
-    function init() {
-        //Sound
-        function preloadNotSupported() {
-            var agent = navigator.userAgent;
-            if (agent.indexOf('Linux; U; Android ') != -1
-                || agent.indexOf('iPhone; U') != -1
-                || agent.indexOf('iPad; U') != -1) {
-                return true;
-            }
-            return false;
+    //Sound
+    function preloadNotSupported() {
+        var agent = navigator.userAgent;
+        if (agent.indexOf('Linux; U; Android ') != -1
+            || agent.indexOf('iPhone; U') != -1
+            || agent.indexOf('iPad; U') != -1) {
+            return true;
         }
-
-        function loadSound() {
-            var sounds = [
-                "attack",
-                "defeat",
-                "downstair",
-                "heal",
-                "hit",
-                "parried",
-                "pickup"
-            ];
-            var path = app.rootPath + "/se";
-            if (typeof AppMobi != "undefined") {
-
-            } else if (buzz.isSupported()) {
-                __sounds = new Array();
-                buzz.defaults.preload = true;
-                if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
-                    for (var k in sounds) {
-                        var soundName = sounds[k];
-                        __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
-                    }
-                } else {
-                    __sounds = null;
-                }
-            }
-        }
-
-        loadSound();
-        //Sound
-
-        //blockMap
-        var floor = 0;
-        var playData = LocalData.get('playData', null);
-        var urlParams = getUrlParams();
-        if ((playData != null)
-            && (urlParams != null)
-            && (playData.id == urlParams['pdid'])) {
-            floor = playData.floorNumber;
-        } else {
-            playData = null;
-        }
-        LocalData.put('playData', null);
-
-        app.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
-            if (floor < 5) {
-                __blockMap = MapGenerator.generate(3, 3);
-            } else if (floor < 10) {
-                __blockMap = MapGenerator.generate(4, 3);
-            } else if (floor < 15) {
-                __blockMap = MapGenerator.generate(4, 4);
-            } else if (floor < 20) {
-                __blockMap = MapGenerator.generate(5, 4);
-            } else {
-                __blockMap = MapGenerator.generate(5, 5);
-            }
-            initializeGame(playData);
-        });
-        //blockMap
+        return false;
     }
 
-    init();
+    function loadSound() {
+        var sounds = [
+            "attack",
+            "defeat",
+            "downstair",
+            "heal",
+            "hit",
+            "parried",
+            "pickup"
+        ];
+        var path = app.rootPath + "/se";
+        if (typeof AppMobi != "undefined") {
+
+        } else if (typeof ejecta != 'undefined') {
+            __sounds = new Array();
+            for (var k in sounds) {
+                var a = new Audio();
+                var soundName = sounds[k];
+                a.src = path + "/" + soundName + ".mp3"
+                __sounds[soundName] = a;
+            }
+        } else if ((typeof AppMobi != "undefined") && (buzz.isSupported())) {
+            __sounds = new Array();
+            buzz.defaults.preload = true;
+            if (buzz.isOGGSupported() || buzz.isWAVSupported() || buzz.isMP3Supported()) {
+                for (var k in sounds) {
+                    var soundName = sounds[k];
+                    __sounds[soundName] = new buzz.sound(path + "/" + soundName, {formats:[ "ogg", "mp3", "wav" ]});
+                }
+            } else {
+                __sounds = null;
+            }
+        }
+    }
+
+    loadSound();
+    //Sound
+
+    // initialize playData
+    var playData = LocalData.get('playData', null);
+    var urlParams = document.hasOwnProperty('getUrlParams') ? getUrlParams() : null;
+    if ((playData != null)
+        && (urlParams != null)
+        && (playData.id == urlParams['pdid'])) {
+    } else {
+        playData = null;
+    }
+    LocalData.put('playData', null);
+    app.initializeGame(playData);
 };
 
-app.hideLoading = function () {
-    if ($.hasOwnProperty('mobile')) {
-        $.mobile.hidePageLoadingMsg();
+app.initializeGame = function (playData) {
+    app.initializing = true;
+    var floor = 0;
+    if (playData != null) {
+        floor = playData.floorNumber;
     }
+    //load tile bitmaps
+    app.loadTiles("tiles" + ((Math.floor(floor / 3) % 3) + 1), function () {
+        if (floor < 5) {
+            __blockMap = MapGenerator.generate(3, 3);
+        } else if (floor < 10) {
+            __blockMap = MapGenerator.generate(4, 3);
+        } else if (floor < 15) {
+            __blockMap = MapGenerator.generate(4, 4);
+        } else if (floor < 20) {
+            __blockMap = MapGenerator.generate(5, 4);
+        } else {
+            __blockMap = MapGenerator.generate(5, 5);
+        }
+        app.initializeGameDelegete(playData);
+    });
+};
+
+app.initializeGameDelegete = function (playData) {
+    app.context = new AppContext(app.contextView, app.contextViewUI, playData);
+    app.context.rootPath = app.rootPath;
+    app.context.initializeStage(__blockMap, __tileBmps, __sounds);
+    window.onorientationchange();
+
+    app.context.initializeEffectList(new createjs.BitmapAnimation(app.spriteSheetEffects));
+
+    for (var i in itemData) {
+        if (itemData.hasOwnProperty(i)) {
+            var item = itemData[i];
+            switch (item.type) {
+                case BitmapItem.TYPE_SWORD:
+                    app.context.itemMaster[i] = new BitmapItem(app.spriteSheetSwords, item);
+                    app.context.itemMaster[i].gotoAndStop(i);
+                    break;
+                case BitmapItem.TYPE_SHIELD:
+                    app.context.itemMaster[i] = new BitmapItem(app.spriteSheetShields, item);
+                    app.context.itemMaster[i].gotoAndStop(i);
+                    break;
+                case BitmapItem.TYPE_MISC:
+                    app.context.itemMaster[i] = new BitmapItem(app.spriteSheetItems, item);
+                    app.context.itemMaster[i].gotoAndStop(i);
+                    break;
+                default:
+            }
+        }
+    }
+
+    var playerAnim = new createjs.BitmapAnimation(app.spriteSheetPlayer);
+    playerAnim.name = "player";
+    playerAnim.gotoAndPlay("walk");     //animate
+    playerAnim.currentFrame = 0;
+
+    player = new BaseCharacter(app.context, playerAnim, BaseCharacter.HANDMAP_STANDARD,
+        app.context.itemMaster[app.context.playData.rightArm],
+        app.context.itemMaster[app.context.playData.leftArm]);
+    player.isPlayer = true;
+    player.onUpdate = app.context.collideBlocks;
+    player.x = 384;
+    player.y = 384;
+    player.HP = 100;
+    player.teamNumber = 1;
+    player.onTick = function () {
+        AppUtils.inputAction(player);
+        player.updateFrame();
+        player.checkDropItem();
+    }
+
+    app.context.player = player;
+    app.context.addCharacter(player);
+    app.context.addToStage(player);
+
+    function enemyTickFunction(enemy) {
+        return function () {
+            AppUtils.simpleAction(enemy, app.context);
+            enemy.updateFrame();
+        }
+    }
+
+    var floorBonus = Math.floor(app.context.playData.floorNumber / 3);
+    var enemyNum = 6 + Math.min(floorBonus, 10);
+    for (var i = 0; i < enemyNum; i++) {
+        var index = Math.floor(Math.random() * 2.5) + Math.min(floorBonus, enemyData.length);
+        var _enemy = enemyData[index];
+        if (!_enemy.hasOwnProperty('handMap')) {
+            _enemy.handMap = BaseCharacter.HANDMAP_STANDARD;
+        }
+        var _enemyAnim = _enemy.anim.clone();
+        var enemy = new BaseCharacter(app.context, _enemyAnim, _enemy.handMap,
+            app.context.itemMaster[_enemy.items['rightArm']],
+            app.context.itemMaster[_enemy.items['leftArm']]);
+        for (var k in _enemy) {
+            if (k != "anim") {
+                enemy[k] = _enemy[k];
+            }
+        }
+
+        enemy.onUpdate = app.context.collideBlocks;
+        enemy.x = Math.random() * 2048;
+        enemy.y = Math.random() * 2048;
+        enemy.frame = 0;
+        enemy.mode = EnemyMode.RANDOM_WALK;
+        enemy.onTick = enemyTickFunction(enemy);
+
+        if (_enemy.hasOwnProperty("items")
+            && _enemy.items.hasOwnProperty("dropItems")) {
+            for (var j in _enemy.items.dropItems) {
+                if (app.context.itemMaster.hasOwnProperty(j)) {
+                    enemy.addToDropList(app.context.itemMaster[j], _enemy.items.dropItems[j]);
+                }
+            }
+        }
+        app.context.addCharacter(enemy);
+        app.context.addToStage(enemy);
+
+    }
+
+    createjs.Ticker.addListener(window);
+    createjs.Ticker.useRAF = true;
+    createjs.Ticker.setFPS(16);
+
+    for (var i in app.context.characters)(function (i) {
+        var character = app.context.characters[i];
+        var delegate = character.onTick;
+        character.onTick = function () {
+            if (!app.pause) {
+                delegate();
+            }
+        }
+    })(i);
+
+    //////
+    player.isMouseDown = false;
+    player.clickDuration = false;
+    player.isMouseClick = false;
+    player.isCursor = false;
+    player.axisX = 0;
+    player.axisY = 0;
+
+    var onDrag = function (e) {
+        if (typeof event == 'undefined') {
+            event = e;
+        }
+        var CANVAS_LEFT = typeof $ != "undefined" ? $(app.canvas).offset().left : 0;
+        var CANVAS_TOP = typeof $ != "undefined" ? $(app.canvas).offset().top : 0;
+        var touchEnable = typeof event != "undefined" && typeof event.touches != "undefined";
+        if (touchEnable && event.touches[0]) {
+            player.axisX = event.touches[0].pageX - CANVAS_LEFT - app.canvas.width / 2;
+            player.axisY = event.touches[0].pageY - CANVAS_TOP - app.canvas.height / 2;
+            e.preventDefault();
+        } else {
+            player.axisX = e.pageX - CANVAS_LEFT - app.canvas.width / 2;
+            player.axisY = e.pageY - CANVAS_TOP - app.canvas.height / 2;
+            e.preventDefault();
+        }
+    };
+
+    player.onMouseDown = function (e) {
+        player.isMouseDown = true;
+        onDrag(e);
+        if (Math.pow(player.axisX, 2) + Math.pow(player.axisY, 2) < Math.pow(32, 2)) {
+            player.isCursor = true;
+        }
+        player.clickDuration = true;
+        setTimeout(function () {
+            player.clickDuration = false;
+        }, 100);
+    };
+    player.onMouseMove = function (e) {
+        onDrag(e);
+    };
+    player.onMouseUp = function (e) {
+        player.isCursor = player.isMouseDown = false;
+        if (player.clickDuration) {
+            player.isMouseClick = true;
+        } else {
+            player.axisX = player.axisY = 0;
+        }
+        player.vX = player.vY = 0;
+    };
+
+    app.canvas.addEventListener('mousedown', player.onMouseDown);
+    app.canvas.addEventListener('touchstart', player.onMouseDown);
+
+    app.canvas.addEventListener('mousemove', player.onMouseMove);
+    app.canvas.addEventListener('touchmove', player.onMouseMove);
+
+    app.canvas.addEventListener('mouseup', player.onMouseUp);
+    app.canvas.addEventListener('touchend', player.onMouseUp);
+    app.canvas.addEventListener('mouseleave', player.onMouseUp);
+    app.canvas.addEventListener('touchleave', player.onMouseUp);
+
+    app.hideLoading();
+    app.initializing = false;
+}
+
+app.hideLoading = function () {
+    createjs.Tween.get(app.viewLoading).to({alpha:0}, 500, createjs.Ease.circIn);
 };
 
 app.showLoading = function () {
-    if ($.hasOwnProperty('mobile')) {
-        $.mobile.showPageLoadingMsg();
-    }
+    createjs.Tween.get(app.viewLoading).to({alpha:1.0}, 100, createjs.Ease.circIn);
 };
 
 window.onorientationchange = function () {
     if (app.canvas) {
         app.canvas.width = window.innerWidth;
         app.canvas.height = window.innerHeight;
-        if (app.scoreField) {
-            app.scoreField.x = app.canvas.width - 10;
-        }
     }
-    setTimeout(scrollTo, 100, 0, 1);
+    //setTimeout(scrollTo, 100, 0, 1);
 };

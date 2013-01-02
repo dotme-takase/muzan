@@ -59,12 +59,16 @@ var __maxDiffClientTime = 20;
 var __maxEffectSize = 20;
 var __tileSize = 128;
 exports.currentContext = null;
-var AppContext = exports.AppContext = function (playData) {
+var AppContext = exports.AppContext = function (contextView, contextViewUI, playData) {
     var _this = this;
     _this.rootPath = "";
     _this.tileSize = __tileSize;
     _this.currentHostId = -1;
-    _this.view = null;
+    _this.view = contextView;
+    _this.view.removeAllChildren();
+    _this.viewUI = contextViewUI;
+    _this.viewUI.removeAllChildren();
+    _this.player = null;
     _this.blockMap = null;
     _this.floorMap = null;
     _this.autoMap = null;
@@ -79,10 +83,25 @@ var AppContext = exports.AppContext = function (playData) {
     _this.itemMaster = {};
     _this.blocks = [];
     //_this.blockTree = null;
-    _this.mapTips = null;
+    _this.mapChips = null;
     _this.heavyTasks = [];
     _this.sounds = null;
     _this.effectsAnimList;
+
+    try{
+        var bgUI = new createjs.Shape((new createjs.Graphics())
+            .beginLinearGradientFill(["rgba(0,0,0,1)", "rgba(0,0,0,0)"], [0.1, 1.0], 0, -24, 0, 24)
+            .drawRect(0, 0, app.canvas.width, 32));
+        _this.viewUI.addChild(bgUI);
+    } catch(ignore){
+    }
+
+    _this.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
+    _this.scoreField.textAlign = "right";
+    _this.scoreField.y = 4;
+    _this.scoreField.text = "initializing...";
+    _this.scoreField.x = _this.viewUI.parent.canvas.width - 10;
+    _this.viewUI.addChild(_this.scoreField);
 
     if (playData) {
         _this.playData = playData;
@@ -128,6 +147,11 @@ var AppContext = exports.AppContext = function (playData) {
             try {
                 AppMobi.player.playSound(path + "/" + name + ".mp3");
             } catch (e) {
+            }
+        } else if (typeof ejecta != 'undefined') {
+            if (_this.sounds.hasOwnProperty(name)) {
+                var sound = _this.sounds[name];
+                sound.play();
             }
         } else if (_this.sounds && buzz) {
             if (_this.sounds.hasOwnProperty(name)) {
@@ -187,9 +211,14 @@ var AppContext = exports.AppContext = function (playData) {
 
     _this.loadBlockMap = function (blockMap) {
         _this.blockMap = blockMap;
-        _this.mapBounds = new createjs.Rectangle(0, 0, _this.tileSize * _this.blockMap[0].length, _this.tileSize * _this.blockMap.length);
+        _this.mapBounds = {
+            x:0,
+            y:0,
+            width:_this.tileSize * _this.blockMap[0].length,
+            height:_this.tileSize * _this.blockMap.length
+        };
         _this.characterTree = new QuadTree(_this.mapBounds, false);
-        _this.mapTips = null;
+        _this.mapChips = null;
     };
 
     _this.collideCharacters = function (obj) {
@@ -226,7 +255,6 @@ var AppContext = exports.AppContext = function (playData) {
                         weaponPoint = obj.rightArm.bonusPoint;
                     }
 
-
                     if ((distance < range + weaponRange)
                         && ((angleForOther > -20) && (angleForOther < 80))) {
                         // right
@@ -248,8 +276,8 @@ var AppContext = exports.AppContext = function (playData) {
                             other.isAction = true;
                             other.action = CharacterAction.DAMAGE;
                             other.HP -= Math.ceil(weaponPoint * (Math.random() * 0.20 + 1));
-                            if ((player.context.playData != null) && (other == player)) {
-                                player.context.playData.enemy = obj;
+                            if ((_this.playData != null) && (other == _this.player)) {
+                                _this.playData.enemy = obj;
                             }
                         }
                     }
@@ -409,6 +437,10 @@ var AppContext = exports.AppContext = function (playData) {
                 }
             }
         }
+
+        if (_this.playData && _this.scoreField) {
+            _this.scoreField.text = "B" + _this.playData.floorNumber + "F: " + _this.player.HP + " / 100";
+        }
     };
 
     //ClientSide
@@ -427,7 +459,7 @@ var AppContext = exports.AppContext = function (playData) {
     _this.initializeStage = function (blockMap, tileBmps, sounds) {
         var tileNumber = (Math.floor((_this.playData.floorNumber - 1) / 3) % 3) + 1;
         _this.loadBlockMap(blockMap);
-        _this.view = new createjs.Container();
+
         var lastChild = null;
         var goal = _this.getRandomPoint();
         _this.floorMap = [];
@@ -476,7 +508,8 @@ var AppContext = exports.AppContext = function (playData) {
         _this.sounds = sounds;
     };
 
-    _this.drawMap = function (point, stage) {
+    _this.drawMap = function (point) {
+        var stage = _this.viewUI;
         var tipSize = 6;
         var range = 2;
 
@@ -518,7 +551,7 @@ var AppContext = exports.AppContext = function (playData) {
             return result;
         }
 
-        if (_this.mapTips == null) {
+        if (_this.mapChips == null) {
 
             _this.autoMap = [];
             for (var i = 0; i < _this.floorMap.length; i++) {
@@ -530,26 +563,26 @@ var AppContext = exports.AppContext = function (playData) {
             g2.beginFill(createjs.Graphics.getRGB(64, 255, 64, 0.7));
             g2.drawRect(0, 0, 6, 6);
 
-            _this.mapTips = {
+            _this.mapChips = {
                 background:new createjs.Shape(drawAutoMap()),
                 player:new createjs.Shape(g2)
             }
-            _this.mapTips.background.cache(0, 0, 300, 300);
-            _this.mapTips.player.cache(0, 0, 6, 6);
-            stage.addChild(_this.mapTips.background);
-            stage.addChild(_this.mapTips.player);
+            _this.mapChips.background.cache(0, 0, 300, 300);
+            _this.mapChips.player.cache(0, 0, 6, 6);
+            stage.addChild(_this.mapChips.background);
+            stage.addChild(_this.mapChips.player);
         } else {
             if (updateAutoMap()) {
-                stage.removeChild(_this.mapTips.player);
-                stage.removeChild(_this.mapTips.background);
-                _this.mapTips.background = new createjs.Shape(drawAutoMap());
-                _this.mapTips.background.cache(0, 0, 300, 300);
-                stage.addChild(_this.mapTips.background);
-                stage.addChild(_this.mapTips.player);
+                stage.removeChild(_this.mapChips.player);
+                stage.removeChild(_this.mapChips.background);
+                _this.mapChips.background = new createjs.Shape(drawAutoMap());
+                _this.mapChips.background.cache(0, 0, 300, 300);
+                stage.addChild(_this.mapChips.background);
+                stage.addChild(_this.mapChips.player);
             }
         }
-        _this.mapTips.player.x = point.x * tipSize;
-        _this.mapTips.player.y = point.y * tipSize;
+        _this.mapChips.player.x = point.x * tipSize;
+        _this.mapChips.player.y = point.y * tipSize;
     };
 };
 
@@ -1242,6 +1275,73 @@ var AppUtils = exports.AppUtils = {
             angle += 360;
         }
         return angle;
+    },
+    formatDate:function (date, format) {
+        function comPadZero(value, length) {
+            return new Array(length - ('' + value).length + 1).join('0') + value;
+        }
+
+        var result = format;
+        var f;
+        var rep;
+        var yobi = new Array('&#26085;', '&#26376;', '&#28779;', '&#27700;',
+            '&#26408;', '&#37329;', '&#22303;');
+
+        f = 'yyyy';
+        if (result.indexOf(f) > -1) {
+            rep = date.getFullYear();
+            result = result.replace(/yyyy/, rep);
+        }
+
+        f = 'MM';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getMonth() + 1, 2);
+            result = result.replace(/MM/, rep);
+        }
+
+        f = 'ddd';
+        if (result.indexOf(f) > -1) {
+            rep = yobi[date.getDay()];
+            result = result.replace(/ddd/, rep);
+        }
+
+        f = 'dd';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getDate(), 2);
+            result = result.replace(/dd/, rep);
+        }
+
+        f = 'HH';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getHours(), 2);
+            result = result.replace(/HH/, rep);
+        }
+
+        f = 'mm';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getMinutes(), 2);
+            result = result.replace(/mm/, rep);
+        }
+
+        f = 'ss';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getSeconds(), 2);
+            result = result.replace(/ss/, rep);
+        }
+
+        f = 'fff';
+        if (result.indexOf(f) > -1) {
+            rep = comPadZero(date.getMilliseconds(), 3);
+            result = result.replace(/fff/, rep);
+        }
+        return result;
+    },
+    uuid:function () {
+        function S4() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
     }
 }
 
@@ -1305,7 +1405,7 @@ var LocalData = {
 
 var LocalRanking = {
     dataKey:"localRanking",
-    maxRank:10,
+    maxRank:20,
     insert:function (point, record) {
         var data = LocalRanking.load();
         if (data == null) {

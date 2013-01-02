@@ -251,7 +251,7 @@ $(document).ready(function () {
     };
     $.i18n.properties({
         name:'Messages',
-        path:'js/plugins/bundle/',
+        path:'app/bundle/',
         mode:'both',
         language:'ja',
         callback:$.i18nLoadedCallback
