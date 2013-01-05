@@ -88,12 +88,12 @@ var AppContext = exports.AppContext = function (contextView, contextViewUI, play
     _this.sounds = null;
     _this.effectsAnimList;
 
-    try{
+    try {
         var bgUI = new createjs.Shape((new createjs.Graphics())
             .beginLinearGradientFill(["rgba(0,0,0,1)", "rgba(0,0,0,0)"], [0.1, 1.0], 0, -24, 0, 24)
             .drawRect(0, 0, app.canvas.width, 32));
         _this.viewUI.addChild(bgUI);
-    } catch(ignore){
+    } catch (ignore) {
     }
 
     _this.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
@@ -1420,7 +1420,7 @@ var LocalRanking = {
                 break;
             } else if (data.hasOwnProperty(i)) {
                 var oldRecord = data[i];
-                if (point >= oldRecord.point) {
+                if ((oldRecord == null) || (point >= oldRecord.point)) {
                     rankedIn = true;
                     for (var j = LocalRanking.maxRank - 1; j > i; j--) {
                         data[j] = data[j - 1];
@@ -1432,7 +1432,7 @@ var LocalRanking = {
         }
         if (rankedIn) {
             LocalData.put(LocalRanking.dataKey, data);
-            return i;
+            return i + 1;
         }
         return null;
     },
