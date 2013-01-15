@@ -64,10 +64,17 @@ var AppContext = exports.AppContext = function (contextView, contextViewUI, play
     _this.rootPath = "";
     _this.tileSize = __tileSize;
     _this.currentHostId = -1;
-    _this.view = contextView;
-    _this.view.removeAllChildren();
-    _this.viewUI = contextViewUI;
-    _this.viewUI.removeAllChildren();
+
+    if(contextView){
+        _this.view = contextView;
+           _this.view.removeAllChildren();
+    }
+
+    if(contextViewUI){
+        _this.viewUI = contextViewUI;
+        _this.viewUI.removeAllChildren();
+    }
+
     _this.player = null;
     _this.blockMap = null;
     _this.floorMap = null;
@@ -96,12 +103,14 @@ var AppContext = exports.AppContext = function (contextView, contextViewUI, play
     } catch (ignore) {
     }
 
-    _this.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
-    _this.scoreField.textAlign = "right";
-    _this.scoreField.y = 4;
-    _this.scoreField.text = "initializing...";
-    _this.scoreField.x = _this.viewUI.parent.canvas.width - 10;
-    _this.viewUI.addChild(_this.scoreField);
+    if(typeof createjs !== 'undefined'){
+        _this.scoreField = new createjs.Text("", "bold 12px Arial", "#FFFFFF");
+        _this.scoreField.textAlign = "right";
+        _this.scoreField.y = 4;
+        _this.scoreField.text = "initializing...";
+        _this.scoreField.x = _this.viewUI.parent.canvas.width - 10;
+        _this.viewUI.addChild(_this.scoreField);
+    }
 
     if (playData) {
         _this.playData = playData;
