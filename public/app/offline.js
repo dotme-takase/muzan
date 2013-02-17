@@ -74,11 +74,39 @@ var enemyData = [
         body:1,
         name:'Militia',
         HP:10,
-        speed:8,
+        speed:5,
+        items:{
+            rightArm:"shortSword",
+            leftArm:null,
+            dropItems:{
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:1,
+        name:'Militia',
+        HP:10,
+        speed:5,
+        items:{
+            rightArm:"shortSword",
+            leftArm:null,
+            dropItems:{
+                woodenShield:3,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:1,
+        name:'Militia',
+        HP:10,
+        speed:5,
         items:{
             rightArm:"shortSword",
             leftArm:"woodenShield",
             dropItems:{
+                bronzeShield:1,
                 woodenShield:3,
                 aidBox:5
             }
@@ -88,7 +116,7 @@ var enemyData = [
         body:5,
         name:'Thief',
         HP:10,
-        speed:10,
+        speed:8,
         items:{
             rightArm:"shortSword",
             leftArm:null,
@@ -102,7 +130,21 @@ var enemyData = [
         body:4,
         name:'Soldier',
         HP:15,
-        speed:7,
+        speed:6,
+        items:{
+            rightArm:"longSword",
+            leftArm:null,
+            dropItems:{
+                longSword:1,
+                aidBox:5
+            }
+        }
+    },
+    {
+        body:4,
+        name:'Soldier',
+        HP:15,
+        speed:6,
         items:{
             rightArm:"shortSword",
             leftArm:"bronzeShield",
@@ -116,12 +158,12 @@ var enemyData = [
         body:2,
         name:'IronNight',
         HP:40,
-        speed:6,
+        speed:5,
         items:{
             rightArm:"longSword",
             leftArm:null,
             dropItems:{
-                longSword:3,
+                longSword:4,
                 aidBox:5
             }
         }
@@ -649,7 +691,7 @@ app.initializeGameDelegete = function (playData) {
 
     createjs.Ticker.addListener(window);
     createjs.Ticker.useRAF = true;
-    createjs.Ticker.setFPS(17);
+    createjs.Ticker.setFPS(20);
 
     for (var i in app.context.characters)(function (i) {
         var character = app.context.characters[i];
