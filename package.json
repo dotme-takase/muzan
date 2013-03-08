@@ -1,5 +1,5 @@
 {
-    "name": "bsword"
+    "name": "muzan"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
@@ -7,11 +7,7 @@
     , "ejs": ">= 0.0.1"
     , "socket.io": ">= 0.8.7"
     , "socket.io-client" : ">= 0.8.7"
-    , "redis": ">=0.7.1"
-    , "connect-redis": ">= 1.1.0"
-    , "hashlib": ">=1.0.1"
     , "qs" : ">=0.4.0"
     , "formidable": ">=1.0.8"
-    , "canvas": ">=0.10.3"
   }
 }

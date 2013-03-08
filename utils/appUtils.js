@@ -1,10 +1,5 @@
 var crypto = require('crypto');
-var hashlib = require('hashlib');
 var settings = require("../settings.js").get();
-
-exports.hash = function (str) {
-    return hashlib.sha512(str + ':' + settings.securityKey)
-}
 
 exports.encrypt = function (text) {
     var cipher = crypto.createCipher('aes-256-cbc', settings.securityKey);

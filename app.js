@@ -8,23 +8,12 @@ var express = require('express')
 
 var app = module.exports = express.createServer();
 
-var RedisStore = require('connect-redis')(express);
-var sessionStore = (settings.redis && settings.redis.hostname) ?
-    new RedisStore({
-        host: settings.redis.hostname,
-        port: settings.redis.port,
-        pass: settings.redis.password
-    })
-    : new RedisStore;
-
 // Configuration
 app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
     app.use(require('./utils/customizedBodyParser.js')());
     app.use(express.methodOverride());
-    app.use(express.cookieParser()); // use session
-    app.use(express.session({ secret: "4pYvLFVw", store: sessionStore}));
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -47,7 +36,6 @@ app.get('/g/init', routes.game.init);
 app.get('/', routes.game.practice);
 
 //multiplay
-routes.game.initializeSocket(io, connect, sessionStore);
 app.get('/m', routes.game.multiplay);
 
 //mini game
