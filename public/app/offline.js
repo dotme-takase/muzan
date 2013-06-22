@@ -366,7 +366,7 @@ app.loadTiles = function (filename, callback) {
             w1_bl2:[4, 4],
             w1_tr2:[8, 8],
             w1_tl2:[9, 9],
-            f1:[16, 16],
+            f1:[20, 20],
             s1:[21, 21]
         }
     });

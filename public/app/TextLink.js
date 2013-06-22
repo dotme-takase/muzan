@@ -4,8 +4,8 @@
         px:0,
         py:0,
         onTouchStart:function (e) {
-            TextLinkContainer.px = e.touches[0].pageX;
-            TextLinkContainer.py = e.touches[0].pageY;
+            TextLinkContainer.px = e.changedTouches[0].pageX;
+            TextLinkContainer.py = e.changedTouches[0].pageY;
             for (var k in TextLinkContainer.items)(function (item, i) {
                 if (item.enabled && item.wrapper.alpha == 1) {
                     if (TextLinkContainer.isInRect(TextLinkContainer.px, TextLinkContainer.py, item.rect)) {
@@ -17,8 +17,8 @@
             })(TextLinkContainer.items[k], k);
         },
         onTouchEnd:function (e) {
-            var x = e.touches[0].pageX;
-            var y = e.touches[0].pageY;
+            var x = e.changedTouches[0].pageX;
+            var y = e.changedTouches[0].pageY;
             for (var k in TextLinkContainer.items) {
                 var item = TextLinkContainer.items[k];
                 if (item.enabled && item.wrapper.alpha == 1) {
