@@ -6,6 +6,8 @@ app.onInitialized = null;
 app.onGameover = null;
 app.viewApp = null;
 app.currentRank = "";
+app.loadedTiles = [];
+
 function tick() {
     if (!app.pause) {
         try {
@@ -370,7 +372,8 @@ app.loadTiles = function (filename, callback) {
             s1:[21, 21]
         }
     });
-    app.spriteSheetTiles.onComplete = function () {
+    
+    var onComplete = function () {
         var names = app.spriteSheetTiles.getAnimations();
         var hasDataURL = false;
         try {
@@ -392,6 +395,12 @@ app.loadTiles = function (filename, callback) {
         app.hideLoading();
         callback.call(this);
     };
+    if(app.loadedTiles.indexOf(filename) >= 0) {
+    	app.spriteSheetTiles.onComplete = onComplete;
+        app.loadedTiles.push(filename);
+    } else {
+    	onComplete();
+    }
 };
 
 app.initializeFirst = function () {
